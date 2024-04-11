@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"repeat_bet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"repeat_bet",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

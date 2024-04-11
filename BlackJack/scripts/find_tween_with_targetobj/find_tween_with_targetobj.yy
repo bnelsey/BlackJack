@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"find_tween_with_targetobj",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"find_tween_with_targetobj",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
