@@ -10,11 +10,11 @@ if change_player_balance != 0
 
 if change_player_bet != 0
 {
-	dbg("old obj_game.bet_value", obj_game.bet_value[0])
+	dbg("old obj_game.bet_value", obj_game.bet_value)
 	dbg("bet_value adjusted by", change_player_bet)
 }
 obj_game.balance_value += change_player_balance
-obj_game.bet_value[change_player_split_hand] += change_player_bet
+obj_game.bet_value += change_player_bet
 
 
 
@@ -25,7 +25,7 @@ if change_player_balance != 0
 
 if change_player_bet != 0
 {
-	dbg("new obj_game.bet_value", obj_game.bet_value[0])
+	dbg("new obj_game.bet_value", obj_game.bet_value)
 }
 
 change_player_balance = 0

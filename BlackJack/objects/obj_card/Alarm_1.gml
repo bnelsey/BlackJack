@@ -23,7 +23,6 @@ switch(flip_stage)
 		
 		if steps_left < 1
 		{
-			image_xscale = 1
 			alarm[1] = -1
 			flip_stage = 2
 			steps_left = steps_total

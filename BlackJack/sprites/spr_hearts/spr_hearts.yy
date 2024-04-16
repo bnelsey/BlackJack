@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"1c033a3e-e2b6-4383-a725-3b54542223bc","name":"1c033a3e-e2b6-4383-a725-3b54542223bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"ac819c70-8842-4f68-9003-9b4c72cee556","name":"ac819c70-8842-4f68-9003-9b4c72cee556","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"51d96769-dd6e-4b2c-b4a3-c28a14101833","name":"51d96769-dd6e-4b2c-b4a3-c28a14101833","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"c21a4f59-914d-4d2f-802e-08fddc53c633","name":"c21a4f59-914d-4d2f-802e-08fddc53c633","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"86e34dd1-4fe1-4d2b-aeac-987982b5171a","name":"86e34dd1-4fe1-4d2b-aeac-987982b5171a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
@@ -82,8 +82,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1c033a3e-e2b6-4383-a725-3b54542223bc","path":"sprites/spr_hearts/spr_hearts.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"97912ce2-f7ec-4788-bd7b-c2b2b469015d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ac819c70-8842-4f68-9003-9b4c72cee556","path":"sprites/spr_hearts/spr_hearts.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"6723bd6b-e930-464d-a1fe-31a14ba321ad","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"51d96769-dd6e-4b2c-b4a3-c28a14101833","path":"sprites/spr_hearts/spr_hearts.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"41d852e8-5f95-44aa-a5d4-1958c74953de","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},

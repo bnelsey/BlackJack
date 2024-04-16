@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"775d5620-7c12-41fb-8e51-c8573e402c8f","name":"775d5620-7c12-41fb-8e51-c8573e402c8f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"be232946-7400-45b2-b772-b39890e193b1","name":"be232946-7400-45b2-b772-b39890e193b1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"ea496d28-dd15-4797-8d11-8878b1a7c4c8","name":"ea496d28-dd15-4797-8d11-8878b1a7c4c8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"87b7612a-5265-4d90-a911-f69fd879c0eb","name":"87b7612a-5265-4d90-a911-f69fd879c0eb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"","%Name":"c2535c70-faa0-435e-940f-3ed74fe305b9","name":"c2535c70-faa0-435e-940f-3ed74fe305b9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
@@ -82,8 +82,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"775d5620-7c12-41fb-8e51-c8573e402c8f","path":"sprites/spr_clubs/spr_clubs.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"9e8a6ac1-2c56-480f-b9b5-36e593f33008","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"be232946-7400-45b2-b772-b39890e193b1","path":"sprites/spr_clubs/spr_clubs.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"18f045c0-cca8-4515-bfc4-851d5bf7ae2b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea496d28-dd15-4797-8d11-8878b1a7c4c8","path":"sprites/spr_clubs/spr_clubs.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"8f48d807-a01d-40fa-8137-9f403966e1dd","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},

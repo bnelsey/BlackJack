@@ -7,8 +7,7 @@ deal_player_card(20)
 deal_dealer_card(true, 30)
 		
 		
-		
-calculate_player_card(player_hand_current)
+calculate_player_card()
 obj_game.alarm[1] = 50
 		
 // delete buttons

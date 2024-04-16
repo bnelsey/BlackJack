@@ -1,25 +1,23 @@
-/// @description calculate_player_card(_hand_number)
-/// @param _hand_number
 // calculate player hand's value
-function calculate_player_card(_hand_number){
+function calculate_player_card(){
 	
 	
 
 	with(obj_game)
 	{
-		len = array_length(player_cards[_hand_number])
+		len = array_length(player_cards)
 		
 		
-		dbg(" -------- start player cards ------", len)
+		dbg(" -------- start player cards ------")
 		for(i=0; i < len; i+=1)
 		{
-			dbg(player_cards[_hand_number][i])			
+			dbg(player_cards[i])			
 		}
 		dbg(" -------- end player cards ------")
 		
-	    total_value = array_sum(player_cards[_hand_number])
-	    num_jokers = array_count(player_cards[_hand_number], 0)
-	    num_aces = array_count(player_cards[_hand_number], 1)
+	    total_value = array_sum(player_cards)
+	    num_jokers = array_count(player_cards, 0)
+	    num_aces = array_count(player_cards, 1)
 
 	    // Handle Jokers		
 	    while (num_jokers > 0 and total_value + 12 <= 21)
@@ -41,8 +39,7 @@ function calculate_player_card(_hand_number){
 		*/
 		
 		// update player hand value
-		player_value[_hand_number] = total_value
-		dbg(">>>>player_value[_hand_number]", player_value[_hand_number])
+		player_value = total_value
 		obj_game.alarm[1] = 1
 	}
 }

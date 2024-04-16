@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"delete_object_with_sprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"delete_object_with_sprite",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

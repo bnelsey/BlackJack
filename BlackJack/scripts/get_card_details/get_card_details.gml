@@ -55,15 +55,10 @@ function get_card_details(_card_number) {
 			card_name += "Spades"
 			card_sprite = spr_spades 
 		break;
-		case 4:
-			card_name += "Specials"
-			card_sprite = spr_specials 
-			//show_message("card_frame" + string(card_frame))
-		break;
 		
 	}
 
-	dbg("card_name", card_name)
+	//dbg("card_name", card_name)
 	card_sprite_frame[0] = card_sprite
 	card_sprite_frame[1] = card_frame
 	return card_sprite_frame
