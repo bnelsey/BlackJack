@@ -6,8 +6,13 @@ draw_set_valign(fa_center)
 
 instance_create_depth(0,0,0,obj_fullscreen)
 
+
+
+
+
 repeat_and_deal = false
 double_and_deal = false
+
 
 deck_x = 1921
 deck_y = -161
@@ -157,3 +162,31 @@ new_bet = instance_create_depth(393,879,0,obj_button)
 new_bet.sprite_index = btn_bet
 new_bet.value = 500
 new_bet.visible = false
+
+
+
+// ------------------------------------------------------------
+
+
+
+hand0 = instance_create_depth(0,0,0,obj_hand)
+hand0.my_hand_id = 0
+hand1 = instance_create_depth(0,0,0,obj_hand)
+hand1.my_hand_id = 1
+player_hand_current = hand1
+//player_hand_current = self
+
+
+hand1.player_card_x = 1187
+hand1.player_card_y = 586
+hand1.player_x = 1244
+hand1.player_y = 763
+hand1.player_card_dealt = 0
+hand1.player_card_xsep = player_card_xsep
+hand1.player_card_ysep = player_card_ysep
+hand1.card_xoffset = card_xoffset
+hand1.card_yoffset = card_yoffset
+hand1.bet_x = 1187
+hand1.bet_y = 786
+hand1.bet_string_x = 1244
+hand1.bet_string_y = 901

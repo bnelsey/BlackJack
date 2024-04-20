@@ -55,9 +55,10 @@ switch(sprite_index)
 		{
 			instance_create_depth(350,608,0,obj_coin)
 			// move coin
-			obj_coin.targetx = obj_game.bet_x
-			obj_coin.targety = obj_game.bet_y				
+			obj_coin.targetx = obj_game.player_hand_current.bet_x
+			obj_coin.targety = obj_game.player_hand_current.bet_y				
 			obj_coin.alarm[0] = 1
+			obj_coin.change_player_hand = obj_game.player_hand_current
 			obj_coin.change_player_bet = value
 			obj_game.bet_obj = obj_coin.id
 		}
@@ -65,10 +66,11 @@ switch(sprite_index)
 		{
 			new_bet = instance_create_depth(350,608,0,obj_coin)
 			// move coin
-			new_bet.targetx = obj_game.bet_x
-			new_bet.targety = obj_game.bet_y				
-			new_bet.alarm[0] = 1
+			new_bet.targetx = obj_game.player_hand_current.bet_x
+			new_bet.targety = obj_game.player_hand_current.bet_y				
+			obj_game.player_hand_current.alarm[0] = 1
 			new_bet.destroy_after_anim = true
+			obj_coin.change_player_hand = obj_game.player_hand_current
 			new_bet.change_player_bet = value
 		}
 		

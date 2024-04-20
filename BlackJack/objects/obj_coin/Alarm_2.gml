@@ -10,11 +10,11 @@ if change_player_balance != 0
 
 if change_player_bet != 0
 {
-	dbg("old obj_game.bet_value", obj_game.bet_value)
+	dbg("old obj_game.bet_value", change_player_hand.bet_value)
 	dbg("bet_value adjusted by", change_player_bet)
 }
 obj_game.balance_value += change_player_balance
-obj_game.bet_value += change_player_bet
+change_player_hand.bet_value += change_player_bet
 
 
 
@@ -25,13 +25,13 @@ if change_player_balance != 0
 
 if change_player_bet != 0
 {
-	dbg("new obj_game.bet_value", obj_game.bet_value)
+	dbg("new change_player_hand.bet_value", change_player_hand.bet_value)
 }
 
 change_player_balance = 0
 change_player_bet = 0
 
-obj_game.alarm[1] = 1 // update display strings
+change_player_hand.alarm[1] = 1 // update display strings
 
 if destroy_after_anim
 {

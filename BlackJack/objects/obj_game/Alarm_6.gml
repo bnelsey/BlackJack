@@ -1,9 +1,11 @@
 /// @description Deal cards
 
 
-deal_player_card(0);	
+//deal_player_card(0);	
+deal_hand_card(0);
 deal_dealer_card(false, 10)		
-deal_player_card(20)
+deal_hand_card(20);
+//deal_player_card(20)
 deal_dealer_card(true, 30)
 		
 		
