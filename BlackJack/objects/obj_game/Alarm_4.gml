@@ -1,8 +1,23 @@
 /// @description make buttons after round end
 
 round_new()
-dbg("bet value reset to 0 after this, but current bet value is", bet_value)
 bet_value = 0
+
+with(hand0)
+{
+	bet_value = 0
+	alarm[1] = 1
+}
+with(hand1)
+{
+	bet_value = 0
+	alarm[1] = 1
+}
+with(hand2)
+{
+	bet_value = 0
+	alarm[1] = 1
+}
 
 new_button = instance_create_depth(694,912,0,obj_button)
 new_button.sprite_index = btn_repeat_bet

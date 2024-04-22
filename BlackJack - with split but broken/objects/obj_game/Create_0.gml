@@ -59,8 +59,6 @@ num_aces = 0
 soft_hand = false // if ace or jack's higher value is used, it is a soft hand
 
 
-deck = array_create(56);
-
 new_deck()
 
 

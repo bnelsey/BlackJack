@@ -83,8 +83,8 @@ switch(sprite_index)
 			instance_destroy()	
 		}
 	
-		obj_game.balance_value += obj_game.bet_value
-		obj_game.bet_value = 0
+		obj_game.balance_value += obj_game.player_hand_current.bet_value
+		obj_game.player_hand_current.bet_value = 0
 		obj_game.alarm[1] = 1 // refresh strings
 		
 		delete_object_with_sprite(obj_button, btn_deal)
@@ -133,18 +133,19 @@ switch(sprite_index)
 	case btn_hit:
 		with(obj_game)
 		{
-			if player_value < 21
+			if player_hand_current.player_value < 21
 			{
-				deal_player_card(0)		
-				calculate_player_card()
+				deal_hand_card(0)		
+				calculate_hand_card()
 			}			
 			
-			if player_value == 21
+			if player_hand_current.player_value == 21
 			{
 				dbg("player blackjack!")
 				obj_game.alarm[2] = 1	
+				player_hand_current.alarm[2] = 1
 			}
-			else if player_value > 21
+			else if player_hand_current.player_value > 21
 			{
 				dbg("player bust!")
 				
@@ -182,9 +183,49 @@ switch(sprite_index)
 		delete_object_with_sprite(obj_button, btn_surrender)
 	break;
 	
+	case btn_double_down:	
+		if obj_game.player_hand_current.bet_value*2 > obj_game.balance_value
+		{
+			msg("not enough balance left for double down")
+			image_alpha = 0.5
+			exit
+		}
+		
+		obj_game.double_down = true
+		var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
+		_new_bet.destroy_after_anim = true
+		
+		// move coin
+		_new_bet.targetx = obj_game.player_hand_current.bet_x
+		_new_bet.targety = obj_game.player_hand_current.bet_y	
+		_new_bet.alarm[0] = 1
+		_new_bet.change_player_bet = obj_game.player_hand_current.bet_value
+	
+	
+		obj_game.alarm[8] = 60 // player_hit() but with adjustable delay	
+		
+		
+		with(obj_game)
+		{
+			if player_hand_current == player_splits
+				alarm[2] = 110 // make dealer hit
+			else
+				player_stand()
+		}
+		
+
+		delete_object_with_sprite(obj_button, btn_strategy)
+		delete_object_with_sprite(obj_button, btn_stand)
+		delete_object_with_sprite(obj_button, btn_hit)
+		delete_object_with_sprite(obj_button, btn_double_down)
+		delete_object_with_sprite(obj_button, btn_surrender)
+		delete_object_with_sprite(obj_button, btn_split)
+		delete_object_with_sprite(obj_button, btn_split_again)
+	break;
+	
 	case btn_surrender:
-		dbg("player surrender!")		
-		obj_game.last_bet_value = obj_game.bet_value
+		dbg("player surrender! hand bet value:", obj_game.player_hand_current.bet_value)
+		obj_game.last_bet_value = obj_game.player_hand_current.bet_value
 				
 		// open dealer card and calculate
 		hidden_card = find_hidden_card()			
@@ -196,30 +237,34 @@ switch(sprite_index)
 				
 		with(obj_game)
 		{
-			var _new_chip = instance_create_depth(bet_x,bet_y,0,obj_coin);
+			var _new_chip = instance_create_depth(player_hand_current.bet_x,player_hand_current.bet_y,0,obj_coin);
+			_new_chip.change_player_hand = player_hand_current
 			// move chip
 			_new_chip.targetx = dealer_chips_x 
 			_new_chip.targety = dealer_chips_y	
 			_new_chip.alarm[0] = 1
 			_new_chip.destroy_after_anim = true					
-			bet_value = bet_value/2
+			player_hand_current.bet_value = player_hand_current.bet_value/2
 			obj_game.alarm[1] = 1
+			obj_game.player_hand_current.alarm[1] = 1
 		
 		
 			if instance_exists(obj_game.bet_obj)
 			{
 				_new_chip = obj_game.bet_obj
+				_new_chip.change_player_hand = player_hand_current
 			}
 			else
 			{
-				_new_chip = instance_create_depth(bet_x,bet_y,0,obj_coin);
+				_new_chip = instance_create_depth(player_hand_current.bet_x,player_hand_current.bet_y,0,obj_coin);
+				_new_chip.change_player_hand = player_hand_current
 			}
 			// move chip
 			_new_chip.targetx = player_chips_x
 			_new_chip.targety = player_chips_y				
 			_new_chip.alarm[0] = 60
 			_new_chip.destroy_after_anim = true
-			_new_chip.change_player_balance = bet_value
+			_new_chip.change_player_balance = player_hand_current.bet_value
 			//_new_chip.change_player_bet = -bet_value*2
 		
 			alarm[4] = 60

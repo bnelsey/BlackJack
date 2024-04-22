@@ -12,6 +12,7 @@ instance_create_depth(0,0,0,obj_fullscreen)
 
 repeat_and_deal = false
 double_and_deal = false
+double_down = false
 
 
 deck_x = 1921
@@ -48,23 +49,7 @@ soft_hand = false // if ace or jack's higher value is used, it is a soft hand
 
 deck = array_create(56);
 
-// 0-13 = Clubs
-// 14-27 = Diamonds
-// 28-41 = Hearts
-// 42-55 = Spades
-// Joker IDs: 0, 14, 28, 42 (the first of each suite)
-
-// Initialize the array with numbers 1 to 56
-for (i = 0; i < 56; i++) {
-    deck[i] = i;
-}
-
-// add one extra joker from each suite
-array_push(deck, 0, 14, 28, 42)
-
-// shuffle array
-deck = array_shuffle(deck)
-
+new_deck()
 
 // fixed starting cards for testing
 //array_push(deck, 7,7,0,0,1,1,13,13)
@@ -173,8 +158,29 @@ hand0 = instance_create_depth(0,0,0,obj_hand)
 hand0.my_hand_id = 0
 hand1 = instance_create_depth(0,0,0,obj_hand)
 hand1.my_hand_id = 1
-player_hand_current = hand1
+hand2 = instance_create_depth(0,0,0,obj_hand)
+hand2.my_hand_id = 2
+
+
+player_hand_current = hand2
+player_splits = 0
+
 //player_hand_current = self
+
+
+hand0.player_card_x = 904
+hand0.player_card_y = 586
+hand0.player_x = 961
+hand0.player_y = 763
+hand0.player_card_dealt = 0
+hand0.player_card_xsep = player_card_xsep
+hand0.player_card_ysep = player_card_ysep
+hand0.card_xoffset = card_xoffset
+hand0.card_yoffset = card_yoffset
+hand0.bet_x = 915
+hand0.bet_y = 786
+hand0.bet_string_x = 970
+hand0.bet_string_y = 901
 
 
 hand1.player_card_x = 1187
@@ -190,3 +196,19 @@ hand1.bet_x = 1187
 hand1.bet_y = 786
 hand1.bet_string_x = 1244
 hand1.bet_string_y = 901
+
+
+
+hand2.player_card_x = 645
+hand2.player_card_y = 586
+hand2.player_x = 702
+hand2.player_y = 763
+hand2.player_card_dealt = 0
+hand2.player_card_xsep = player_card_xsep
+hand2.player_card_ysep = player_card_ysep
+hand2.card_xoffset = card_xoffset
+hand2.card_yoffset = card_yoffset
+hand2.bet_x = 645
+hand2.bet_y = 786
+hand2.bet_string_x = 699
+hand2.bet_string_y = 901

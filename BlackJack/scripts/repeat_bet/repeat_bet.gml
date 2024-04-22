@@ -17,6 +17,7 @@ function repeat_bet(){
 		_coin_exists = true;
 			
 	var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
+	_new_bet.change_player_hand = obj_game.player_hand_current
 		
 	if not _coin_exists
 	{
@@ -31,8 +32,8 @@ function repeat_bet(){
 	}
 		
 	// move coin
-	_new_bet.targetx = obj_game.bet_x
-	_new_bet.targety = obj_game.bet_y				
+	_new_bet.targetx = obj_game.player_hand_current.bet_x
+	_new_bet.targety = obj_game.player_hand_current.bet_y				
 	_new_bet.alarm[0] = 1
 	_new_bet.change_player_bet = _repeat_bet
 		
@@ -57,4 +58,17 @@ function repeat_bet(){
 	obj_game.alarm[1] = 1
 	obj_game.player_value = 0
 	obj_game.dealer_value = 0
+	
+	with(obj_game.hand0)
+	{
+		player_value = 0		
+	}
+	with(obj_game.hand1)
+	{
+		player_value = 0		
+	}
+	with(obj_game.hand2)
+	{
+		player_value = 0		
+	}
 }
