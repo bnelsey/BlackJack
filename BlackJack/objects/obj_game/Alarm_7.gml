@@ -15,10 +15,10 @@ new_button.sprite_index = btn_stand
 new_button = instance_create_depth(876,917,0,obj_button)
 new_button.sprite_index = btn_hit
 
-if player_card_dealt == 2 and (player_hand_current.player_cards[0] == player_hand_current.player_cards[1]) and player_splits < 2 and ace_joker_split == false
+
+if array_length(player_hand_current.player_cards) == 2 and (player_hand_current.player_cards[0] == player_hand_current.player_cards[1]) and player_splits < 2 and ace_joker_split == false
 {
-	dbg("player_cards[0]",player_cards[player_hand_current][0], "player_cards[1]", player_cards[player_hand_current][1], "player_splits", player_splits)
-	
+	dbg("player_cards[0]",player_hand_current.player_cards[0], "player_cards[1]", player_hand_current.player_cards[1], "player_splits", player_splits)
 	new_button = instance_create_depth(1231,894,0,obj_button)
 	
 	if player_splits== 0

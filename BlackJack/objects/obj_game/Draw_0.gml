@@ -30,6 +30,9 @@ draw_set_color(c_white)
 draw_set_alpha(1)
 draw_text(balance_x,balance_y,balance_string)
 
+var _cards_left = array_length(deck);
+draw_text(1713, 119, "cards left: " + string(_cards_left))
+
 if bet_value > 0
 	draw_text(bet_string_x,bet_string_y,bet_string)
 	

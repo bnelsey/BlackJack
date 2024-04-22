@@ -17,5 +17,21 @@ obj_game.alarm[1] = 50
 delete_object_with_sprite(obj_button, btn_deal)
 delete_object_with_sprite(obj_button, btn_clear_bet)
 			
-// create standard buttons
-obj_game.alarm[7] = 50
+			
+// process natural blackjack 
+if player_hand_current.player_value == 21
+{
+	dbg("player blackjack!")
+	if not double_down
+	{
+		obj_game.alarm[2] = 1	
+		player_hand_current.alarm[2] = 1
+	}
+}
+else
+{
+	// create standard buttons
+	obj_game.alarm[7] = 50
+}
+
+

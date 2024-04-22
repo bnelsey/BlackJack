@@ -130,48 +130,89 @@ switch(sprite_index)
 	case btn_deal:
 		obj_game.alarm[6] = 1
 	break	
-	case btn_hit:
+	
+
+	case btn_split:
+	case btn_split_again:
+	
 		with(obj_game)
 		{
-			if player_hand_current.player_value < 21
+			if balance_value > player_hand_current.bet_value and ace_joker_split == false
 			{
-				deal_hand_card(0)		
-				calculate_hand_card()
-			}			
-			
-			if player_hand_current.player_value == 21
-			{
-				dbg("player blackjack!")
-				obj_game.alarm[2] = 1	
-				player_hand_current.alarm[2] = 1
-			}
-			else if player_hand_current.player_value > 21
-			{
-				dbg("player bust!")
+				player_splits += 1
 				
-				// open dealer card and calculate
-				hidden_card = find_hidden_card()			
-				if hidden_card != noone
+				num_jokers = array_count(player_hand_current.player_cards, 0)
+				num_aces = array_count(player_hand_current.player_cards, 1)
+				
+				if num_jokers + num_aces > 0
 				{
-					hidden_card.alarm[1] = 1
+					ace_joker_split = true
 				}
-				calculate_dealer_card()
 				
-				obj_game.alarm[3] = 30
+				// remove card from first hand
+				player_hand_current.player_card_dealt -= 2
+				remove_card_value = array_pop(player_hand_current.player_cards)
+				move_card = array_pop(player_hand_current.player_card_instances)				
+				calculate_hand_card()
+				
+				// temporary set split hand as current hand to calculate
+				var _current_hand_temp = player_hand_current;						
+				array_push(player_hand_list[player_splits].player_card_instances, move_card.id)
+				array_push(player_hand_list[player_splits].player_cards,remove_card_value)
+				player_hand_current = player_hand_list[player_splits] // temporary set for calculating value
+				calculate_hand_card()
+				player_hand_current = _current_hand_temp // return to original hand
+				
+				
+				obj_game.alarm[1] = 32
+				
+				// move card object
+				targetx = player_hand_list[player_splits].player_card_x + card_xoffset
+				targety = player_hand_list[player_splits].player_card_y + card_yoffset
+				_startdelay = 1
+				tween_object(move_card,targetx,targety, 30, _startdelay)
+				move_card.depth += 1
+				player_card_dealt += 1
+
+				// place bet below split cards
+				new_bet = instance_create_depth(350,608,0,obj_coin)
+				// move coin
+				new_bet.targetx = player_hand_list[player_splits].bet_x
+				new_bet.targety = player_hand_list[player_splits].bet_y
+				new_bet.alarm[0] = 1
+				//new_bet.change_player_split_hand = player_hand_list[player_splits].
+				new_bet.change_player_hand = player_hand_list[player_splits]
+				new_bet.destroy_after_anim = false
+				new_bet.change_player_bet = _current_hand_temp.bet_value
+				new_bet.change_player_balance = -_current_hand_temp.bet_value
+				
+				
+
+				delete_object_with_sprite(obj_button, btn_strategy)
+				delete_object_with_sprite(obj_button, btn_stand)
+				delete_object_with_sprite(obj_button, btn_hit)
+				delete_object_with_sprite(obj_button, btn_double_down)
+				delete_object_with_sprite(obj_button, btn_surrender)
+				delete_object_with_sprite(obj_button, btn_split)
+				delete_object_with_sprite(obj_button, btn_split_again)
+				obj_game.alarm[7] = 30	
 			}
 			else
 			{
-				// create standard buttons
-				obj_game.alarm[7] = 30	
+				show_message("not enough remaining balance for split")	
 			}
 		}
-		
-				
+	break;
+	case btn_hit:
+	
+		player_hit()
 		delete_object_with_sprite(obj_button, btn_strategy)
 		delete_object_with_sprite(obj_button, btn_stand)
 		delete_object_with_sprite(obj_button, btn_hit)
 		delete_object_with_sprite(obj_button, btn_double_down)
 		delete_object_with_sprite(obj_button, btn_surrender)
+		delete_object_with_sprite(obj_button, btn_split)
+		delete_object_with_sprite(obj_button, btn_split_again)
 		
 	break;
 	case btn_stand:
@@ -181,6 +222,8 @@ switch(sprite_index)
 		delete_object_with_sprite(obj_button, btn_hit)
 		delete_object_with_sprite(obj_button, btn_double_down)
 		delete_object_with_sprite(obj_button, btn_surrender)
+		delete_object_with_sprite(obj_button, btn_split)
+		delete_object_with_sprite(obj_button, btn_split_again)
 	break;
 	
 	case btn_double_down:	
@@ -193,6 +236,7 @@ switch(sprite_index)
 		
 		obj_game.double_down = true
 		var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
+		_new_bet.change_player_hand = obj_game.player_hand_current
 		_new_bet.destroy_after_anim = true
 		
 		// move coin
@@ -207,7 +251,7 @@ switch(sprite_index)
 		
 		with(obj_game)
 		{
-			if player_hand_current == player_splits
+			if player_hand_current_id == player_splits
 				alarm[2] = 110 // make dealer hit
 			else
 				player_stand()
@@ -275,6 +319,12 @@ switch(sprite_index)
 			delete_object_with_sprite(obj_button, btn_hit)
 			delete_object_with_sprite(obj_button, btn_double_down)
 			delete_object_with_sprite(obj_button, btn_surrender)
+			delete_object_with_sprite(obj_button, btn_split)
+			delete_object_with_sprite(obj_button, btn_split_again)
 		}
+	break;
+	
+	case btn_new_card_shoe:
+		new_deck()	
 	break;
 }

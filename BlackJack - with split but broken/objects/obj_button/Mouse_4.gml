@@ -222,7 +222,7 @@ switch(sprite_index)
 	break;
 	
 	case btn_double_down:	
-		if obj_game.bet_value[0] < obj_game.balance_value
+		if obj_game.bet_value[0]*2 > obj_game.balance_value
 		{
 			msg("not enough balance left for double down")
 			image_alpha = 0.5

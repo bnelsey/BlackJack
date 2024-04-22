@@ -1,7 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function repeat_bet(){
-
 	
 	dbg("repeat bet amount", obj_game.last_bet_value)
 	var _repeat_bet = obj_game.last_bet_value;

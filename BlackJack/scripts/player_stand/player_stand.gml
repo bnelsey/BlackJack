@@ -4,12 +4,12 @@ function player_stand(){
 	
 	with(obj_game)
 	{
-		if player_hand_current == player_splits
+		if player_hand_current_id == player_splits
 			alarm[2] = 1	
 		else
 		{
 			player_card_dealt = 1 // reset cards dealt
-			player_hand_current += 1
+			player_hand_current_id += 1
 			alarm[7] = 30
 		}
 	}

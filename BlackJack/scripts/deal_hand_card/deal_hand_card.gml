@@ -10,14 +10,17 @@ function deal_hand_card(_startdelay){
 			
 		with(obj_game.player_hand_current)
 		{		
+			player_card_dealt = array_length(player_card_instances)
+			
 			// make one card object
 			targetx = player_card_x + (player_card_dealt * player_card_xsep) + card_xoffset
 			targety = player_card_y + (player_card_dealt * player_card_ysep) + card_yoffset
 			new_card = instance_create_depth(obj_game.deck_x, obj_game.deck_y, -player_card_dealt, obj_card)
-			player_card_dealt += 1
+			//player_card_dealt += 1
 			
 			tween_object(new_card,targetx,targety, 30, _startdelay)
 			
+			array_push(player_card_instances, new_card.id)
 			
 			
 			// deal one card from deck array
@@ -25,11 +28,11 @@ function deal_hand_card(_startdelay){
 			details = get_card_details(dealt_card) // for debugging only
 			new_card.sprite_index = details[0]
 			new_card.image_index = details[1]	
-			
-			array_push(player_cards,get_card_value(details[1])) // only push card value to hand
+			var _value = get_card_value(dealt_card)
+			array_push(player_cards,_value) // only push card value to hand
 	
 			// debugging
-			dbg("ID: " + string(dealt_card), "value: " + string(get_card_value(dealt_card)))
+			dbg("ID: " + string(dealt_card), "value: " + string(_value))
 			dbg(sprite_get_name(details[0]),details[1])
 			
 			return new_card

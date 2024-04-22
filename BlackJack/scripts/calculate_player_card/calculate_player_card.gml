@@ -8,12 +8,12 @@ function calculate_player_card(){
 		len = array_length(player_cards)
 		
 		
-		dbg(" -------- start player cards ------")
+		dbg(" -------- start player cards old ------")
 		for(i=0; i < len; i+=1)
 		{
 			dbg(player_cards[i])			
 		}
-		dbg(" -------- end player cards ------")
+		dbg(" -------- end player cards old ------")
 		
 	    total_value = array_sum(player_cards)
 	    num_jokers = array_count(player_cards, 0)

@@ -55,6 +55,11 @@ function get_card_details(_card_number) {
 			card_name += "Spades"
 			card_sprite = spr_spades 
 		break;
+		case 4:
+			card_name += "Specials"
+			card_sprite = spr_specials 
+			//show_message("card_frame" + string(card_frame))
+		break;
 		
 	}
 

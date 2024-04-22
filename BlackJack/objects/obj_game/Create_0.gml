@@ -13,6 +13,7 @@ instance_create_depth(0,0,0,obj_fullscreen)
 repeat_and_deal = false
 double_and_deal = false
 double_down = false
+ace_joker_split = false
 
 
 deck_x = 1921
@@ -30,14 +31,14 @@ player_cards = []
 player_card_x = 904
 player_card_y = 586
 player_card_dealt = 0
-player_card_xsep = 38
-player_card_ysep = -6
+player_card_xsep = 56
+player_card_ysep = -79
 
 dealer_cards = []
-dealer_card_x = 872
+dealer_card_x = 839
 dealer_card_y = 9
 dealer_card_dealt = 0
-dealer_card_xsep = 41
+dealer_card_xsep = 120
 dealer_card_ysep = 0
 
 // pre-declare, but only used inside calculation scripts
@@ -57,7 +58,6 @@ new_deck()
 //array_push(deck, 1,1,0,42,14,28,5,5) // soft 17 example using joker
 //array_push(deck, 1,1,0,42,29,29,4,4) // soft 17 example using ace
 //array_push(deck, 1,1,0,42,7,7,0,0,10,10) // hard 17 example using joker
-array_push(deck, 0,1,10,10)
 
 
 
@@ -150,6 +150,9 @@ new_bet.visible = false
 
 
 
+new_button = instance_create_depth(1632,142,0,obj_button)
+new_button.sprite_index = btn_new_card_shoe
+
 // ------------------------------------------------------------
 
 
@@ -161,8 +164,11 @@ hand1.my_hand_id = 1
 hand2 = instance_create_depth(0,0,0,obj_hand)
 hand2.my_hand_id = 2
 
-
-player_hand_current = hand2
+player_hand_list[0] = hand0
+player_hand_list[1] = hand1
+player_hand_list[2] = hand2
+player_hand_current = hand0
+player_hand_current_id = 0
 player_splits = 0
 
 //player_hand_current = self
