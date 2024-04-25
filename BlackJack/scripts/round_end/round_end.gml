@@ -50,7 +50,7 @@ function round_end(){
 			_winnings = (player_hand_current.bet_value/2) * 3
 				
 		action_add(CHANGE_BET,0,30,[player_hand_current, _winnings]) // 30 frame delay before next action		
-		action_add(CHANGE_BET,0,0,[player_hand_current,-_winnings])
+		action_add(CHANGE_BET,0,0,[player_hand_current,-(_winnings+_bet)])
 		action_move(0,30,player_hand_current.bet_obj,player_chips_x, player_chips_y, 30)
 		action_add(DESTROY_OBJECT,0,0,player_hand_current.bet_obj)
 		action_add(CHANGE_BALANCE,0,0,_winnings+_bet)

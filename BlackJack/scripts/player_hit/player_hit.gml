@@ -14,7 +14,8 @@ function player_hit(){
 				dbg("player blackjack!")
 				if not double_down
 				{
-					obj_game.alarm[2] = 1	
+					player_stand()
+					//obj_game.alarm[2] = 1	
 					//player_hand_current.alarm[2] = 1
 				}
 			}
@@ -23,15 +24,20 @@ function player_hit(){
 				dbg("player bust!")
 				
 				// open dealer card and calculate
+				/*
 				hidden_card = find_hidden_card()			
 				if hidden_card != noone
 				{
 					hidden_card.alarm[1] = 1
 				}
 				calculate_dealer_card()
+				*/
 				
 				if not double_down
-					obj_game.alarm[3] = 30
+				{
+					player_stand()
+					//obj_game.alarm[3] = 30
+				}
 			}
 			else
 			{
