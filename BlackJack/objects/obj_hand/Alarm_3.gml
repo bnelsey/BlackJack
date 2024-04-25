@@ -11,10 +11,10 @@ alarm[3] = 60
 if playing_visible
 {
 	playing_visible = false
-	dbg("invis")
+	//dbg("invis")
 }
 else
 {
 	playing_visible = true
-	dbg("visible")
+	//dbg("visible")
 }

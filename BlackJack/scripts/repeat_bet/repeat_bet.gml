@@ -13,7 +13,7 @@ function repeat_bet(){
 	}
 	
 
-	if instance_exists(player_hand_current)
+	if instance_exists(obj_game.player_hand_current.bet_obj)
 		_coin_exists = true;
 			
 	var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
@@ -21,7 +21,7 @@ function repeat_bet(){
 		
 	if not _coin_exists
 	{
-		player_hand_current.bet_obj = _new_bet.id
+		obj_game.player_hand_current.bet_obj = _new_bet.id
 		_new_bet.destroy_after_anim = false
 		dbg("don't destroy coin after anim")
 	}

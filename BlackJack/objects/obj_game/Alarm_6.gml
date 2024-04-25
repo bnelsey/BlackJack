@@ -25,7 +25,7 @@ if player_hand_current.player_value == 21
 	if not double_down
 	{
 		obj_game.alarm[2] = 1	
-		player_hand_current.alarm[2] = 1
+		//player_hand_current.alarm[2] = 1
 	}
 }
 else

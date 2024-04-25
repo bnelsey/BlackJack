@@ -13,5 +13,6 @@
 #macro DEBUG_MESSAGE 5
 #macro DEBUG_PRINT 6
 #macro SET_VISIBLE 7
+#macro SET_ALARM 8
 
 actions = []

@@ -20,5 +20,12 @@ function action_add(_type, _start_delay, _delay_before_next_action, _data_array)
 	array_push(obj_action.actions, [_type, _start_delay, _delay_before_next_action, _data_array])
 	
 	if obj_action.alarm[1] < 0 and obj_action.alarm[2] < 0
+	{
 		obj_action.alarm[1] = 1
+		dbg("starting new action queue")
+	}
+	else
+	{
+		dbg("action queue already moving, do not restart")
+	}
 }
