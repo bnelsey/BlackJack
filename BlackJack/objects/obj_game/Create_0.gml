@@ -5,10 +5,17 @@ draw_set_halign(fa_center)
 draw_set_valign(fa_center)
 
 instance_create_depth(0,0,0,obj_fullscreen)
+instance_create_depth(0,0,0,obj_action)
 
 
-
-
+/*
+action_add(DEBUG_MESSAGE, 60,60,["test1"])
+action_add(DEBUG_MESSAGE, 60,60,["test2"])
+test_coin = instance_create_depth(350,608,0,obj_coin)
+action_move(0,30,test_coin, 900,900, 30)
+action_move(0,30,test_coin, 100,100, 30)
+action_move(0,30,test_coin, 450,450, 30)
+*/
 
 repeat_and_deal = false
 double_and_deal = false

@@ -42,3 +42,13 @@ if array_length(player_hand_current.player_cards) < 3
 	new_button = instance_create_depth(1404,834,0,obj_button)
 	new_button.sprite_index = btn_surrender		
 }
+
+if player_splits > 0
+{
+	// only start blink sequence if it's not already started
+	if player_hand_current.playing == false
+	{
+		player_hand_current.playing = true	
+		player_hand_current.alarm[2] = 1
+	}
+}

@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+playing = false
+playing_visible = false
+
 my_hand_id = 0
 player_cards = []
 player_card_instances = []

@@ -51,16 +51,16 @@ switch(sprite_index)
 		obj_game.balance_value -= value
 		obj_game.alarm[1] = 1 // refresh strings
 		
-		if not instance_exists(obj_coin)
+		if not instance_exists(obj_game.player_hand_current.bet_obj)
 		{
-			instance_create_depth(350,608,0,obj_coin)
+			obj_game.player_hand_current.bet_obj = instance_create_depth(350,608,0,obj_coin)
 			// move coin
 			obj_coin.targetx = obj_game.player_hand_current.bet_x
 			obj_coin.targety = obj_game.player_hand_current.bet_y				
 			obj_coin.alarm[0] = 1
 			obj_coin.change_player_hand = obj_game.player_hand_current
 			obj_coin.change_player_bet = value
-			obj_game.bet_obj = obj_coin.id
+			obj_game.player_hand_current.bet_obj = obj_coin.id
 		}
 		else
 		{
@@ -185,7 +185,7 @@ switch(sprite_index)
 				new_bet.destroy_after_anim = false
 				new_bet.change_player_bet = _current_hand_temp.bet_value
 				new_bet.change_player_balance = -_current_hand_temp.bet_value
-				
+				player_hand_list[player_splits].bet_obj = new_bet
 				
 
 				delete_object_with_sprite(obj_button, btn_strategy)
@@ -216,7 +216,8 @@ switch(sprite_index)
 		
 	break;
 	case btn_stand:
-		obj_game.alarm[2] = 1	
+		player_stand()
+		//obj_game.alarm[2] = 1	
 		delete_object_with_sprite(obj_button, btn_strategy)
 		delete_object_with_sprite(obj_button, btn_stand)
 		delete_object_with_sprite(obj_button, btn_hit)
@@ -293,9 +294,9 @@ switch(sprite_index)
 			obj_game.player_hand_current.alarm[1] = 1
 		
 		
-			if instance_exists(obj_game.bet_obj)
+			if instance_exists(player_hand_current.bet_obj)
 			{
-				_new_chip = obj_game.bet_obj
+				_new_chip = player_hand_current.bet_obj
 				_new_chip.change_player_hand = player_hand_current
 			}
 			else

@@ -5,6 +5,11 @@ draw_set_halign(fa_center)
 draw_set_valign(fa_center)
 
 instance_create_depth(0,0,0,obj_fullscreen)
+instance_create_depth(0,0,0,obj_action)
+
+// array format: type, start_delay, delay_before_next_action, other_data1, other_data2
+action_add([DEBUG_MESSAGE, 60,60,"test1"])
+action_add([DEBUG_MESSAGE, 60,60,"test2"])
 
 repeat_and_deal = false
 double_and_deal = false

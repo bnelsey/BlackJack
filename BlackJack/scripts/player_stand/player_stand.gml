@@ -2,6 +2,11 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function player_stand(){
 	
+	with(obj_hand)
+	{
+		playing = false	
+	}
+	
 	with(obj_game)
 	{
 		if player_hand_current_id == player_splits
@@ -10,6 +15,7 @@ function player_stand(){
 		{
 			player_card_dealt = 1 // reset cards dealt
 			player_hand_current_id += 1
+			player_hand_current = player_hand_list[player_hand_current_id]
 			alarm[7] = 30
 		}
 	}

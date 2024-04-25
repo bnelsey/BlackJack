@@ -27,6 +27,10 @@ if bet_value > 0
 		
 if player_value > 0
 	draw_text(player_x,player_y,player_string)
+	
+	
+if playing and playing_visible
+	draw_sprite(spr_current_hand, 0, bet_x-57, bet_y+37)
 
 
 
