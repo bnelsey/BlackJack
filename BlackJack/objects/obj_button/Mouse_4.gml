@@ -22,6 +22,8 @@ switch(sprite_index)
 		if obj_game.balance_value < value
 			exit
 			
+		clear_hand_values()
+
 		// handle what to do when repeat buttons exist
 		if find_object_with_sprite(obj_button,btn_repeat_bet)
 		{
@@ -29,7 +31,6 @@ switch(sprite_index)
 			{
 				instance_destroy()
 			}
-			obj_game.player_value = 0
 			obj_game.dealer_value = 0
 			
 			delete_object_with_sprite(obj_button, btn_repeat_bet)
@@ -82,11 +83,12 @@ switch(sprite_index)
 		{
 			instance_destroy()	
 		}
-	
+		
 		obj_game.balance_value += obj_game.player_hand_current.bet_value
 		obj_game.player_hand_current.bet_value = 0
 		obj_game.alarm[1] = 1 // refresh strings
 		
+		clear_hand_values()
 		delete_object_with_sprite(obj_button, btn_deal)
 		delete_object_with_sprite(obj_button, btn_clear_bet)
 	break	
@@ -98,6 +100,7 @@ switch(sprite_index)
 			exit
 		}
 		
+		clear_hand_values()
 		repeat_bet()
 	break;
 	case btn_repeat_bet_and_deal:			
@@ -109,6 +112,7 @@ switch(sprite_index)
 			exit
 		}
 	
+		clear_hand_values()
 		obj_game.repeat_and_deal = true
 		repeat_bet()
 		
@@ -122,18 +126,23 @@ switch(sprite_index)
 			exit
 		}
 		
+		clear_hand_values()
 		obj_game.double_and_deal = true
 		repeat_bet()
 		
 		obj_game.alarm[6] = 32
 	break;
 	case btn_deal:
+		clear_hand_values()
 		obj_game.alarm[6] = 1
 	break	
 	
 
 	case btn_split:
 	case btn_split_again:
+	
+		if obj_game.player_splits > 1
+			exit
 	
 		with(obj_game)
 		{
@@ -156,15 +165,21 @@ switch(sprite_index)
 				calculate_hand_card()
 				
 				// temporary set split hand as current hand to calculate
-				var _current_hand_temp = player_hand_current;						
+				var _current_hand_temp = player_hand_current;			
+				dbg("player_splits", player_splits)	
 				array_push(player_hand_list[player_splits].player_card_instances, move_card.id)
 				array_push(player_hand_list[player_splits].player_cards,remove_card_value)
 				player_hand_current = player_hand_list[player_splits] // temporary set for calculating value
 				calculate_hand_card()
+				
+				action_add(DEAL_CARD,30,0,[player_hand_current])
+				action_add(SET_ALARM,1,1,[obj_game,9,1])
+				action_add(SET_ALARM,1,1,[obj_game,1,1])
 				player_hand_current = _current_hand_temp // return to original hand
-				
-				
-				obj_game.alarm[1] = 32
+				action_add(DEAL_CARD,30,0,[player_hand_current])
+				action_add(SET_ALARM,1,1,[obj_game,9,1])
+				action_add(SET_ALARM,1,1,[obj_game,1,1])
+				action_add(SET_ALARM,1,1,[obj_game,7,1]) // show buttons
 				
 				// move card object
 				targetx = player_hand_list[player_splits].player_card_x + card_xoffset
@@ -195,7 +210,11 @@ switch(sprite_index)
 				delete_object_with_sprite(obj_button, btn_surrender)
 				delete_object_with_sprite(obj_button, btn_split)
 				delete_object_with_sprite(obj_button, btn_split_again)
-				obj_game.alarm[7] = 30	
+				
+				// every time a split happens, right most hand will be played!
+				msg("obj_game.player_hand_current", obj_game.player_hand_current, "obj_game.player_hand_list[1]", obj_game.player_hand_list[1])
+				obj_game.player_hand_current = obj_game.player_hand_list[1]
+				player_hand_current_id = 1
 			}
 			else
 			{
@@ -228,9 +247,9 @@ switch(sprite_index)
 	break;
 	
 	case btn_double_down:	
-		if obj_game.player_hand_current.bet_value*2 > obj_game.balance_value
+		if obj_game.player_hand_current.bet_value > obj_game.balance_value
 		{
-			msg("not enough balance left for double down")
+			msg("not enough balance left for double down: " + string(obj_game.player_hand_current.bet_value) + ">" + string(obj_game.balance_value))
 			image_alpha = 0.5
 			exit
 		}
@@ -325,7 +344,50 @@ switch(sprite_index)
 		}
 	break;
 	
-	case btn_new_card_shoe:
+	case btn_new_card_shoe:		
+		with(obj_game)
+		{			
+			// move bets to hand if any			
+			for(i=0;i<=2;i+=1)
+			{
+				modify_hand = player_hand_list[i]
+				_bet_value = modify_hand.bet_value
+				modify_hand.playing = false
+				if _bet_value > 0
+				{
+					action_add(CHANGE_BET,0,0,[modify_hand,-_bet_value])
+					action_move(0,30,modify_hand.bet_obj,player_chips_x, player_chips_y, 30)
+					action_add(DESTROY_OBJECT,0,0,modify_hand.bet_obj)
+					action_add(CHANGE_BALANCE,0,0,_bet_value)
+				}
+			}
+			
+			dealer_value = 0
+			player_hand_current_id = 0 // 0 middle, 1 right, 2 left
+			player_splits = 0
+			ace_joker_split = false
+			
+			round_new()
+		}
+		
+		clear_hand_values()
 		new_deck()	
+		with(obj_card)
+		{
+			instance_destroy()	
+		}
+		
+		delete_object_with_sprite(obj_button, btn_strategy)
+		delete_object_with_sprite(obj_button, btn_stand)
+		delete_object_with_sprite(obj_button, btn_hit)
+		delete_object_with_sprite(obj_button, btn_double_down)
+		delete_object_with_sprite(obj_button, btn_surrender)
+		delete_object_with_sprite(obj_button, btn_split)
+		delete_object_with_sprite(obj_button, btn_split_again)
+		delete_object_with_sprite(obj_button, btn_repeat_bet)
+		delete_object_with_sprite(obj_button, btn_repeat_bet_and_deal)
+		delete_object_with_sprite(obj_button, btn_2x_bet_and_deal)
+		delete_object_with_sprite(obj_button, btn_clear_bet)
+		delete_object_with_sprite(obj_button, btn_deal)
 	break;
 }

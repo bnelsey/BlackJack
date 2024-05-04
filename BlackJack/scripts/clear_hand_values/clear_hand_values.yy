@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"clear_hand_values",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"clear_hand_values",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

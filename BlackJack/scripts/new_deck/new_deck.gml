@@ -10,6 +10,8 @@ function new_deck(){
 		// 42-55 = Spades
 		// Joker IDs: 0, 14, 28, 42 (the first of each suite)
 		// special jokers: 56, 57
+		
+		deck = []
 
 		// Initialize the array with numbers 1 to 56
 		for (i = 0; i < 56; i++) {

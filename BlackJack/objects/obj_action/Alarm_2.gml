@@ -49,14 +49,23 @@ switch(_action_type)
 		dbg(_data_array[0])	
 	break;
 	case SET_VISIBLE:
-		dbg("set visible")
+		dbg("set instance visible", _data_array[0])
 		_data_array[0].visible = _data_array[1]
 	break;
 	case SET_ALARM:
 		dbg("set alarm")
+		dbg("which instance", _data_array[0])
 		dbg("alarm[] number", _data_array[1])
 		dbg("alarm[] value", _data_array[2])
 		_data_array[0].alarm[_data_array[1]] = _data_array[2]
+	break;
+	case DEAL_CARD:
+		dbg("deal card")
+		dbg("which hand", _data_array[0])
+		var _temp_hand_current = obj_game.player_hand_current;
+		obj_game.player_hand_current = _data_array[0]
+		deal_hand_card(0);
+		obj_game.player_hand_current = _temp_hand_current // revert current hand to original 
 	break;
 }
 

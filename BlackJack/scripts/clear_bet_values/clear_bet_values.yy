@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"clear_bet_values",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"clear_bet_values",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -14,5 +14,6 @@
 #macro DEBUG_PRINT 6
 #macro SET_VISIBLE 7
 #macro SET_ALARM 8
+#macro DEAL_CARD 9
 
 actions = []

@@ -39,8 +39,11 @@ if array_length(player_hand_current.player_cards) < 3
 		new_button.sprite_index = btn_double_down
 	}
 		
-	new_button = instance_create_depth(1404,834,0,obj_button)
-	new_button.sprite_index = btn_surrender		
+	if player_splits < 1
+	{
+		new_button = instance_create_depth(1404,834,0,obj_button)
+		new_button.sprite_index = btn_surrender		
+	}
 }
 
 if player_splits > 0
