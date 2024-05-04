@@ -3,6 +3,7 @@
 if not playing
 {
 	alarm[3] = -1
+	playing_visible = false
 	exit
 }
 

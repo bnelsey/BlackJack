@@ -33,7 +33,8 @@ if array_length(player_hand_current.player_cards) < 3
 	num_aces = array_count(player_hand_current.player_cards, 1)
 	
 	// double down button only enabled when there are no soft cards
-	if num_jokers + num_aces < 1
+	
+	//if num_jokers + num_aces < 1
 	{
 		new_button = instance_create_depth(1056,912,0,obj_button)
 		new_button.sprite_index = btn_double_down
@@ -51,6 +52,11 @@ if player_splits > 0
 	// only start blink sequence if it's not already started
 	if player_hand_current.playing == false
 	{
+		with(obj_hand)
+		{
+			playing = false	
+		}
+		
 		player_hand_current.playing = true	
 		player_hand_current.alarm[2] = 1
 	}

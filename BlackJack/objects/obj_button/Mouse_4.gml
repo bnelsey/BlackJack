@@ -146,7 +146,7 @@ switch(sprite_index)
 	
 		with(obj_game)
 		{
-			if balance_value > player_hand_current.bet_value and ace_joker_split == false
+			if balance_value >= player_hand_current.bet_value and ace_joker_split == false
 			{
 				player_splits += 1
 				
@@ -165,7 +165,10 @@ switch(sprite_index)
 				calculate_hand_card()
 				
 				// temporary set split hand as current hand to calculate
-				var _current_hand_temp = player_hand_current;			
+				var _current_hand_temp = player_hand_current;	
+				
+				
+				
 				dbg("player_splits", player_splits)	
 				array_push(player_hand_list[player_splits].player_card_instances, move_card.id)
 				array_push(player_hand_list[player_splits].player_cards,remove_card_value)
@@ -212,9 +215,24 @@ switch(sprite_index)
 				delete_object_with_sprite(obj_button, btn_split_again)
 				
 				// every time a split happens, right most hand will be played!
-				msg("obj_game.player_hand_current", obj_game.player_hand_current, "obj_game.player_hand_list[1]", obj_game.player_hand_list[1])
-				obj_game.player_hand_current = obj_game.player_hand_list[1]
-				player_hand_current_id = 1
+				if player_splits == 1
+				{
+					obj_game.player_hand_current = obj_game.player_hand_list[1]
+					player_hand_current_id = 1
+				}
+				else // second split
+				{
+					if obj_game.player_hand_current.my_hand_id == 0
+					{
+						obj_game.player_hand_current = obj_game.player_hand_list[0]
+						player_hand_current_id = 0
+					}
+					else
+					{
+						obj_game.player_hand_current = obj_game.player_hand_list[1]
+						player_hand_current_id = 1
+					}
+				}
 			}
 			else
 			{
@@ -254,6 +272,8 @@ switch(sprite_index)
 			exit
 		}
 		
+		obj_game.balance_value -= obj_game.player_hand_current.bet_value
+		
 		obj_game.double_down = true
 		var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
 		_new_bet.change_player_hand = obj_game.player_hand_current
@@ -266,14 +286,19 @@ switch(sprite_index)
 		_new_bet.change_player_bet = obj_game.player_hand_current.bet_value
 	
 	
-		obj_game.alarm[8] = 60 // player_hit() but with adjustable delay	
+		action_add(DEAL_CARD,60,0,[obj_game.player_hand_current])
+		action_add(SET_ALARM,1,1,[obj_game,9,1])
+		action_add(SET_ALARM,1,1,[obj_game,1,1])
+		//obj_game.alarm[8] = 60 // player_hit() but with adjustable delay	
 		
 		
 		with(obj_game)
 		{
+			/*
 			if player_hand_current_id == player_splits
 				alarm[2] = 110 // make dealer hit
 			else
+			*/
 				player_stand()
 		}
 		
