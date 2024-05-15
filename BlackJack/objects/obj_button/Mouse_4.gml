@@ -81,6 +81,7 @@ switch(sprite_index)
 			
 		with(obj_coin)
 		{
+			obj_game.balance_value += change_player_bet
 			instance_destroy()	
 		}
 		

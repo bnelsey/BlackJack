@@ -19,12 +19,16 @@ function new_deck(){
 		}
 
 		// add one extra joker from each suite
-		array_push(deck, 0, 14, 28, 42)
+		//array_push(deck, 0, 14, 28, 42)
 
 		// add special black and red jokers
 		array_push(deck, 56,56,57,57)
 
+		dbg("deck",deck)
+		dbg("deck size",array_length(deck))
+		
 		// shuffle array
 		deck = array_shuffle(deck)
+		
 	}
 }
