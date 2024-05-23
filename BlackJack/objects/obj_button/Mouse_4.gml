@@ -90,8 +90,7 @@ switch(sprite_index)
 		obj_game.alarm[1] = 1 // refresh strings
 		
 		clear_hand_values()
-		delete_object_with_sprite(obj_button, btn_deal)
-		delete_object_with_sprite(obj_button, btn_clear_bet)
+		clear_buttons()
 	break	
 	case btn_repeat_bet:
 		if obj_game.last_bet_value > obj_game.balance_value
@@ -207,13 +206,7 @@ switch(sprite_index)
 				player_hand_list[player_splits].bet_obj = new_bet
 				
 
-				delete_object_with_sprite(obj_button, btn_strategy)
-				delete_object_with_sprite(obj_button, btn_stand)
-				delete_object_with_sprite(obj_button, btn_hit)
-				delete_object_with_sprite(obj_button, btn_double_down)
-				delete_object_with_sprite(obj_button, btn_surrender)
-				delete_object_with_sprite(obj_button, btn_split)
-				delete_object_with_sprite(obj_button, btn_split_again)
+				clear_buttons()
 				
 				// every time a split happens, right most hand will be played!
 				if player_splits == 1
@@ -237,38 +230,26 @@ switch(sprite_index)
 			}
 			else
 			{
-				show_message("not enough remaining balance for split")	
+				dbg("not enough remaining balance for split")	
 			}
 		}
 	break;
 	case btn_hit:
 	
 		player_hit()
-		delete_object_with_sprite(obj_button, btn_strategy)
-		delete_object_with_sprite(obj_button, btn_stand)
-		delete_object_with_sprite(obj_button, btn_hit)
-		delete_object_with_sprite(obj_button, btn_double_down)
-		delete_object_with_sprite(obj_button, btn_surrender)
-		delete_object_with_sprite(obj_button, btn_split)
-		delete_object_with_sprite(obj_button, btn_split_again)
+		clear_buttons()
 		
 	break;
 	case btn_stand:
 		player_stand()
 		//obj_game.alarm[2] = 1	
-		delete_object_with_sprite(obj_button, btn_strategy)
-		delete_object_with_sprite(obj_button, btn_stand)
-		delete_object_with_sprite(obj_button, btn_hit)
-		delete_object_with_sprite(obj_button, btn_double_down)
-		delete_object_with_sprite(obj_button, btn_surrender)
-		delete_object_with_sprite(obj_button, btn_split)
-		delete_object_with_sprite(obj_button, btn_split_again)
+		clear_buttons()
 	break;
 	
 	case btn_double_down:	
 		if obj_game.player_hand_current.bet_value > obj_game.balance_value
 		{
-			msg("not enough balance left for double down: " + string(obj_game.player_hand_current.bet_value) + ">" + string(obj_game.balance_value))
+			dbg("not enough balance left for double down: " + string(obj_game.player_hand_current.bet_value) + ">" + string(obj_game.balance_value))
 			image_alpha = 0.5
 			exit
 		}
@@ -304,13 +285,7 @@ switch(sprite_index)
 		}
 		
 
-		delete_object_with_sprite(obj_button, btn_strategy)
-		delete_object_with_sprite(obj_button, btn_stand)
-		delete_object_with_sprite(obj_button, btn_hit)
-		delete_object_with_sprite(obj_button, btn_double_down)
-		delete_object_with_sprite(obj_button, btn_surrender)
-		delete_object_with_sprite(obj_button, btn_split)
-		delete_object_with_sprite(obj_button, btn_split_again)
+		clear_buttons()
 	break;
 	
 	case btn_surrender:
@@ -360,13 +335,7 @@ switch(sprite_index)
 			alarm[4] = 60
 			
 
-			delete_object_with_sprite(obj_button, btn_strategy)
-			delete_object_with_sprite(obj_button, btn_stand)
-			delete_object_with_sprite(obj_button, btn_hit)
-			delete_object_with_sprite(obj_button, btn_double_down)
-			delete_object_with_sprite(obj_button, btn_surrender)
-			delete_object_with_sprite(obj_button, btn_split)
-			delete_object_with_sprite(obj_button, btn_split_again)
+			clear_buttons()
 		}
 	break;
 	
@@ -403,17 +372,6 @@ switch(sprite_index)
 			instance_destroy()	
 		}
 		
-		delete_object_with_sprite(obj_button, btn_strategy)
-		delete_object_with_sprite(obj_button, btn_stand)
-		delete_object_with_sprite(obj_button, btn_hit)
-		delete_object_with_sprite(obj_button, btn_double_down)
-		delete_object_with_sprite(obj_button, btn_surrender)
-		delete_object_with_sprite(obj_button, btn_split)
-		delete_object_with_sprite(obj_button, btn_split_again)
-		delete_object_with_sprite(obj_button, btn_repeat_bet)
-		delete_object_with_sprite(obj_button, btn_repeat_bet_and_deal)
-		delete_object_with_sprite(obj_button, btn_2x_bet_and_deal)
-		delete_object_with_sprite(obj_button, btn_clear_bet)
-		delete_object_with_sprite(obj_button, btn_deal)
+		clear_buttons()
 	break;
 }

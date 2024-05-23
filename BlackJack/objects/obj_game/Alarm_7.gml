@@ -15,7 +15,17 @@ new_button.sprite_index = btn_stand
 new_button = instance_create_depth(876,917,0,obj_button)
 new_button.sprite_index = btn_hit
 
+// check if insurance button should be shown
+if array_length(player_hand_current.player_cards) == 2 and player_splits < 1 and insurance_taken == false
+{
+	if dealer_value == 9 or dealer_value == 10 or dealer_value == 12
+	{
+		new_button = instance_create_depth(1577,743,0,obj_button)
+		new_button.sprite_index = btn_insurance
+	}
+}
 
+// check if split button should be shown
 if array_length(player_hand_current.player_cards) == 2 and (player_hand_current.player_cards[0] == player_hand_current.player_cards[1]) and player_splits < 2 and ace_joker_split == false
 {
 	dbg("player_cards[0]",player_hand_current.player_cards[0], "player_cards[1]", player_hand_current.player_cards[1], "player_splits", player_splits)
@@ -27,6 +37,7 @@ if array_length(player_hand_current.player_cards) == 2 and (player_hand_current.
 		new_button.sprite_index = btn_split_again
 }
 
+// check if double down or surrender should be shown
 if array_length(player_hand_current.player_cards) < 3
 {
 	num_jokers = array_count(player_hand_current.player_cards, 0)

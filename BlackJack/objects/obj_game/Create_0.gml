@@ -21,6 +21,7 @@ repeat_and_deal = false
 double_and_deal = false
 double_down = false
 ace_joker_split = false
+insurance_taken = false
 
 
 deck_x = 1921

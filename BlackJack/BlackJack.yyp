@@ -32,7 +32,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.0.137",
+    "IDEVersion":"2024.4.1.152",
   },
   "name":"BlackJack",
   "resources":[
@@ -55,6 +55,7 @@
     {"id":{"name":"calculate_hand_card","path":"scripts/calculate_hand_card/calculate_hand_card.yy",},},
     {"id":{"name":"calculate_player_card","path":"scripts/calculate_player_card/calculate_player_card.yy",},},
     {"id":{"name":"clear_bet_values","path":"scripts/clear_bet_values/clear_bet_values.yy",},},
+    {"id":{"name":"clear_buttons","path":"scripts/clear_buttons/clear_buttons.yy",},},
     {"id":{"name":"clear_hand_values","path":"scripts/clear_hand_values/clear_hand_values.yy",},},
     {"id":{"name":"dbg","path":"scripts/dbg/dbg.yy",},},
     {"id":{"name":"deal_dealer_card","path":"scripts/deal_dealer_card/deal_dealer_card.yy",},},
@@ -83,6 +84,7 @@
     {"id":{"name":"btn_deal","path":"sprites/btn_deal/btn_deal.yy",},},
     {"id":{"name":"btn_double_down","path":"sprites/btn_double_down/btn_double_down.yy",},},
     {"id":{"name":"btn_hit","path":"sprites/btn_hit/btn_hit.yy",},},
+    {"id":{"name":"btn_insurance","path":"sprites/btn_insurance/btn_insurance.yy",},},
     {"id":{"name":"btn_new_card_shoe","path":"sprites/btn_new_card_shoe/btn_new_card_shoe.yy",},},
     {"id":{"name":"btn_repeat_bet_and_deal","path":"sprites/btn_repeat_bet_and_deal/btn_repeat_bet_and_deal.yy",},},
     {"id":{"name":"btn_repeat_bet","path":"sprites/btn_repeat_bet/btn_repeat_bet.yy",},},
