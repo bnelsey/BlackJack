@@ -7,7 +7,12 @@ draw_set_valign(fa_center)
 instance_create_depth(0,0,0,obj_fullscreen)
 instance_create_depth(0,0,0,obj_action)
 
+depth = -999
 
+
+
+
+// card shoe is -54 degrees
 /*
 action_add(DEBUG_MESSAGE, 60,60,["test1"])
 action_add(DEBUG_MESSAGE, 60,60,["test2"])
@@ -24,8 +29,8 @@ ace_joker_split = false
 insurance_taken = false
 
 
-deck_x = 1921
-deck_y = -161
+deck_x = 1583 //1921
+deck_y = 222//-161
 dealer_chips_x = 250
 dealer_chips_y = -137
 player_chips_x = 350
@@ -101,6 +106,13 @@ balance_y1 = balance_y - balance_h * 0.5
 balance_x2 = balance_x + balance_w * 0.5
 balance_y2 = balance_y + balance_h * 0.5
 
+// multi chip display
+balance_chips = []
+chip_values = [1,5,10,25,100,500,1000] // values from whatever chip sprite you use
+
+balance_chips = calculate_chip_stack(balance_value)
+
+
 bet_value = 0
 last_bet_value = 0
 bet_string = string(bet_value)
@@ -139,26 +151,34 @@ player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
 
 
-new_bet = instance_create_depth(140,717,0,obj_button)
+new_bet = instance_create_depth(3,605,0,obj_button)
 new_bet.sprite_index = btn_bet
 new_bet.value = 5
-new_bet.visible = false
-new_bet = instance_create_depth(216,781,0,obj_button)
+new_bet.image_index = 1
+new_bet = instance_create_depth(103,679,0,obj_button)
+new_bet.sprite_index = btn_bet
+new_bet.value = 10
+new_bet.image_index = 2
+new_bet = instance_create_depth(210,745,0,obj_button)
 new_bet.sprite_index = btn_bet
 new_bet.value = 25
-new_bet.visible = false
-new_bet = instance_create_depth(303,833,0,obj_button)
+new_bet.image_index = 3
+new_bet = instance_create_depth(322,804,0,obj_button)
 new_bet.sprite_index = btn_bet
 new_bet.value = 100
-new_bet.visible = false
-new_bet = instance_create_depth(393,879,0,obj_button)
+new_bet.image_index = 4
+new_bet = instance_create_depth(440,850,0,obj_button)
 new_bet.sprite_index = btn_bet
 new_bet.value = 500
-new_bet.visible = false
+new_bet.image_index = 5
+new_bet = instance_create_depth(562,884,0,obj_button)
+new_bet.sprite_index = btn_bet
+new_bet.value = 1000
+new_bet.image_index = 6
 
 
 
-new_button = instance_create_depth(1632,142,0,obj_button)
+new_button = instance_create_depth(1468,-125,0,obj_button)
 new_button.sprite_index = btn_new_card_shoe
 
 // ------------------------------------------------------------

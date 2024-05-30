@@ -1,6 +1,7 @@
 /// @description change values after animation
 
 
+audio_play_sound(Add_Chips_to_Betting_Circle_v1_wav, 1, false)
 
 dbg("change player balance", change_player_balance)
 dbg("change player bet", change_player_bet)
@@ -22,12 +23,14 @@ change_player_hand.bet_value += change_player_bet
 
 if change_player_balance != 0
 {
-	dbg("new obj_game.balance_value", obj_game.balance_value)
+	dbg("new obj_game.balance_value", obj_game.balance_value)	
+	obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 }
 
 if change_player_bet != 0
 {
 	dbg("new change_player_hand.bet_value", change_player_hand.bet_value)
+	change_player_hand.bet_obj.chip_stack = calculate_chip_stack(change_player_hand.bet_value)
 }
 
 change_player_balance = 0

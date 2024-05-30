@@ -1,6 +1,8 @@
 /// @description flip dealer card
 
 alarm[1] = 1
+
+
 		
 var _amount = steps_left / steps_total;
 

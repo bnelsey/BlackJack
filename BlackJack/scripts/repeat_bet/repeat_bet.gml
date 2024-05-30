@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function repeat_bet(){
 
-	
+	audio_play_sound(Rebet_and_Deal_v1_wav,1,false)
 	dbg("repeat bet amount", obj_game.last_bet_value)
 	var _repeat_bet = obj_game.last_bet_value;
 	var _coin_exists = false;
@@ -17,7 +17,8 @@ function repeat_bet(){
 		_coin_exists = true;
 			
 	var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
-	_new_bet.change_player_hand = obj_game.player_hand_current
+	_new_bet.change_player_hand = obj_game.player_hand_current	
+	_new_bet.chip_stack = calculate_chip_stack(_repeat_bet)
 		
 	if not _coin_exists
 	{
@@ -54,7 +55,8 @@ function repeat_bet(){
 	{
 		instance_destroy()
 	}
-	obj_game.balance_value -= _repeat_bet
+	obj_game.balance_value -= _repeat_bet	
+	obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 	obj_game.alarm[1] = 1
 	obj_game.player_value = 0
 	obj_game.dealer_value = 0

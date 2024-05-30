@@ -8,10 +8,10 @@ switch(sprite_index)
 		//show_message("value: " + string(value))
 		
 		// do nothing if player was already dealt cards
-		if array_length(obj_game.player_cards) > 0
+		if array_length(obj_game.player_hand_current.player_cards) > 0
 			exit
 			
-			
+		
 		if obj_game.balance_value < 5 and obj_game.bet_value < 1 
 		{
 			msg("no more player funds, game restarting"	)
@@ -50,6 +50,8 @@ switch(sprite_index)
 		}
 		
 		obj_game.balance_value -= value
+		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
+		
 		obj_game.alarm[1] = 1 // refresh strings
 		
 		if not instance_exists(obj_game.player_hand_current.bet_obj)
@@ -62,6 +64,8 @@ switch(sprite_index)
 			obj_coin.change_player_hand = obj_game.player_hand_current
 			obj_coin.change_player_bet = value
 			obj_game.player_hand_current.bet_obj = obj_coin.id
+			
+			obj_coin.chip_stack = calculate_chip_stack(value)
 		}
 		else
 		{
@@ -73,6 +77,8 @@ switch(sprite_index)
 			new_bet.destroy_after_anim = true
 			obj_coin.change_player_hand = obj_game.player_hand_current
 			new_bet.change_player_bet = value
+			
+			new_bet.chip_stack = calculate_chip_stack(value)
 		}
 		
 		
@@ -80,12 +86,13 @@ switch(sprite_index)
 	case btn_clear_bet:	
 			
 		with(obj_coin)
-		{
-			obj_game.balance_value += change_player_bet
+		{	
+			obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 			instance_destroy()	
 		}
 		
-		obj_game.balance_value += obj_game.player_hand_current.bet_value
+		obj_game.balance_value += obj_game.player_hand_current.bet_value		
+		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 		obj_game.player_hand_current.bet_value = 0
 		obj_game.alarm[1] = 1 // refresh strings
 		
@@ -143,6 +150,8 @@ switch(sprite_index)
 	
 		if obj_game.player_splits > 1
 			exit
+			
+		audio_play_sound(Split_v1_wav,1,false)
 	
 		with(obj_game)
 		{
@@ -194,6 +203,8 @@ switch(sprite_index)
 
 				// place bet below split cards
 				new_bet = instance_create_depth(350,608,0,obj_coin)
+				new_bet.chip_stack = calculate_chip_stack(_current_hand_temp.bet_value)
+				
 				// move coin
 				new_bet.targetx = player_hand_list[player_splits].bet_x
 				new_bet.targety = player_hand_list[player_splits].bet_y
@@ -254,19 +265,23 @@ switch(sprite_index)
 			exit
 		}
 		
-		obj_game.balance_value -= obj_game.player_hand_current.bet_value
+		audio_play_sound(Double_Down_v1_wav,1,false)
+		
+		obj_game.balance_value -= obj_game.player_hand_current.bet_value		
+		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 		
 		obj_game.double_down = true
 		var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
 		_new_bet.change_player_hand = obj_game.player_hand_current
 		_new_bet.destroy_after_anim = true
 		
+		
 		// move coin
 		_new_bet.targetx = obj_game.player_hand_current.bet_x
 		_new_bet.targety = obj_game.player_hand_current.bet_y	
 		_new_bet.alarm[0] = 1
-		_new_bet.change_player_bet = obj_game.player_hand_current.bet_value
-	
+		_new_bet.change_player_bet = obj_game.player_hand_current.bet_value	
+		_new_bet.chip_stack = calculate_chip_stack(obj_game.player_hand_current.bet_value)
 	
 		action_add(DEAL_CARD,60,0,[obj_game.player_hand_current])
 		action_add(SET_ALARM,1,1,[obj_game,9,1])
@@ -302,6 +317,23 @@ switch(sprite_index)
 				
 		with(obj_game)
 		{
+			// create new chip with half of player's bet, move to dealer chips			
+			var _new_chip = instance_create_depth(player_hand_current.bet_x,player_hand_current.bet_y,0,obj_coin);
+			_new_chip.chip_stack = calculate_chip_stack(obj_game.player_hand_current.bet_value/2)
+			action_add(CHANGE_BET,0,0,[player_hand_current,-obj_game.player_hand_current.bet_value/ 2] )
+			action_move(0,30,_new_chip,player_chips_x, player_chips_y, 30)
+			action_add(DESTROY_OBJECT,0,0,_new_chip)
+			action_add(CHANGE_BALANCE,0,0,obj_game.player_hand_current.bet_value / 2)		
+			action_add(SET_ALARM,0,0,[obj_game,4,1])
+						
+			// move remaining bet chips to dealer chips
+			player_hand_current.bet_obj.chip_stack = calculate_chip_stack(obj_game.player_hand_current.bet_value/2)
+			action_add(SOUND_PLAY,0,0,[Losing_Hand_v1_wav, false])
+			action_add(CHANGE_BET,0,0,[player_hand_current,-obj_game.player_hand_current.bet_value/ 2])
+			action_move(0,30,player_hand_current.bet_obj,dealer_chips_x, dealer_chips_y, 30)
+			action_add(DESTROY_OBJECT,0,0,player_hand_current.bet_obj)
+			action_add(SET_ALARM,0,0,[obj_game,4,1])
+			/*
 			var _new_chip = instance_create_depth(player_hand_current.bet_x,player_hand_current.bet_y,0,obj_coin);
 			_new_chip.change_player_hand = player_hand_current
 			// move chip
@@ -312,8 +344,10 @@ switch(sprite_index)
 			player_hand_current.bet_value = player_hand_current.bet_value/2
 			obj_game.alarm[1] = 1
 			obj_game.player_hand_current.alarm[1] = 1
+			*/
 		
-		
+			// move player's remaining bet chip back to player chips
+			/*
 			if instance_exists(player_hand_current.bet_obj)
 			{
 				_new_chip = player_hand_current.bet_obj
@@ -331,7 +365,8 @@ switch(sprite_index)
 			_new_chip.destroy_after_anim = true
 			_new_chip.change_player_balance = player_hand_current.bet_value
 			//_new_chip.change_player_bet = -bet_value*2
-		
+			*/
+			
 			alarm[4] = 60
 			
 
@@ -340,6 +375,9 @@ switch(sprite_index)
 	break;
 	
 	case btn_new_card_shoe:		
+	
+		
+		audio_play_sound(New_Card_Shoe_v1_wav,1,false)
 		with(obj_game)
 		{			
 			// move bets to hand if any			

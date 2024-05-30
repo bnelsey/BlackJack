@@ -28,12 +28,20 @@ switch(_action_type)
 		var _change_player_hand = _data_array[0];
 		_change_player_hand.bet_value += _data_array[1]
 		_change_player_hand.alarm[1] = 1
+		//_change_player_hand.bet_obj.image_alpha = 0.5
+		
+		// only change chip stack if bet increases
+		if _data_array[1] > 0
+		{
+			_change_player_hand.bet_obj.chip_stack = calculate_chip_stack(_change_player_hand.bet_value)		
+		}
 	break;
 	
 	case CHANGE_BALANCE:
 		dbg("change balance")
 		obj_game.balance_value += _data_array[0]
 		obj_game.alarm[1] = 1
+		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 	break;
 	
 	case SOUND_PLAY:

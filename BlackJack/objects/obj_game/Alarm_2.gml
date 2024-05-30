@@ -8,6 +8,7 @@ hidden_card = find_hidden_card()
 if hidden_card != noone
 {
 	hidden_card.alarm[1] = 1
+	audio_play_sound(Dealer_Down_Card_Flip_v1_wav,1,false)
 }
 
 calculate_dealer_card()
@@ -22,7 +23,7 @@ if dealer_value > 17 or (dealer_value == 17 and soft_hand == false)
 else
 {
 	//msg("dealer should hit!","","soft_hand", soft_hand,"dealer_value", dealer_value)	
-	deal_dealer_card(true, 30)
+	deal_dealer_card(false, 30)
 	alarm[2] = 30
 }
 
