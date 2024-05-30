@@ -54,6 +54,7 @@ switch(sprite_index)
 		
 		obj_game.alarm[1] = 1 // refresh strings
 		
+		dbg("1 change_player_hand.bet_obj", obj_game.player_hand_current.bet_obj)
 		if not instance_exists(obj_game.player_hand_current.bet_obj)
 		{
 			obj_game.player_hand_current.bet_obj = instance_create_depth(350,608,0,obj_coin)
@@ -80,6 +81,9 @@ switch(sprite_index)
 			
 			new_bet.chip_stack = calculate_chip_stack(value)
 		}
+		
+		
+		dbg("2 change_player_hand.bet_obj", obj_game.player_hand_current.bet_obj)
 		
 		
 	break	
