@@ -17,6 +17,3 @@ destroy_after_anim = false
 change_player_hand = obj_game 
 
 chip_stack = [0]
-
-
-dbg("3 change_player_hand.bet_obj", obj_game.player_hand_current.bet_obj)

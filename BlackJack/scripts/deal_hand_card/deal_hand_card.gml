@@ -16,7 +16,7 @@ function deal_hand_card(_startdelay){
 			targetx = player_card_x + (player_card_dealt * player_card_xsep) + card_xoffset
 			targety = player_card_y + (player_card_dealt * player_card_ysep) + card_yoffset
 			new_card = instance_create_depth(obj_game.deck_x, obj_game.deck_y, -player_card_dealt, obj_card)
-			new_card.image_angle = 54
+			new_card.image_angle = 44
 			new_card.alarm[0] = _startdelay+1 // fix image angle
 			audio_play_sound_delayed(Hit_v1_wav, _startdelay)
 			//player_card_dealt += 1

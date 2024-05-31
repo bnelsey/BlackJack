@@ -15,7 +15,7 @@ function deal_dealer_card(_hidden, _startdelay){
 			targetx = dealer_card_x + (dealer_card_dealt * dealer_card_xsep) + card_xoffset
 			targety = dealer_card_y + (dealer_card_dealt * dealer_card_ysep) + card_yoffset
 			new_card = instance_create_depth(deck_x, deck_y, -dealer_card_dealt, obj_card)
-			new_card.image_angle = 54
+			new_card.image_angle = 44
 			new_card.alarm[0] = _startdelay // fix image angle
 			audio_play_sound_delayed(Hit_v1_wav, _startdelay)
 			dealer_card_dealt += 1

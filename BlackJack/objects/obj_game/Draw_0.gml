@@ -33,10 +33,12 @@ draw_text(balance_x,balance_y,balance_string)
 
 var _cards_left = array_length(deck);
 draw_text(1669, 103, "left: " + string(_cards_left))
+/*
 if _cards_left > 0
 {
-	draw_sprite_ext(spr_card_back,0,deck_x, deck_y, 1,1,54,c_white,1)
+	draw_sprite_ext(spr_card_back,0,deck_x, deck_y, 1,1,45,c_white,1)
 }
+*/
 
 if dealer_value > 0
 	draw_text(dealer_x,dealer_y,dealer_string)

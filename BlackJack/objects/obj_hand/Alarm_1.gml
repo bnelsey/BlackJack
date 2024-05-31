@@ -1,6 +1,7 @@
 /// @description update all strings
 
 
+
 bet_string = string(bet_value)
 bet_w = string_width(bet_string) + 10
 bet_h = string_height(bet_string)
@@ -17,3 +18,6 @@ player_x1 = player_x - player_w * 0.5
 player_y1 = player_y - player_h * 0.5
 player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
+
+dbg("hand strings updated! bet value is", bet_value)
+dbg("current_time", current_time)

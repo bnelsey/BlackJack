@@ -5,7 +5,6 @@ if steps_left > 0
 	alarm[1] = 1 // animate
 else
 {
-	dbg("5 coin animation end!", obj_game.player_hand_current.bet_obj)
 	alarm[2] = 1 // change values on animation end
 }
 
