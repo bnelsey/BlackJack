@@ -181,12 +181,12 @@ new_bet.image_index = 6
 new_button = instance_create_depth(1483,-149,2,obj_button)
 new_button.sprite_index = btn_new_card_shoe
 
-top_of_deck = instance_create_depth(deck_x,deck_y,-2,obj_static)
+top_of_deck = instance_create_depth(deck_x,deck_y,-998,obj_static)
 top_of_deck.sprite_index = spr_card_back
 top_of_deck.image_index = 0
 top_of_deck.image_angle = 45
 
-shoe_top = instance_create_depth(1483,-149,-3,obj_static)
+shoe_top = instance_create_depth(1483,-149,-999,obj_static)
 shoe_top.sprite_index = btn_new_card_shoe
 shoe_top.image_index = 1
 
