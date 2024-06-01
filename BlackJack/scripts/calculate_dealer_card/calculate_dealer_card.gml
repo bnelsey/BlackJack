@@ -4,14 +4,12 @@ function calculate_dealer_card(){
 	with(obj_game)
 	{
 		len = array_length(dealer_cards)
-		/*
 		dbg(" -------- start dealer cards ------")
 		for(i=0; i < len; i+=1)
 		{
 			dbg(dealer_cards[i])			
 		}
 		dbg(" -------- end dealer cards ------")
-		*/
 		
 	    total_value = array_sum(dealer_cards)
 	    num_jokers = array_count(dealer_cards, 0)

@@ -11,9 +11,19 @@ function deal_dealer_card(_hidden, _startdelay){
 		
 		with(obj_game)
 		{
-			// make one card object
-			targetx = dealer_card_x + (dealer_card_dealt * dealer_card_xsep) + card_xoffset
+			if dealer_card_dealt > 3
+			{
+				// deal cards to the left
+				targetx = dealer_card_x - ((dealer_card_dealt-3) * (dealer_card_xsep)) + card_xoffset
+			}
+			else
+			{
+				// deal cards to the right
+				targetx = dealer_card_x + (dealer_card_dealt * dealer_card_xsep) + card_xoffset
+			}
+			
 			targety = dealer_card_y + (dealer_card_dealt * dealer_card_ysep) + card_yoffset
+			
 			new_card = instance_create_depth(deck_x, deck_y, -dealer_card_dealt, obj_card)
 			new_card.image_angle = 44
 			new_card.alarm[0] = _startdelay // fix image angle
@@ -30,15 +40,18 @@ function deal_dealer_card(_hidden, _startdelay){
 			new_card.sprite_index = details[0]
 			new_card.image_index = details[1]	
 			new_card.hidden = _hidden
+
+			var _value = get_card_value(dealt_card)
+			array_push(dealer_cards,_value) // only push card value to hand
+			dbg("dealer card value pushed", _value)
 			
-			array_push(dealer_cards,get_card_value(details[1]))
 			if not _hidden // only calculate non-hidden cards
 			{					
 				calculate_dealer_card()				
 			}
 	
 			// debugging
-			dbg("ID: " + string(dealt_card), "value: " + string(get_card_value(dealt_card)))
+			dbg("ID: " + string(dealt_card), "value: " + string(get_card_value(_value)))
 			dbg(sprite_get_name(details[0]),details[1])
 			
 			

@@ -1,6 +1,7 @@
 /// @description round end
 
 obj_game.last_bet_value = obj_game.player_hand_current.bet_value
+obj_game.alarm[1] = 1
 
 if double_down
 {

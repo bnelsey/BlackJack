@@ -31,8 +31,10 @@ function deal_hand_card(_startdelay){
 			details = get_card_details(dealt_card) // for debugging only
 			new_card.sprite_index = details[0]
 			new_card.image_index = details[1]	
+			
 			var _value = get_card_value(dealt_card)
 			array_push(player_cards,_value) // only push card value to hand
+			dbg("player card value pushed", details[1])
 	
 			// debugging
 			dbg("ID: " + string(dealt_card), "value: " + string(_value))

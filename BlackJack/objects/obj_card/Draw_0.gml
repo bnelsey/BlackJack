@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-draw_text(x,y,depth)
+//draw_text(x,y+150,x)
 
 if not hidden
 	draw_self()
