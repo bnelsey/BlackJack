@@ -50,8 +50,20 @@ function round_end(){
 		// winnings change depending on specific conditions
 		var _winnings = player_hand_current.bet_value;
 		
-		if player_hand_current.player_value == 21 // for normal blackjack?
-			_winnings = (player_hand_current.bet_value/2) * 3
+		if player_hand_current.player_value == 21
+		{
+			num_jokers = array_count(player_hand_current.player_cards, 0)
+			if array_length(player_hand_current.player_cards) == 2 and num_jokers == 1
+			{
+				dbg("Joker 21! payout is 2:1")
+				_winnings = player_hand_current.bet_value*2 // for normal blackjack?
+			}
+			else
+			{
+				dbg("normal blackjack! payout is 3:2")
+				_winnings = (player_hand_current.bet_value/2) * 3 // for normal blackjack?
+			}
+		}
 				
 		action_add(CHANGE_BET,0,30,[player_hand_current, _winnings]) // 30 frame delay before next action		
 		action_add(CHANGE_BET,0,0,[player_hand_current,-(_winnings+_bet)])
