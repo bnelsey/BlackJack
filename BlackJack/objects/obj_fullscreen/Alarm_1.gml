@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 alarm[1] = room_speed * 0.25
+exit
 
 if (browser_width != width || browser_height != height)
 {
