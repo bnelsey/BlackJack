@@ -51,6 +51,8 @@ function round_end(){
 		var _winnings = player_hand_current.bet_value;
 		
 		if player_hand_current.player_value == 21
+		if player_splits < 1
+		if array_length(player_hand_current.player_cards) == 2
 		{
 			num_jokers = array_count(player_hand_current.player_cards, 0)
 			if array_length(player_hand_current.player_cards) == 2 and num_jokers == 1

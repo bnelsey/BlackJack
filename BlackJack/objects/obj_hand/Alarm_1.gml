@@ -2,6 +2,8 @@
 
 
 
+bet_value = ceil(bet_value)
+
 bet_string = string(bet_value)
 bet_w = string_width(bet_string) + 10
 bet_h = string_height(bet_string)

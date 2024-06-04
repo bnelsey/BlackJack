@@ -12,7 +12,7 @@ switch(sprite_index)
 			exit
 			
 		
-		if obj_game.balance_value < 5 and obj_game.bet_value < 1 
+		if obj_game.balance_value < 5 and obj_game.player_hand_current.bet_value < 1 and not instance_exists(obj_coin)
 		{
 			msg("no more player funds, game restarting"	)
 			game_restart()

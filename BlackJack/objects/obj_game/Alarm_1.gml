@@ -9,6 +9,7 @@ bet_value = choose(1,22,333,4444,55555)
 dealer_value = choose(1,22,333,4444,55555)
 player_value = choose(1,22,333,4444,55555)
 */
+balance_value = ceil(balance_value)
 
 balance_string = string(balance_value)
 balance_w = string_width(balance_string) + 10
