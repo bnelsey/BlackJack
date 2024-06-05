@@ -1,9 +1,9 @@
 /// @description create standard buttons
 
 // auto stand if player is dealt a blackjack
-if player_hand_current.player_value == 21
+if player_hand_current.player_value == 21 or ace_joker_split == true
 {
-	player_hit()
+	player_stand()
 	//alarm[2] = 1
 	exit
 }

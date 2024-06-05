@@ -29,6 +29,7 @@ ace_joker_split = false
 insurance_taken = false
 
 
+
 deck_x = 1587 //1921
 deck_y = 153//-161
 dealer_chips_x = 250

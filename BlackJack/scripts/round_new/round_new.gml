@@ -9,6 +9,7 @@ function round_new(){
 	double_down = false
 	ace_joker_split = false
 	
+	
 	player_hand_current_id = 0
 	player_hand_current = player_hand_list[player_hand_current_id]
 	
