@@ -14,16 +14,23 @@ if hidden_card != noone
 calculate_dealer_card()
 
 //msg("soft_hand", soft_hand,"dealer_value", dealer_value)
-
-if dealer_value > 17 or (dealer_value == 17 and soft_hand == false)
+//msg("player_busts >= player_splits", string(player_busts) + ">=" + string(player_splits+1))
+if player_busts >= player_splits+1
 {
 	alarm[3] = 30
 	alarm[2] = -1
 }
 else
 {
-	//msg("dealer should hit!","","soft_hand", soft_hand,"dealer_value", dealer_value)	
-	deal_dealer_card(false, 30)
-	alarm[2] = 30
+	if dealer_value > 17 or (dealer_value == 17 and soft_hand == false)
+	{
+		alarm[3] = 30
+		alarm[2] = -1
+	}
+	else
+	{
+		//msg("dealer should hit!","","soft_hand", soft_hand,"dealer_value", dealer_value)	
+		deal_dealer_card(false, 30)
+		alarm[2] = 30
+	}
 }
-

@@ -10,7 +10,10 @@ instance_create_depth(0,0,0,obj_action)
 depth = -999
 
 
-
+first_click_done = false
+new_bet = instance_create_depth(34,16,0,obj_button)
+new_bet.sprite_index = btn_audio
+new_bet.image_index = global.volume
 
 // card shoe is -54 degrees
 /*
@@ -208,6 +211,7 @@ player_hand_list[2] = hand2
 player_hand_current = hand0
 player_hand_current_id = 0
 player_splits = 0
+player_busts = 0
 
 //player_hand_current = self
 

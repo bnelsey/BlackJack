@@ -4,6 +4,23 @@
 
 switch(sprite_index)
 {
+	case btn_audio:
+		if global.volume
+		{
+			global.volume = 0			
+		}
+		else
+		{
+			global.volume = 1	
+		}
+		image_index = global.volume
+		audio_master_gain(global.volume)	
+		
+
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Volume", global.volume);
+		ini_close();
+	break;
 	case btn_bet:
 		//show_message("value: " + string(value))
 		

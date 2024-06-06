@@ -69,6 +69,7 @@
     {"name":"Split_v1_wav","order":7,"path":"sounds/Split_v1_wav/Split_v1_wav.yy",},
     {"name":"Winning_Hand_v1_wav","order":8,"path":"sounds/Winning_Hand_v1_wav/Winning_Hand_v1_wav.yy",},
     {"name":"btn_2x_bet_and_deal","order":1,"path":"sprites/btn_2x_bet_and_deal/btn_2x_bet_and_deal.yy",},
+    {"name":"btn_audio","order":16,"path":"sprites/btn_audio/btn_audio.yy",},
     {"name":"btn_bet","order":12,"path":"sprites/btn_bet/btn_bet.yy",},
     {"name":"btn_clear_bet","order":2,"path":"sprites/btn_clear_bet/btn_clear_bet.yy",},
     {"name":"btn_clear_table","order":3,"path":"sprites/btn_clear_table/btn_clear_table.yy",},

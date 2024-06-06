@@ -20,6 +20,7 @@ function player_hit(){
 			else if player_hand_current.player_value > 21
 			{
 				dbg("player bust!")
+				player_busts += 1
 				
 				if not double_down
 				{

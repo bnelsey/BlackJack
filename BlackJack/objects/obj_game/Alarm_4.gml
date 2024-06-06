@@ -7,6 +7,7 @@ round_new()
 
 player_hand_current_id = 0 // 0 middle, 1 right, 2 left
 player_splits = 0
+player_busts = 0
 ace_joker_split = false
 
 new_button = instance_create_depth(694,912,0,obj_button)
