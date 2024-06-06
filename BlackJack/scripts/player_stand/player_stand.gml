@@ -58,6 +58,7 @@ function player_stand(){
 		}
 		else // not yet last hand to be played because split
 		{
+			double_down = false
 			player_card_dealt = 1 // reset cards dealt
 			player_hand_current_id = _next_hand
 			player_hand_current = player_hand_list[player_hand_current_id]
