@@ -14,6 +14,8 @@ first_click_done = false
 new_bet = instance_create_depth(34,16,0,obj_button)
 new_bet.sprite_index = btn_audio
 new_bet.image_index = global.volume
+new_bet.image_xscale = 0.5
+new_bet.image_yscale = 0.5
 
 // card shoe is -54 degrees
 /*
