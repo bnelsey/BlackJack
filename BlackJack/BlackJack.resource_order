@@ -78,6 +78,7 @@
     {"name":"btn_hit","order":6,"path":"sprites/btn_hit/btn_hit.yy",},
     {"name":"btn_insurance","order":15,"path":"sprites/btn_insurance/btn_insurance.yy",},
     {"name":"btn_new_card_shoe","order":7,"path":"sprites/btn_new_card_shoe/btn_new_card_shoe.yy",},
+    {"name":"btn_new_card_shoeb","order":17,"path":"sprites/btn_new_card_shoeb/btn_new_card_shoeb.yy",},
     {"name":"btn_repeat_bet_and_deal","order":9,"path":"sprites/btn_repeat_bet_and_deal/btn_repeat_bet_and_deal.yy",},
     {"name":"btn_repeat_bet","order":8,"path":"sprites/btn_repeat_bet/btn_repeat_bet.yy",},
     {"name":"btn_split_again","order":14,"path":"sprites/btn_split_again/btn_split_again.yy",},

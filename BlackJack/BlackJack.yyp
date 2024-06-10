@@ -100,6 +100,7 @@
     {"id":{"name":"btn_hit","path":"sprites/btn_hit/btn_hit.yy",},},
     {"id":{"name":"btn_insurance","path":"sprites/btn_insurance/btn_insurance.yy",},},
     {"id":{"name":"btn_new_card_shoe","path":"sprites/btn_new_card_shoe/btn_new_card_shoe.yy",},},
+    {"id":{"name":"btn_new_card_shoeb","path":"sprites/btn_new_card_shoeb/btn_new_card_shoeb.yy",},},
     {"id":{"name":"btn_repeat_bet_and_deal","path":"sprites/btn_repeat_bet_and_deal/btn_repeat_bet_and_deal.yy",},},
     {"id":{"name":"btn_repeat_bet","path":"sprites/btn_repeat_bet/btn_repeat_bet.yy",},},
     {"id":{"name":"btn_split_again","path":"sprites/btn_split_again/btn_split_again.yy",},},

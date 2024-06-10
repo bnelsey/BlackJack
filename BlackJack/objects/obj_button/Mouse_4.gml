@@ -108,6 +108,7 @@ switch(sprite_index)
 		with(obj_coin)
 		{	
 			obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
+			obj_game.balance_value += change_player_bet
 			instance_destroy()	
 		}
 		
@@ -396,6 +397,18 @@ switch(sprite_index)
 	
 	case btn_new_card_shoe:		
 	
+		with(obj_coin)
+		{	
+			obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
+			obj_game.balance_value += change_player_bet
+			instance_destroy()	
+		}
+		
+		obj_game.balance_value += obj_game.player_hand_current.bet_value		
+		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
+		obj_game.player_hand_current.bet_value = 0
+		obj_game.alarm[1] = 1 // refresh strings
+		
 		
 		audio_play_sound(New_Card_Shoe_v1_wav,1,false)
 		with(obj_game)

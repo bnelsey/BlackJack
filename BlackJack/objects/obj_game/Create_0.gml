@@ -186,6 +186,8 @@ new_bet.image_index = 6
 
 new_button = instance_create_depth(1483,-149,2,obj_button)
 new_button.sprite_index = btn_new_card_shoe
+fake_button = instance_create_depth(1696,166-70,-1000,obj_static)
+fake_button.sprite_index = btn_new_card_shoeb
 
 top_of_deck = instance_create_depth(deck_x,deck_y,-998,obj_static)
 top_of_deck.sprite_index = spr_card_back

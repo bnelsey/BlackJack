@@ -32,7 +32,7 @@ draw_set_alpha(1)
 draw_text(balance_x,balance_y,balance_string)
 
 var _cards_left = array_length(deck);
-draw_text(1669, 103, "left: " + string(_cards_left))
+draw_text(1669, 103-30, "left: " + string(_cards_left))
 /*
 if _cards_left > 0
 {
