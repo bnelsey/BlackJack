@@ -101,7 +101,7 @@ dbg("deck", deck)
 
 //alarm[1] = room_speed // update strings
 
-balance_value = 5000
+balance_value = 500000000
 balance_string = string(balance_value)
 balance_x = 407
 balance_y = 744
@@ -114,7 +114,7 @@ balance_y2 = balance_y + balance_h * 0.5
 
 // multi chip display
 balance_chips = []
-chip_values = [1,5,10,25,100,500,1000] // values from whatever chip sprite you use
+chip_values = [1,5,10,25,100,500,1000,5000,10000,25000,100000,500000,1000000,5000000,10000000,25000000,100000000, 500000000] // values from whatever chip sprite you use
 
 balance_chips = calculate_chip_stack(balance_value)
 
