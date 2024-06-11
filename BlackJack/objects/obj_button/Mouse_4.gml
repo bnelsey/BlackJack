@@ -1,5 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
+if not visible
+	exit
 
 
 switch(sprite_index)
@@ -20,6 +22,44 @@ switch(sprite_index)
 		ini_open("savegame.ini");
 		ini_write_real("Settings", "Volume", global.volume);
 		ini_close();
+	break;
+	case btn_chips_lower:
+		if obj_game.bet_button_lowest.image_index > 6
+		{
+			with(obj_button)
+			{
+				if sprite_index == btn_bet
+				{
+					image_index -= 6
+					
+					// fix a bug when a button image_index goes below 0
+					if image_index < 0
+						image_index += sprite_get_number(btn_bet) 
+						
+					value = obj_game.chip_values[image_index]
+					
+					if image_index > 0 or image_index < sprite_get_number(btn_bet) 
+						visible = true						
+				}				
+			}
+		}
+	break;
+	case btn_chips_higher:
+		if obj_game.bet_button_lowest.image_index + 6 < sprite_get_number(btn_bet) 
+		{
+			with(obj_button)
+			{
+				if sprite_index == btn_bet
+				{
+					image_index += 6
+					
+					if image_index == 0 or image_index >= sprite_get_number(btn_bet) 
+						visible = false
+					else
+						value = obj_game.chip_values[image_index]
+				}				
+			}
+		}
 	break;
 	case btn_bet:
 		//show_message("value: " + string(value))

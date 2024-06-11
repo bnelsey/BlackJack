@@ -101,7 +101,7 @@ dbg("deck", deck)
 
 //alarm[1] = room_speed // update strings
 
-balance_value = 500000000
+balance_value = 675000
 balance_string = string(balance_value)
 balance_x = 407
 balance_y = 744
@@ -157,27 +157,42 @@ player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
 
 
+new_bet = instance_create_depth(9,795,0,obj_button)
+new_bet.sprite_index = btn_chips_lower
+new_bet = instance_create_depth(562,1025,0,obj_button)
+new_bet.sprite_index = btn_chips_higher
+
+
+
 new_bet = instance_create_depth(3,605,0,obj_button)
+bet_button_lowest = new_bet
+new_bet.button_id = 1
 new_bet.sprite_index = btn_bet
 new_bet.value = 5
 new_bet.image_index = 1
 new_bet = instance_create_depth(103,679,0,obj_button)
+new_bet.button_id = 2
 new_bet.sprite_index = btn_bet
 new_bet.value = 10
 new_bet.image_index = 2
 new_bet = instance_create_depth(210,745,0,obj_button)
+new_bet.button_id = 3
 new_bet.sprite_index = btn_bet
 new_bet.value = 25
 new_bet.image_index = 3
 new_bet = instance_create_depth(322,804,0,obj_button)
+new_bet.button_id = 4
 new_bet.sprite_index = btn_bet
 new_bet.value = 100
 new_bet.image_index = 4
 new_bet = instance_create_depth(440,850,0,obj_button)
+new_bet.button_id = 5
 new_bet.sprite_index = btn_bet
 new_bet.value = 500
 new_bet.image_index = 5
 new_bet = instance_create_depth(562,884,0,obj_button)
+bet_button_highest = new_bet
+new_bet.button_id = 6
 new_bet.sprite_index = btn_bet
 new_bet.value = 1000
 new_bet.image_index = 6
