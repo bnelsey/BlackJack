@@ -7,7 +7,7 @@ function deal_hand_card(_startdelay){
 			game_restart()
 			exit
 		}
-			
+
 		with(obj_game.player_hand_current)
 		{		
 			player_card_dealt = array_length(player_card_instances)

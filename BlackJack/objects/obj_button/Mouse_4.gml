@@ -344,7 +344,8 @@ switch(sprite_index)
 		_new_bet.change_player_bet = obj_game.player_hand_current.bet_value	
 		_new_bet.chip_stack = calculate_chip_stack(obj_game.player_hand_current.bet_value)
 	
-		action_add(DEAL_CARD,60,0,[obj_game.player_hand_current])
+		//action_add(DEAL_CARD,60,0,[obj_game.player_hand_current])
+		action_add(SET_ALARM,60,2,[obj_game,8,1]) // hit
 		action_add(SET_ALARM,1,1,[obj_game,9,1])
 		action_add(SET_ALARM,1,1,[obj_game,1,1])
 		//obj_game.alarm[8] = 60 // player_hit() but with adjustable delay	
