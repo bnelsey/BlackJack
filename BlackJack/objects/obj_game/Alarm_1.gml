@@ -45,3 +45,12 @@ player_x1 = player_x - player_w * 0.5
 player_y1 = player_y - player_h * 0.5
 player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
+
+
+insurance_string = string(insurance_value)
+insurance_w = string_width(insurance_string) + 10
+insurance_h = string_height(insurance_string)
+insurance_x1 = insurance_x - insurance_w * 0.5
+insurance_y1 = insurance_y - insurance_h * 0.5
+insurance_x2 = insurance_x + insurance_w * 0.5
+insurance_y2 = insurance_y + insurance_h * 0.5

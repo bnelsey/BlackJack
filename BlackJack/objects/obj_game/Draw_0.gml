@@ -25,6 +25,8 @@ draw_rectangle(balance_x1,balance_y1,balance_x2,balance_y2,false)
 if dealer_value > 0
 	draw_rectangle(dealer_x1,dealer_y1,dealer_x2,dealer_y2,false)
 
+if insurance_value > 0
+	draw_rectangle(insurance_x1,insurance_y1,insurance_x2,insurance_y2,false)
  
 // draw texts
 draw_set_color(c_white)
@@ -42,4 +44,7 @@ if _cards_left > 0
 
 if dealer_value > 0
 	draw_text(dealer_x,dealer_y,dealer_string)
+	
+if insurance_value > 0
+	draw_text(insurance_x,insurance_y,insurance_string)
 	

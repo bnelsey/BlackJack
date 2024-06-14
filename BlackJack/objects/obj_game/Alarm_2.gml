@@ -19,6 +19,7 @@ if player_busts >= player_splits+1
 {
 	alarm[3] = 30
 	alarm[2] = -1
+	alarm[1] = 1
 }
 else
 {

@@ -6,6 +6,86 @@ if not visible
 
 switch(sprite_index)
 {
+	case btn_insurance:
+				
+		with(obj_game)
+		{			
+			var _insurance_value = player_hand_current.bet_value;
+			var _insurance_J21 = true;
+			
+			// initial checks
+			if dealer_value == 9 or dealer_value == 12 // check J21
+			{
+				if balance_value < player_hand_current.bet_value
+				{
+					other.image_alpha = 0.5
+					dbg("not enough balance left for joker21 insurance")
+					exit
+				}
+			}
+			else if dealer_value == 10 or dealer_value == 11 // check regular blackjack
+			{
+				if balance_value < floor(player_hand_current.bet_value*0.5)
+				{
+					other.image_alpha = 0.5
+					dbg("not enough balance left for blackjack insurance")
+					exit
+				}				
+				_insurance_value = floor(player_hand_current.bet_value*0.5) // insurance is only half of bet for regular blakcjack
+				_insurance_J21 = false
+			}
+			
+			insurance_taken = true
+						
+			var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
+			_new_bet.chip_stack = calculate_chip_stack(_insurance_value)
+			
+			
+			// check hidden card value
+			var _hidden_dealer_value = dealer_value;
+			calculate_dealer_card()
+			var _actual_dealer_value = dealer_value;
+			dealer_value = _hidden_dealer_value; // do not change currently displayed dealer value
+			
+			//tween_object( _data_array[0], _data_array[1],  _data_array[2], _data_array[3], 0)	
+			action_add(MOVE_OBJECT,1,30,[_new_bet,832,394,30,0])
+			action_add(CHANGE_INSURANCE,1,1,[_insurance_value])
+			action_add(SET_ALARM,1,30,[obj_game,1,1]) // refresh strings
+			action_add(MOVE_OBJECT,1,60,[peeker_base,996,108,30,0])
+			action_add(MOVE_OBJECT,1,30,[peeker_base,peeker_base_startx,peeker_base_starty, 30,0]) // hit
+			
+			if _actual_dealer_value < 21
+			{
+				action_add(CHANGE_INSURANCE,1,1,[-_insurance_value])
+				action_add(MOVE_OBJECT,1,30,[_new_bet,dealer_chips_x,dealer_chips_y,30,0])
+				action_add(DESTROY_OBJECT,1,30,[_new_bet])	
+				action_add(SET_ALARM,1,1,[obj_game,7,1]) // recreate buttons			
+			}
+			else
+			{
+				hidden_card = find_hidden_card()			
+				if hidden_card != noone
+				{
+					action_add(SET_ALARM,1,30,[hidden_card,1,1])
+					
+					var _winnings = instance_create_depth(dealer_chips_x,dealer_chips_y,0,obj_coin);
+					_winnings.chip_stack = calculate_chip_stack(_insurance_value*2)
+					action_add(MOVE_OBJECT,1,30,[_winnings,832,394,30,0])
+					action_add(DESTROY_OBJECT,1,1,[_winnings])
+					action_add(CHIP_STACK,1,1,[_new_bet, _insurance_value*2 + _insurance_value])		
+					action_add(CHANGE_INSURANCE,1,30,[_insurance_value*2])	
+					action_add(MOVE_OBJECT,1,30,[_new_bet,player_chips_x,player_chips_y,30,0])
+					action_add(CHANGE_INSURANCE,1,1,[-(_insurance_value*3)])
+					action_add(CHANGE_BALANCE,1,30,[_insurance_value*3])
+					action_add(SET_ALARM,1,1,[obj_game,10,1])
+				}
+				
+			}
+			
+		}
+	
+		clear_buttons()
+	break;
 	case btn_audio:
 		if global.volume
 		{

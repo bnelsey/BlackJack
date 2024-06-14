@@ -44,6 +44,19 @@ switch(_action_type)
 		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
 	break;
 	
+	
+	case CHANGE_INSURANCE:
+		dbg("change insurance")
+		obj_game.insurance_value += _data_array[0]
+		obj_game.alarm[1] = 1
+	break;
+	
+	case CHIP_STACK:
+		dbg("change insurance")
+		var _coin_to_calculate_chip_stack = _data_array[0];
+		_coin_to_calculate_chip_stack.chip_stack = calculate_chip_stack(_data_array[1])
+	break;
+	
 	case SOUND_PLAY:
 		dbg("sound play")
 		audio_play_sound(_data_array[0], 1, _data_array[1])		

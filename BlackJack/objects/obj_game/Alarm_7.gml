@@ -19,7 +19,7 @@ new_button.sprite_index = btn_hit
 // check if insurance button should be shown
 if array_length(player_hand_current.player_cards) == 2 and player_splits < 1 and insurance_taken == false
 {
-	if dealer_value == 9 or dealer_value == 10 or dealer_value == 12
+	if dealer_value == 9 or dealer_value == 10 or dealer_value == 11 or dealer_value == 12
 	{
 		new_button = instance_create_depth(1577,743,0,obj_button)
 		new_button.sprite_index = btn_insurance

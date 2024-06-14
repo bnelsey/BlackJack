@@ -7,6 +7,18 @@ draw_set_valign(fa_center)
 instance_create_depth(0,0,0,obj_fullscreen)
 instance_create_depth(0,0,0,obj_action)
 
+insurance_coin_obj = noone
+insurance_value = 0
+insurance_string = string(insurance_value)
+insurance_x = 886
+insurance_y = 509
+insurance_w = string_width(insurance_string) + 10
+insurance_h = string_height(insurance_string)
+insurance_x1 = insurance_x - insurance_w * 0.5
+insurance_y1 = insurance_y - insurance_h * 0.5
+insurance_x2 = insurance_x + insurance_w * 0.5
+insurance_y2 = insurance_y + insurance_h * 0.5
+
 depth = -999
 
 
@@ -16,6 +28,18 @@ new_bet.sprite_index = btn_audio
 new_bet.image_index = global.volume
 new_bet.image_xscale = 0.5
 new_bet.image_yscale = 0.5
+
+peeker_base_startx = 1372
+peeker_base_starty = 1
+peeker_base = instance_create_depth(1372,1,10,obj_static)
+peeker_base.sprite_index = spr_peeker
+peeker_base.image_index = 0
+peeker_top = instance_create_depth(1372,1,-999,obj_static_follow)
+peeker_top.sprite_index = spr_peeker
+peeker_top.image_index = 1
+peeker_top.target = peeker_base
+
+
 
 // card shoe is -54 degrees
 /*
@@ -101,7 +125,7 @@ dbg("deck", deck)
 
 //alarm[1] = room_speed // update strings
 
-balance_value = 675000
+balance_value = 50000
 balance_string = string(balance_value)
 balance_x = 407
 balance_y = 744
@@ -126,7 +150,7 @@ bet_obj = noone
 bet_x = 915
 bet_y = 786
 bet_w = string_width(bet_string) + 10
-bet_h = string_width(bet_string)
+bet_h = string_height(bet_string)
 bet_string_x = 970
 bet_string_y = 901
 bet_x1 = bet_string_x - bet_w * 0.5
@@ -139,7 +163,7 @@ dealer_string = string(dealer_value)
 dealer_x = 895
 dealer_y = 195
 dealer_w = string_width(dealer_string) + 10
-dealer_h = string_width(dealer_string)
+dealer_h = string_height(dealer_string)
 dealer_x1 = dealer_x - dealer_w * 0.5
 dealer_y1 = dealer_y - dealer_h * 0.5
 dealer_x2 = dealer_x + dealer_w * 0.5
@@ -150,7 +174,7 @@ player_string = string(player_value)
 player_x = 968
 player_y = 557
 player_w = string_width(player_string) + 10
-player_h = string_width(player_string)
+player_h = string_height(player_string)
 player_x1 = player_x - player_w * 0.5
 player_y1 = player_y - player_h * 0.5
 player_x2 = player_x + player_w * 0.5

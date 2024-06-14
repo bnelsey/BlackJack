@@ -29,6 +29,7 @@ switch(flip_stage)
 			flip_stage = 2
 			steps_left = steps_total
 			obj_game.alarm[1] = 1 // update card value amount
+			calculate_dealer_card()
 			image_xscale = 1
 		}
 	break;	

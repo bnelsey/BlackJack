@@ -17,7 +17,10 @@ if sprite_index == btn_deal
 	var _new_card_array = [];
 	
 	//_new_card_array = [0,1,2,3]
-	_new_card_array = [16,2,44,30,16,2,16,2] // split test, 2's <-- this is the main one
+	//_new_card_array = [16,2,44,30,16,2,16,2] // split test, 2's <-- this is the main one
+	//_new_card_array = [0,0,1,2] // joker21 peek
+	_new_card_array = [0,1,1,10] // ace peek
+	
 	
 	//23,3,9,2,0,3,23
 	//23 3 9 2 0 3 23

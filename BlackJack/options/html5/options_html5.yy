@@ -3,7 +3,7 @@
   "%Name":"HTML5",
   "name":"HTML5",
   "option_html5_allow_fullscreen":true,
-  "option_html5_browser_title":"BlackJack HTML5 v0.5",
+  "option_html5_browser_title":"BlackJack HTML5 v0.7",
   "option_html5_centregame":true,
   "option_html5_display_cursor":true,
   "option_html5_facebook_app_display_name":"",
