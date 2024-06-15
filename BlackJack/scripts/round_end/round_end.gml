@@ -1,7 +1,84 @@
 
 function round_end(){
 	
-	if (dealer_value > player_hand_current.player_value and dealer_value <= 21) or player_hand_current.player_value > 21
+	var _dealer_j21 = false;
+	var _player_j21 = false;
+	var _dealer_blackjack = false;
+	var _player_blackjack = false;
+	
+	var _dealer_win = false;
+	var _player_win = false;
+	var _push = false;
+	
+	// this section only for initial deal instant wins
+	if player_splits < 1
+	if player_hand_current.player_value == 21
+	if array_length(player_hand_current.player_cards) == 2
+	{
+		num_jokers = array_count(player_hand_current.player_cards, 0)
+		if num_jokers == 1
+		{
+			dbg("player has Joker 21!")
+			_player_j21 = true;
+		}
+		else
+		{
+			dbg("player has normal blackjack!")
+			_player_blackjack = true;
+		}
+	}
+	
+	if array_length(dealer_cards) == 2
+	if dealer_value == 21
+	{
+		num_jokers = array_count(dealer_cards, 0)
+		if num_jokers == 1
+		{
+			dbg("dealer has Joker 21!")
+			_dealer_j21 = true;
+		}
+		else
+		{
+			dbg("dealer has normal blackjack!")
+			_dealer_blackjack = true;
+		}
+		
+		// calculate win rankings based on dealer value
+		if _dealer_j21 
+		{
+			if _player_j21
+			{
+				_push = true
+			}
+			else
+			{
+				_dealer_win = true
+			}
+		}
+		
+		
+		if _dealer_blackjack 
+		{
+			if _player_j21
+			{
+				_player_win = true
+			}
+			else if _player_blackjack
+			{
+				_push = true
+			}
+			else
+			{
+				_dealer_win = true
+			}
+		}
+	}
+	
+	// this section only for initial deal instant wins
+	
+	
+	
+	if (dealer_value > player_hand_current.player_value and dealer_value <= 21) or player_hand_current.player_value > 21 or _dealer_win
 	{
 		dbg("player loses, bet is given to dealer")		
 		
@@ -15,7 +92,7 @@ function round_end(){
 		action_add(SET_ALARM,0,0,[obj_game,4,1])
 	}
 	else
-	if dealer_value == player_hand_current.player_value
+	if not _player_win and (dealer_value == player_hand_current.player_value or _push)
 	{
 		dbg("draw, player keeps bet")
 		

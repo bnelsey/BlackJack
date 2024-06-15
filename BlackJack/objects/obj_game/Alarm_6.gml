@@ -22,11 +22,10 @@ delete_object_with_sprite(obj_button, btn_clear_bet)
 // process natural blackjack 
 if player_hand_current.player_value == 21
 {
-	dbg("player blackjack!")
+	dbg("player blackjack! forced to stand")
 	if not double_down
 	{
-		obj_game.alarm[2] = 1	
-		//player_hand_current.alarm[2] = 1
+		obj_game.alarm[2] = 90
 	}
 }
 else
