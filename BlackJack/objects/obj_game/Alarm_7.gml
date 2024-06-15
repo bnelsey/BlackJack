@@ -8,9 +8,8 @@ if player_hand_current.player_value == 21 or ace_joker_split == true
 	exit
 }
 
-new_button = instance_create_depth(517,894,0,obj_button)
+new_button = instance_create_depth(5,913,0,obj_button)
 new_button.sprite_index = btn_strategy
-new_button.image_alpha = 0.5
 new_button = instance_create_depth(694,912,0,obj_button)
 new_button.sprite_index = btn_stand
 new_button = instance_create_depth(876,917,0,obj_button)

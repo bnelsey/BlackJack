@@ -6,6 +6,14 @@ if not visible
 
 switch(sprite_index)
 {
+	case btn_strategy:		
+		if my_popup == noone
+		{
+			alarm[0] = 3
+			my_popup = instance_create_depth(1097, 158, -99999, obj_static)
+			my_popup.sprite_index = spr_strategy
+		}
+	break;
 	case btn_insurance:
 				
 		with(obj_game)

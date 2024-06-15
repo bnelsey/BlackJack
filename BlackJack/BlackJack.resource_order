@@ -98,5 +98,6 @@
     {"name":"spr_peeker","order":6,"path":"sprites/spr_peeker/spr_peeker.yy",},
     {"name":"spr_spades","order":4,"path":"sprites/spr_spades/spr_spades.yy",},
     {"name":"spr_specials","order":5,"path":"sprites/spr_specials/spr_specials.yy",},
+    {"name":"spr_strategy","order":7,"path":"sprites/spr_strategy/spr_strategy.yy",},
   ],
 }

@@ -122,6 +122,7 @@
     {"id":{"name":"spr_peeker","path":"sprites/spr_peeker/spr_peeker.yy",},},
     {"id":{"name":"spr_spades","path":"sprites/spr_spades/spr_spades.yy",},},
     {"id":{"name":"spr_specials","path":"sprites/spr_specials/spr_specials.yy",},},
+    {"id":{"name":"spr_strategy","path":"sprites/spr_strategy/spr_strategy.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
