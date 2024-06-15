@@ -19,17 +19,20 @@ function round_new(){
 		player_card_dealt = 0
 		player_cards = []	
 		player_card_instances = []
+		bet_value = 0
 	}
 	with(hand1)
 	{
 		player_card_dealt = 0
 		player_cards = []	
 		player_card_instances = []
+		bet_value = 0
 	}
 	with(hand2)
 	{
 		player_card_dealt = 0
 		player_cards = []	
 		player_card_instances = []
+		bet_value = 0
 	}
 }

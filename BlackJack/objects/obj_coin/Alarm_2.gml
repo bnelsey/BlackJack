@@ -2,6 +2,7 @@
 
 
 dbg("--------------------")
+dbg("obj_coin my id:", id)
 dbg("change values for change_player_hand", change_player_hand)
 
 audio_play_sound(Add_Chips_to_Betting_Circle_v1_wav, 1, false)

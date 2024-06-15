@@ -35,6 +35,13 @@ switch(sprite_index)
 				_insurance_J21 = false
 			}
 			
+			hidden_card = find_hidden_card()			
+			if hidden_card == noone
+				exit
+			
+			var _hidden_card_startx = hidden_card.x;
+			var _hidden_card_starty = hidden_card.y;
+			
 			insurance_taken = true
 						
 			var _new_bet = instance_create_depth(obj_game.player_chips_x,obj_game.player_chips_y,0,obj_coin);
@@ -51,8 +58,10 @@ switch(sprite_index)
 			action_add(MOVE_OBJECT,1,30,[_new_bet,832,394,30,0])
 			action_add(CHANGE_INSURANCE,1,1,[_insurance_value])
 			action_add(SET_ALARM,1,30,[obj_game,1,1]) // refresh strings
-			action_add(MOVE_OBJECT,1,60,[peeker_base,996,108,30,0])
-			action_add(MOVE_OBJECT,1,30,[peeker_base,peeker_base_startx,peeker_base_starty, 30,0]) // hit
+			//action_add(MOVE_OBJECT,1,60,[peeker_base,996,108,30,0])
+			//action_add(MOVE_OBJECT,1,30,[peeker_base,peeker_base_startx,peeker_base_starty, 30,0])			
+			action_add(MOVE_OBJECT,1,60,[hidden_card,1331+56,21+79,30,0])
+			action_add(MOVE_OBJECT,1,30,[hidden_card,_hidden_card_startx,_hidden_card_starty, 30,0])
 			
 			if _actual_dealer_value < 21
 			{
@@ -78,6 +87,7 @@ switch(sprite_index)
 					action_add(CHANGE_INSURANCE,1,1,[-(_insurance_value*3)])
 					action_add(CHANGE_BALANCE,1,30,[_insurance_value*3])
 					action_add(SET_ALARM,1,1,[obj_game,10,1])
+					action_add(DESTROY_OBJECT,1,1,[_new_bet])
 				}
 				
 			}
@@ -202,11 +212,14 @@ switch(sprite_index)
 			obj_coin.change_player_hand = obj_game.player_hand_current.id
 			obj_coin.change_player_bet = value
 			
+			
 			obj_coin.chip_stack = calculate_chip_stack(value)
+			
+			dbg("1 new coin made", obj_coin.id)
 			
 		}
 		else
-		{
+		{			
 			new_bet = instance_create_depth(350,608,0,obj_coin)
 			// move coin
 			new_bet.targetx = obj_game.player_hand_current.bet_x
@@ -217,6 +230,7 @@ switch(sprite_index)
 			new_bet.destroy_after_anim = true
 			
 			new_bet.chip_stack = calculate_chip_stack(value)
+			dbg("1 new coin made", new_bet.id)
 		}
 		
 		
