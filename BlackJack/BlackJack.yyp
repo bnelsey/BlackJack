@@ -81,6 +81,7 @@
     {"id":{"name":"repeat_bet","path":"scripts/repeat_bet/repeat_bet.yy",},},
     {"id":{"name":"round_end","path":"scripts/round_end/round_end.yy",},},
     {"id":{"name":"round_new","path":"scripts/round_new/round_new.yy",},},
+    {"id":{"name":"scale_canvas","path":"scripts/scale_canvas/scale_canvas.yy",},},
     {"id":{"name":"tween_object","path":"scripts/tween_object/tween_object.yy",},},
     {"id":{"name":"Add_Chips_to_Betting_Circle_v1_wav","path":"sounds/Add_Chips_to_Betting_Circle_v1_wav/Add_Chips_to_Betting_Circle_v1_wav.yy",},},
     {"id":{"name":"Dealer_Down_Card_Flip_v1_wav","path":"sounds/Dealer_Down_Card_Flip_v1_wav/Dealer_Down_Card_Flip_v1_wav.yy",},},

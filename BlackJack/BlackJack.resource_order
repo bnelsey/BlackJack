@@ -60,6 +60,7 @@
     {"name":"repeat_bet","order":19,"path":"scripts/repeat_bet/repeat_bet.yy",},
     {"name":"round_end","order":17,"path":"scripts/round_end/round_end.yy",},
     {"name":"round_new","order":18,"path":"scripts/round_new/round_new.yy",},
+    {"name":"scale_canvas","order":32,"path":"scripts/scale_canvas/scale_canvas.yy",},
     {"name":"tween_object","order":15,"path":"scripts/tween_object/tween_object.yy",},
     {"name":"Dealer_Down_Card_Flip_v1_wav","order":1,"path":"sounds/Dealer_Down_Card_Flip_v1_wav/Dealer_Down_Card_Flip_v1_wav.yy",},
     {"name":"Double_Down_v1_wav","order":2,"path":"sounds/Double_Down_v1_wav/Double_Down_v1_wav.yy",},
