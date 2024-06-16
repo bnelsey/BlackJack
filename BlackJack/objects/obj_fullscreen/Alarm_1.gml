@@ -3,7 +3,7 @@
 
 alarm[1] = room_speed * 1
 //window_set_fullscreen(true)
-//exit
+exit
 
 //if (browser_width != width || browser_height != height)
 {
