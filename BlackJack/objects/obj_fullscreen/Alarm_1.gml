@@ -6,8 +6,8 @@ alarm[1] = room_speed * 1
 // old scale canvas trick
 if (browser_width != width || browser_height != height)
 {
-	width = browser_width //min(base_width, browser_width);
-	height = browser_height //min(base_height, browser_height);
+	width = browser_width /2 //min(base_width, browser_width);
+	height = browser_height / 2 //min(base_height, browser_height);
 	scale_canvas(base_width, base_height, width, height, false);
 }
 

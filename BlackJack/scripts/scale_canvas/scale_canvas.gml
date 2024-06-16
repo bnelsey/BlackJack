@@ -14,7 +14,7 @@ function scale_canvas(argument0, argument1, argument2, argument3, argument4) {
 	var _aspect = (_bw / _bh);
 
 	// true stretch to fill entire screen, or false to stretch while keeping aspect ratio
-	stretch_fill = true
+	stretch_fill = false
 
 	if (stretch_fill)
 	{
