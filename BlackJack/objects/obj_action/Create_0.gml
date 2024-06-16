@@ -17,5 +17,6 @@
 #macro DEAL_CARD 9
 #macro CHANGE_INSURANCE 10
 #macro CHIP_STACK 11
+#macro ROUND_NEW 12
 
 actions = []

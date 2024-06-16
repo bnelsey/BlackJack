@@ -88,6 +88,9 @@ switch(_action_type)
 		deal_hand_card(0);
 		obj_game.player_hand_current = _temp_hand_current // revert current hand to original 
 	break;
+	case ROUND_NEW:
+		round_new()
+	break;
 }
 
 
