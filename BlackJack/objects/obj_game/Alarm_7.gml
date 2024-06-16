@@ -1,7 +1,16 @@
 /// @description create standard buttons
 
-// auto stand if player is dealt a blackjack
-if player_hand_current.player_value == 21 or ace_joker_split == true
+// check if show insurance
+var _show_insurance = false;
+if dealer_value == 9 or dealer_value == 10 or dealer_value == 11 or dealer_value == 12
+{
+	_show_insurance = true
+	dbg("show insurance!")
+}
+
+
+// auto stand if player is dealt a blackjack and don't need to show insurance
+if (player_hand_current.player_value == 21 or ace_joker_split == true) and _show_insurance == false
 {
 	player_stand()
 	//alarm[2] = 1
@@ -12,13 +21,17 @@ new_button = instance_create_depth(5,913,0,obj_button)
 new_button.sprite_index = btn_strategy
 new_button = instance_create_depth(694,912,0,obj_button)
 new_button.sprite_index = btn_stand
-new_button = instance_create_depth(876,917,0,obj_button)
-new_button.sprite_index = btn_hit
+
+if player_hand_current.player_value < 21
+{
+	new_button = instance_create_depth(876,917,0,obj_button)
+	new_button.sprite_index = btn_hit
+}
 
 // check if insurance button should be shown
 if array_length(player_hand_current.player_cards) == 2 and player_splits < 1 and insurance_taken == false
 {
-	if dealer_value == 9 or dealer_value == 10 or dealer_value == 11 or dealer_value == 12
+	if _show_insurance
 	{
 		new_button = instance_create_depth(1577,743,0,obj_button)
 		new_button.sprite_index = btn_insurance
