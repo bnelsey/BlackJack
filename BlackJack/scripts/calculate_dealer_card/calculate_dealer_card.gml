@@ -3,6 +3,9 @@ function calculate_dealer_card(){
 
 	with(obj_game)
 	{
+		
+		
+		
 		len = array_length(dealer_cards)
 		dbg(" -------- start dealer cards ------")
 		for(i=0; i < len; i+=1)

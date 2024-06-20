@@ -54,7 +54,7 @@ function player_stand(){
 			if not double_down
 				alarm[2] = 1	
 			else
-				alarm[2] = 110 // make dealer hit
+				alarm[2] = 60 // make dealer hit
 		}
 		else // not yet last hand to be played because split
 		{

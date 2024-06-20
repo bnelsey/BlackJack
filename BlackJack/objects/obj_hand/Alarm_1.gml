@@ -21,5 +21,4 @@ player_y1 = player_y - player_h * 0.5
 player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
 
-dbg("hand strings updated! bet value is", bet_value)
-dbg("current_time", current_time)
+dbg(string(current_time) + " hand strings updated! current bet value is", bet_value)

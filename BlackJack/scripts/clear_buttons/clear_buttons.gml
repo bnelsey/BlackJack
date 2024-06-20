@@ -14,4 +14,12 @@ function clear_buttons(){
 		delete_object_with_sprite(obj_button, btn_clear_bet)
 		delete_object_with_sprite(obj_button, btn_deal)
 		delete_object_with_sprite(obj_button, btn_insurance)
+		
+		delete_object_with_sprite(obj_button, btn_yes)
+		delete_object_with_sprite(obj_button, btn_no)
+		delete_object_with_sprite(obj_static, spr_even_money)
+		
+		delete_object_with_sprite(obj_button, btn_insurance_yes)
+		delete_object_with_sprite(obj_button, btn_insurance_no)
+		delete_object_with_sprite(obj_static, spr_insurance_question)
 }

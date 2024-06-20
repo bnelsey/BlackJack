@@ -26,6 +26,6 @@ function action_add(_type, _start_delay, _delay_before_next_action, _data_array)
 	}
 	else
 	{
-		dbg("action queue already moving, do not restart")
+		//dbg("action queue already moving, do not restart")
 	}
 }

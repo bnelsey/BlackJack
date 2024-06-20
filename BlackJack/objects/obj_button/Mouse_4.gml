@@ -6,14 +6,59 @@ if not visible
 
 switch(sprite_index)
 {
-	case btn_strategy:		
-		if my_popup == noone
+	case btn_yes:		
+		// player wins 1:1
+		with(obj_game)
 		{
-			alarm[0] = 3
-			my_popup = instance_create_depth(1097, 158, -99999, obj_static)
-			my_popup.sprite_index = spr_strategy
+			dbg("player took even money, dealer pays player his bet amount")
+					
+			// add chips to hand's bet
+			var _new_chip = instance_create_depth(dealer_chips_x,dealer_chips_y,0,obj_coin);
+			action_add(SOUND_PLAY,0,0,[Winning_Hand_v1_wav, false])
+			action_add(SET_VISIBLE,0,0,[_new_chip, true])
+			action_move(0,30,_new_chip,player_hand_current.bet_x, player_hand_current.bet_y, 30)
+			action_add(DESTROY_OBJECT,0,0,_new_chip)
+				
+			var _bet = player_hand_current.bet_value
+		
+			// winnings change depending on specific conditions
+			var _winnings = player_hand_current.bet_value;
+			_new_chip.chip_stack = calculate_chip_stack(_winnings)	
+				
+			action_add(CHANGE_BET,0,30,[player_hand_current, _winnings]) // 30 frame delay before next action		
+			action_add(CHANGE_BET,0,0,[player_hand_current,-(_winnings+_bet)])
+			action_add(SOUND_PLAY,0,0,[Add_Chips_to_Betting_Circle_v1_wav, false])
+			action_move(0,30,player_hand_current.bet_obj,player_chips_x, player_chips_y, 30)
+			action_add(DESTROY_OBJECT,0,0,player_hand_current.bet_obj)
+			action_add(CHANGE_BALANCE,0,0,_winnings+_bet)
+		
+			// reveal hidden card
+			hidden_card = find_hidden_card()	
+			action_add(SOUND_PLAY,0,0,[Dealer_Down_Card_Flip_v1_wav,false])
+			action_add(SET_ALARM,0,60,[hidden_card,1,1])
+			//action_add(SET_ALARM,0,0,[obj_game,9,1])
+
+			// round end
+			last_bet_value = player_hand_current.bet_value
+			action_add(ROUND_NEW,1,1,[obj_game])
+			action_add(SET_ALARM,0,0,[obj_game,4,1])
+			clear_buttons()
 		}
 	break;
+	case btn_strategy:		
+		with(obj_game)
+		{
+			if my_popup == noone
+			{
+				alarm[0] = 3
+				//my_popup = instance_create_depth(1097, 158, -99999, obj_static)
+				my_popup = instance_create_depth(1097, 140, -99999, obj_static)
+				my_popup.sprite_index = spr_strategy
+				my_popup_created_on = current_time
+			}
+		}
+	break;
+	case btn_insurance_yes:
 	case btn_insurance:
 				
 		with(obj_game)
@@ -115,14 +160,82 @@ switch(sprite_index)
 		}
 		image_index = global.volume
 		audio_master_gain(global.volume)	
+
+		with(obj_button)
+		{	
+			if sprite_index == btn_medium
+			{
+				image_alpha = 0		
+				if button_id == global.volume
+					image_alpha = 1
+			}
+		}
 		
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Volume", global.volume);
+		ini_close();
+	break;
+	
+	
+	case btn_medium:
+		// activate one sound button
+		dbg("button clicked", button_id)
+		with(obj_button)
+		{
+			if sprite_index == btn_medium
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1	
+		
+		global.volume = button_id
+		audio_master_gain(global.volume)	
+		
+		with(obj_button)
+		{
+			if sprite_index == btn_audio
+				image_index = global.volume			
+		}
 
 		ini_open("savegame.ini");
 		ini_write_real("Settings", "Volume", global.volume);
 		ini_close();
 	break;
+	
+	case btn_settings:
+		with(obj_game)
+		{
+			if settings_static.visible == false
+			{
+				settings_static.visible = true
+				instance_activate_all()				
+				// refresh volume button in settings
+				with(obj_button)
+				{	
+					if sprite_index == btn_medium
+					{
+						image_alpha = 0		
+						if button_id == global.volume
+							image_alpha = 1
+					}
+				}
+			}
+			else
+			{
+				settings_static.visible = false
+				with(obj_button)
+				{
+					if sprite_index == btn_medium or sprite_index == btn_small
+						instance_deactivate_object(id)
+				}
+			}
+		}
+	
+	break;
+	
 	case btn_chips_lower:
-		if obj_game.bet_button_lowest.image_index > 6
+		if obj_game.bet_button_lowest.image_index > 5
 		{
 			with(obj_button)
 			{
@@ -139,6 +252,17 @@ switch(sprite_index)
 					if image_index > 0 or image_index < sprite_get_number(btn_bet) 
 						visible = true						
 				}				
+			}
+			
+			//msg("obj_game.bet_button_lowest.image_index",obj_game.bet_button_lowest.image_index)
+
+			if obj_game.bet_button_lowest.image_index >= 6
+			{
+				obj_game.stakes_obj.image_index = 1
+			}
+			else
+			{
+				obj_game.stakes_obj.image_index = 0
 			}
 		}
 	break;
@@ -157,6 +281,18 @@ switch(sprite_index)
 						value = obj_game.chip_values[image_index]
 				}				
 			}
+			
+			//msg("obj_game.bet_button_lowest.image_index",obj_game.bet_button_lowest.image_index)
+			
+			if obj_game.bet_button_lowest.image_index >= 12
+			{
+				obj_game.stakes_obj.image_index = 2
+			}
+			else if obj_game.bet_button_lowest.image_index >= 6
+			{
+				obj_game.stakes_obj.image_index = 1
+			}
+			
 		}
 	break;
 	case btn_bet:
@@ -348,13 +484,13 @@ switch(sprite_index)
 				calculate_hand_card()
 				
 				action_add(DEAL_CARD,30,0,[player_hand_current])
-				action_add(SET_ALARM,1,1,[obj_game,9,1])
+				action_add(SET_ALARM,1,1,[obj_game,9,30])
 				action_add(SET_ALARM,1,1,[obj_game,1,1])
 				player_hand_current = _current_hand_temp // return to original hand
 				action_add(DEAL_CARD,30,0,[player_hand_current])
-				action_add(SET_ALARM,1,1,[obj_game,9,1])
-				action_add(SET_ALARM,1,1,[obj_game,1,1])
+				action_add(SET_ALARM,1,1,[obj_game,9,30])
 				action_add(SET_ALARM,1,1,[obj_game,7,1]) // show buttons
+				action_add(SET_ALARM,1,1,[obj_game,1,1])
 				
 				// move card object
 				targetx = player_hand_list[player_splits].player_card_x + card_xoffset
@@ -414,8 +550,21 @@ switch(sprite_index)
 		clear_buttons()
 		
 	break;
-	case btn_stand:
-		player_stand()
+	case btn_insurance_no:
+	case btn_no:	
+		hidden_card = find_hidden_card()			
+		if hidden_card == noone
+			exit
+			
+		var _hidden_card_startx = hidden_card.x;
+		var _hidden_card_starty = hidden_card.y;
+						
+		action_add(MOVE_OBJECT,1,60,[hidden_card,1331+56,21+79,30,0])
+		action_add(MOVE_OBJECT,1,30,[hidden_card,_hidden_card_startx,_hidden_card_starty, 30,0])
+	
+	case btn_stand:	
+		action_add(SET_ALARM,1,1,[obj_game,10,1])
+		//player_stand()
 		//obj_game.alarm[2] = 1	
 		clear_buttons()
 	break;
@@ -448,20 +597,18 @@ switch(sprite_index)
 	
 		//action_add(DEAL_CARD,60,0,[obj_game.player_hand_current])
 		action_add(SET_ALARM,60,2,[obj_game,8,1]) // hit
-		action_add(SET_ALARM,1,1,[obj_game,9,1])
+		//action_add(SET_ALARM,1,1,[obj_game,9,1])
+		action_add(SET_ALARM,1,1,[obj_game.player_hand_current,1,30])
 		action_add(SET_ALARM,1,1,[obj_game,1,1])
+		action_add(SET_ALARM,1,1,[obj_game,10,1])
 		//obj_game.alarm[8] = 60 // player_hit() but with adjustable delay	
 		
-		
+		/*
 		with(obj_game)
 		{
-			/*
-			if player_hand_current_id == player_splits
-				alarm[2] = 110 // make dealer hit
-			else
-			*/
 				player_stand()
 		}
+		*/
 		
 
 		clear_buttons()
@@ -538,7 +685,36 @@ switch(sprite_index)
 		}
 	break;
 	
-	case btn_new_card_shoe:		
+
+	case btn_small:
+	
+		if obj_action.alarm[1] > -1 or obj_action.alarm[2] > -1 or instance_exists(obj_tween) 
+			or obj_game.alarm[7] > -1 or obj_game.alarm[2] > -1
+			exit
+	
+	
+		// activate one deck # button
+		with(obj_button)
+		{
+			if sprite_index = btn_small
+			{
+				drawsprite = false
+			}
+		}
+		drawsprite = true	
+		
+		global.decks = button_id
+		
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Decks", global.decks);
+		ini_close();	
+	
+	// no break because right after btn_small, the code for new card shoe should also run
+	case btn_new_card_shoe:
+	
+		if obj_action.alarm[1] > -1 or obj_action.alarm[2] > -1 or instance_exists(obj_tween) 
+			or obj_game.alarm[7] > -1 or obj_game.alarm[2] > -1
+			exit
 	
 		with(obj_coin)
 		{	

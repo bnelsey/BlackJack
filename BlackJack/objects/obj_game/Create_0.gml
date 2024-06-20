@@ -1,11 +1,20 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+
+
 draw_set_font(fnt_table)
 draw_set_halign(fa_center)
-draw_set_valign(fa_center)
+draw_set_valign(fa_middle)
 
 instance_create_depth(0,0,0,obj_fullscreen)
 instance_create_depth(0,0,0,obj_action)
+
+even_money_obj = noone
+my_popup = noone
+my_popup_created_on = current_time
+
+
 
 insurance_coin_obj = noone
 insurance_value = 0
@@ -21,6 +30,8 @@ insurance_y2 = insurance_y + insurance_h * 0.5
 
 depth = -999
 
+setup_settings()
+
 
 first_click_done = false
 new_bet = instance_create_depth(34,16,0,obj_button)
@@ -28,6 +39,8 @@ new_bet.sprite_index = btn_audio
 new_bet.image_index = global.volume
 new_bet.image_xscale = 0.5
 new_bet.image_yscale = 0.5
+
+
 
 peeker_base_startx = 1372
 peeker_base_starty = 1
@@ -181,47 +194,47 @@ player_x2 = player_x + player_w * 0.5
 player_y2 = player_y + player_h * 0.5
 
 
-new_bet = instance_create_depth(9,795,0,obj_button)
+new_bet = instance_create_depth(1,964,0,obj_button)
 new_bet.sprite_index = btn_chips_lower
-new_bet = instance_create_depth(562,1025,0,obj_button)
+new_bet = instance_create_depth(315,964,0,obj_button)
 new_bet.sprite_index = btn_chips_higher
-
+stakes_obj = instance_create_depth(162,959,10,obj_static)
+stakes_obj.sprite_index = spr_stakes
+stakes_obj.image_index = 0
 
 
 new_bet = instance_create_depth(3,605,0,obj_button)
 bet_button_lowest = new_bet
 new_bet.button_id = 1
 new_bet.sprite_index = btn_bet
-new_bet.value = 5
-new_bet.image_index = 1
 new_bet = instance_create_depth(103,679,0,obj_button)
 new_bet.button_id = 2
 new_bet.sprite_index = btn_bet
-new_bet.value = 10
-new_bet.image_index = 2
 new_bet = instance_create_depth(210,745,0,obj_button)
 new_bet.button_id = 3
 new_bet.sprite_index = btn_bet
-new_bet.value = 25
-new_bet.image_index = 3
 new_bet = instance_create_depth(322,804,0,obj_button)
 new_bet.button_id = 4
 new_bet.sprite_index = btn_bet
-new_bet.value = 100
-new_bet.image_index = 4
 new_bet = instance_create_depth(440,850,0,obj_button)
 new_bet.button_id = 5
 new_bet.sprite_index = btn_bet
-new_bet.value = 500
-new_bet.image_index = 5
 new_bet = instance_create_depth(562,884,0,obj_button)
-bet_button_highest = new_bet
 new_bet.button_id = 6
 new_bet.sprite_index = btn_bet
-new_bet.value = 1000
-new_bet.image_index = 6
 
 
+with(obj_button)
+{
+	if sprite_index == btn_bet
+	{
+		image_index = button_id - 1
+		value = obj_game.chip_values[image_index]
+	}
+}
+
+
+						
 
 new_button = instance_create_depth(1483,-149,2,obj_button)
 new_button.sprite_index = btn_new_card_shoe

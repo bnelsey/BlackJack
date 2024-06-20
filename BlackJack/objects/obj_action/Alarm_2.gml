@@ -15,12 +15,18 @@ switch(_action_type)
 	// move_object is probably only useful if it -has- to be done in a specific order
 	case MOVE_OBJECT:		
 		dbg("move object")
-		tween_object( _data_array[0], _data_array[1],  _data_array[2], _data_array[3], 0)	
+		if instance_exists(_data_array[0])
+		{
+			tween_object( _data_array[0], _data_array[1],  _data_array[2], _data_array[3], 0)	
+		}
 	break
 	
 	case DESTROY_OBJECT:
-		dbg("destroy object")
-		instance_destroy(_data_array[0])
+		if instance_exists(_data_array[0])
+		{
+			dbg("destroy object with sprite", sprite_get_name(_data_array[0].sprite_index))
+			instance_destroy(_data_array[0])
+		}
 	break
 	
 	case CHANGE_BET:
@@ -87,9 +93,13 @@ switch(_action_type)
 		obj_game.player_hand_current = _data_array[0]
 		deal_hand_card(0);
 		obj_game.player_hand_current = _temp_hand_current // revert current hand to original 
-	break;
+	break;	
 	case ROUND_NEW:
-		round_new()
+		with(obj_game)
+		{
+			dbg("round_new()")
+			round_new()
+		}
 	break;
 }
 

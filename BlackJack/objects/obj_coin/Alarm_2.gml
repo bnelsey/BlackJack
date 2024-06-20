@@ -34,6 +34,7 @@ if change_player_balance != 0
 
 if change_player_bet != 0
 {
+	dbg("new change_player_hand.bet_value", change_player_hand.bet_value)
 	var _bet_obj = change_player_hand.bet_obj;	
 	_bet_obj.chip_stack = calculate_chip_stack( change_player_hand.bet_value)
 }
@@ -43,6 +44,7 @@ change_player_bet = 0
 
 obj_game.alarm[1] = 1 // update display strings
 obj_game.player_hand_current.alarm[1] = 1 // update display strings
+change_player_hand.alarm[1] = 1 // update display strings
 
 if destroy_after_anim
 {

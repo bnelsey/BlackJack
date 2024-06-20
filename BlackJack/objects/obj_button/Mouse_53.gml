@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 
+/*
 if alarm[0] > -1
 	exit
 
@@ -13,3 +14,4 @@ if sprite_index == btn_strategy
 	}
 	my_popup = noone
 }
+*/

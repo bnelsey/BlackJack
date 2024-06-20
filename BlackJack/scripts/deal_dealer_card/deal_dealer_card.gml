@@ -39,6 +39,8 @@ function deal_dealer_card(_hidden, _startdelay){
 			
 			
 			tween_object(new_card,targetx,targety, 30, _startdelay)
+			new_card.targetx = targetx
+			new_card.targety = targety
 			
 			// deal one card from deck array
 			dealt_card = array_pop(deck)

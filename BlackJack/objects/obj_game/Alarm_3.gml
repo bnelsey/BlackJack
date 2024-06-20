@@ -3,6 +3,7 @@
 obj_game.last_bet_value = obj_game.player_hand_current.bet_value
 obj_game.alarm[1] = 1
 
+		
 if double_down
 {
 	dbg("double down so last bet value is set to half")
@@ -31,4 +32,6 @@ else if player_splits == 2
 }
 
 
-round_new()
+action_add(ROUND_NEW,1,1,[obj_game])
+action_add(SET_ALARM,0,0,[obj_game,4,1])
+//round_new()

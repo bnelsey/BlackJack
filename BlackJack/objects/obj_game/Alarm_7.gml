@@ -2,10 +2,30 @@
 
 // check if show insurance
 var _show_insurance = false;
-if dealer_value == 9 or dealer_value == 10 or dealer_value == 11 or dealer_value == 12
+if dealer_value == 11 or dealer_value == 12
 {
 	_show_insurance = true
 	dbg("show insurance!")
+}
+
+var _results = check_initial_hands_for_wins();
+var _dealer_j21 = _results[0];
+var _player_j21 = _results[1];
+var _dealer_blackjack = _results[2];
+var _player_blackjack = _results[3];	
+
+// show even money buttons
+var _show_even_money = false;
+if (_player_j21 and dealer_value == 12) or (_player_blackjack and dealer_value == 11)
+{
+	even_money_obj = instance_create_depth(1081,839,0,obj_static)
+	even_money_obj.sprite_index = spr_even_money
+	
+	new_button = instance_create_depth(1041,912,0,obj_button)
+	new_button.sprite_index = btn_yes
+	new_button = instance_create_depth(1214,912,0,obj_button)
+	new_button.sprite_index = btn_no	
+	_show_even_money = true
 }
 
 
@@ -17,12 +37,17 @@ if (player_hand_current.player_value == 21 or ace_joker_split == true) and _show
 	exit
 }
 
-new_button = instance_create_depth(5,913,0,obj_button)
+new_button = instance_create_depth(1753,913,0,obj_button)
 new_button.sprite_index = btn_strategy
-new_button = instance_create_depth(694,912,0,obj_button)
-new_button.sprite_index = btn_stand
 
-if player_hand_current.player_value < 21
+
+if not(_show_insurance == true or _show_even_money == true)
+{
+	new_button = instance_create_depth(694,912,0,obj_button)
+	new_button.sprite_index = btn_stand
+}
+
+if player_hand_current.player_value < 21 and (not _show_insurance or insurance_taken)
 {
 	new_button = instance_create_depth(876,917,0,obj_button)
 	new_button.sprite_index = btn_hit
@@ -31,14 +56,25 @@ if player_hand_current.player_value < 21
 // check if insurance button should be shown
 if array_length(player_hand_current.player_cards) == 2 and player_splits < 1 and insurance_taken == false
 {
-	if _show_insurance
+	if _show_insurance == true and _show_even_money == false
 	{
+		/*
 		new_button = instance_create_depth(1577,743,0,obj_button)
 		new_button.sprite_index = btn_insurance
+		*/
+		
+		even_money_obj = instance_create_depth(1081,839,0,obj_static)
+		even_money_obj.sprite_index = spr_insurance_question
+	
+		new_button = instance_create_depth(1041,912,0,obj_button)
+		new_button.sprite_index = btn_insurance_yes
+		new_button = instance_create_depth(1214,912,0,obj_button)
+		new_button.sprite_index = btn_insurance_no	
 	}
 }
 
 // check if split button should be shown
+if (not _show_insurance or insurance_taken)
 if array_length(player_hand_current.player_cards) == 2 and (player_hand_current.player_cards[0] == player_hand_current.player_cards[1]) and player_splits < 2 and ace_joker_split == false
 {
 	dbg("player_cards[0]",player_hand_current.player_cards[0], "player_cards[1]", player_hand_current.player_cards[1], "player_splits", player_splits)
@@ -51,7 +87,7 @@ if array_length(player_hand_current.player_cards) == 2 and (player_hand_current.
 }
 
 // check if double down or surrender should be shown
-if array_length(player_hand_current.player_cards) < 3
+if array_length(player_hand_current.player_cards) < 3 
 {
 	num_jokers = array_count(player_hand_current.player_cards, 0)
 	num_aces = array_count(player_hand_current.player_cards, 1)
@@ -59,6 +95,7 @@ if array_length(player_hand_current.player_cards) < 3
 	// double down button only enabled when there are no soft cards
 	
 	//if num_jokers + num_aces < 1
+	if player_hand_current.player_value < 21 and (not _show_insurance or insurance_taken)
 	{
 		new_button = instance_create_depth(1056,912,0,obj_button)
 		new_button.sprite_index = btn_double_down

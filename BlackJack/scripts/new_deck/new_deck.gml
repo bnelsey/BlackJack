@@ -12,20 +12,28 @@ function new_deck(){
 		// special jokers: 56, 57
 		
 		deck = []
+		var _temp_deck = []
 
 		// Initialize the array with numbers 1 to 56
 		for (i = 0; i < 56; i++) {
-		    deck[i] = i;
+		    _temp_deck[i] = i;
 		}
 
 		// add one extra joker from each suite
 		//array_push(deck, 0, 14, 28, 42)
 
 		// add special black and red jokers
-		array_push(deck, 56,56,57,57)
+		array_push(_temp_deck, 56,56,57,57)
 
-		dbg("deck",deck)
-		dbg("deck size",array_length(deck))
+		dbg("deck",_temp_deck)
+		dbg("deck size",array_length(_temp_deck))
+		
+		
+		repeat(global.decks)
+		{
+			deck = array_concat(deck, _temp_deck)			
+		}
+		
 		
 		// shuffle array
 		deck = array_shuffle(deck)
