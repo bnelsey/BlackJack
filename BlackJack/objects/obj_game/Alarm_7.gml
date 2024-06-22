@@ -8,6 +8,12 @@ if dealer_value == 11 or dealer_value == 12
 	dbg("show insurance!")
 }
 
+if regular_play_resume
+{
+	_show_insurance = false
+	dbg("regular play resume, don't show insurance!")
+}
+
 var _results = check_initial_hands_for_wins();
 var _dealer_j21 = _results[0];
 var _player_j21 = _results[1];
@@ -32,7 +38,9 @@ if (_player_j21 and dealer_value == 12) or (_player_blackjack and dealer_value =
 // auto stand if player is dealt a blackjack and don't need to show insurance
 if (player_hand_current.player_value == 21 or ace_joker_split == true) and _show_insurance == false
 {
+	dbg("player auto stand")
 	player_stand()
+	regular_play_resume = false // reset regular play
 	//alarm[2] = 1
 	exit
 }
@@ -41,7 +49,7 @@ new_button = instance_create_depth(1753,913,0,obj_button)
 new_button.sprite_index = btn_strategy
 
 
-if not(_show_insurance == true or _show_even_money == true)
+if not(_show_insurance == true or _show_even_money == true) or regular_play_resume == true
 {
 	new_button = instance_create_depth(694,912,0,obj_button)
 	new_button.sprite_index = btn_stand
@@ -122,3 +130,6 @@ if player_splits > 0
 		player_hand_current.alarm[2] = 1
 	}
 }
+
+
+//regular_play_resume = false // reset regular play

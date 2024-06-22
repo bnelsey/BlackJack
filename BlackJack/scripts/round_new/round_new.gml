@@ -9,6 +9,7 @@ function round_new(){
 	double_down = false
 	ace_joker_split = false
 	insurance_taken = false
+	regular_play_resume = false
 	
 	
 	player_hand_current_id = 0

@@ -551,6 +551,22 @@ switch(sprite_index)
 		
 	break;
 	case btn_insurance_no:
+		dbg("clicked btn_insurance_no")
+
+		hidden_card = find_hidden_card()			
+		if hidden_card == noone
+			exit
+			
+		var _hidden_card_startx = hidden_card.x;
+		var _hidden_card_starty = hidden_card.y;
+						
+		action_add(MOVE_OBJECT,1,60,[hidden_card,1331+56,21+79,30,0])
+		action_add(MOVE_OBJECT,1,30,[hidden_card,_hidden_card_startx,_hidden_card_starty, 30,0])
+		action_add(SET_ALARM,1,1,[obj_game,7,1])
+		obj_game.regular_play_resume = true
+		clear_buttons()
+	break;
+	
 	case btn_no:	
 		hidden_card = find_hidden_card()			
 		if hidden_card == noone
@@ -561,7 +577,8 @@ switch(sprite_index)
 						
 		action_add(MOVE_OBJECT,1,60,[hidden_card,1331+56,21+79,30,0])
 		action_add(MOVE_OBJECT,1,30,[hidden_card,_hidden_card_startx,_hidden_card_starty, 30,0])
-	
+		clear_buttons()
+		
 	case btn_stand:	
 		action_add(SET_ALARM,1,1,[obj_game,10,1])
 		//player_stand()

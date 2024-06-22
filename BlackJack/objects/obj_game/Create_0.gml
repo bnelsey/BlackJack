@@ -13,7 +13,7 @@ instance_create_depth(0,0,0,obj_action)
 even_money_obj = noone
 my_popup = noone
 my_popup_created_on = current_time
-
+regular_play_resume = false
 
 
 insurance_coin_obj = noone
