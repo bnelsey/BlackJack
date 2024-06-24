@@ -8,7 +8,7 @@ if dealer_value == 11 or dealer_value == 12
 	dbg("show insurance!")
 }
 
-if regular_play_resume
+if regular_play_resume or insurance_taken == true
 {
 	_show_insurance = false
 	dbg("regular play resume, don't show insurance!")
@@ -40,7 +40,7 @@ if (player_hand_current.player_value == 21 or ace_joker_split == true) and _show
 {
 	dbg("player auto stand")
 	player_stand()
-	regular_play_resume = false // reset regular play
+	//regular_play_resume = false // reset regular play
 	//alarm[2] = 1
 	exit
 }
