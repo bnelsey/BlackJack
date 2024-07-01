@@ -101,6 +101,9 @@ switch(_action_type)
 			round_new()
 		}
 	break;
+	case CALCULATE_DEALER_VALUE:
+		calculate_dealer_card()
+	break;
 }
 
 

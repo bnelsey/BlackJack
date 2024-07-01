@@ -91,6 +91,7 @@ player_card_xsep = 56
 player_card_ysep = -79
 
 dealer_cards = []
+dealer_cards_temp = []
 dealer_card_x = 839
 dealer_card_y = 9
 dealer_card_dealt = 0

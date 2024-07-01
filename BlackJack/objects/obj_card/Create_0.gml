@@ -3,6 +3,8 @@
 
 image_speed = 0
 hidden = false
+dealer_card = false
+value = 0
 
 flip_stage = 0
 steps_total = 60 / 4

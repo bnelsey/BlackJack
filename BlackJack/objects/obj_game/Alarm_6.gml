@@ -8,6 +8,7 @@ deal_dealer_card(false, 10)
 deal_hand_card(20);
 deal_dealer_card(true, 30)
 		
+calculate_dealer_card()
 calculate_hand_card()
 
 obj_game.alarm[1] = 50

@@ -18,5 +18,6 @@
 #macro CHANGE_INSURANCE 10
 #macro CHIP_STACK 11
 #macro ROUND_NEW 12
+#macro CALCULATE_DEALER_VALUE 13
 
 actions = []

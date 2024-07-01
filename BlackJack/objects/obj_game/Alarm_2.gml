@@ -12,9 +12,12 @@ if hidden_card != noone
 {
 	hidden_card.alarm[1] = 1
 	audio_play_sound(Dealer_Down_Card_Flip_v1_wav,1,false)
+	alarm[2] = 30
+	exit
 }
 
 calculate_dealer_card()
+alarm[1] = 1
 
 
 var _results = check_initial_hands_for_wins();
@@ -42,7 +45,7 @@ else
 	else
 	{
 		//msg("dealer should hit!","","soft_hand", soft_hand,"dealer_value", dealer_value)	
-		deal_dealer_card(false, 30)
+		deal_dealer_card(false, 1)
 		alarm[2] = 30
 	}
 }

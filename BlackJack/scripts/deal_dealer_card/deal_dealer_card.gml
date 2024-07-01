@@ -31,6 +31,7 @@ function deal_dealer_card(_hidden, _startdelay){
 			
 			
 			new_card = instance_create_depth(deck_x, deck_y, -dealer_card_dealt, obj_card)
+			new_card.dealer_card = true
 			new_card.image_angle = 44
 			new_card.alarm[0] = _startdelay // fix image angle
 			audio_play_sound_delayed(Hit_v1_wav, _startdelay)
@@ -51,11 +52,13 @@ function deal_dealer_card(_hidden, _startdelay){
 
 			var _value = get_card_value(dealt_card)
 			array_push(dealer_cards,_value) // only push card value to hand
+			new_card.value = _value // only dealer cards care about their value
+			
 			dbg("dealer card value pushed", _value)
 			
-			if not _hidden // only calculate non-hidden cards
+			//if not _hidden // only calculate non-hidden cards
 			{					
-				calculate_dealer_card()				
+				//calculate_dealer_card()				
 			}
 	
 			// debugging
