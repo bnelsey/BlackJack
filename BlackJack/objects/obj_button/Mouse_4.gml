@@ -60,6 +60,7 @@ switch(sprite_index)
 	break;
 	case btn_insurance_yes:
 	case btn_insurance:
+		dbg("======== player took insurance =========")
 				
 		with(obj_game)
 		{			
@@ -103,7 +104,7 @@ switch(sprite_index)
 			
 			// check hidden card value
 			var _hidden_dealer_value = dealer_value;
-			calculate_dealer_card()
+			calculate_dealer_card_all()
 			var _actual_dealer_value = dealer_value;
 			dealer_value = _hidden_dealer_value; // do not change currently displayed dealer value
 			

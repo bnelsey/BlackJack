@@ -36,6 +36,7 @@
     {"name":"array_sum","order":10,"path":"scripts/array_sum/array_sum.yy",},
     {"name":"audio_play_sound_delayed","order":30,"path":"scripts/audio_play_sound_delayed/audio_play_sound_delayed.yy",},
     {"name":"calculate_chip_stack","order":31,"path":"scripts/calculate_chip_stack/calculate_chip_stack.yy",},
+    {"name":"calculate_dealer_card_all","order":36,"path":"scripts/calculate_dealer_card_all/calculate_dealer_card_all.yy",},
     {"name":"calculate_dealer_card_old","order":35,"path":"scripts/calculate_dealer_card_old/calculate_dealer_card_old.yy",},
     {"name":"calculate_dealer_card","order":11,"path":"scripts/calculate_dealer_card/calculate_dealer_card.yy",},
     {"name":"calculate_hand_card","order":21,"path":"scripts/calculate_hand_card/calculate_hand_card.yy",},

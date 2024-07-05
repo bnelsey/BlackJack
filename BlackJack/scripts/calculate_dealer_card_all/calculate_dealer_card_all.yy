@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"calculate_dealer_card_all",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"calculate_dealer_card_all",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

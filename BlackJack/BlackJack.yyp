@@ -32,7 +32,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.6.0.157",
   },
   "name":"BlackJack",
   "resources":[
@@ -56,6 +56,7 @@
     {"id":{"name":"array_sum","path":"scripts/array_sum/array_sum.yy",},},
     {"id":{"name":"audio_play_sound_delayed","path":"scripts/audio_play_sound_delayed/audio_play_sound_delayed.yy",},},
     {"id":{"name":"calculate_chip_stack","path":"scripts/calculate_chip_stack/calculate_chip_stack.yy",},},
+    {"id":{"name":"calculate_dealer_card_all","path":"scripts/calculate_dealer_card_all/calculate_dealer_card_all.yy",},},
     {"id":{"name":"calculate_dealer_card_old","path":"scripts/calculate_dealer_card_old/calculate_dealer_card_old.yy",},},
     {"id":{"name":"calculate_dealer_card","path":"scripts/calculate_dealer_card/calculate_dealer_card.yy",},},
     {"id":{"name":"calculate_hand_card","path":"scripts/calculate_hand_card/calculate_hand_card.yy",},},

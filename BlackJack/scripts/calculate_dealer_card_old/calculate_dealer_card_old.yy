@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"calculate_dealer_card_old",
   "isCompatibility":false,
   "isDnD":false,

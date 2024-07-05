@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"calculate_player_card",
   "isCompatibility":false,
   "isDnD":false,

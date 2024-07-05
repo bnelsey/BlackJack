@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"find_tween_with_targetobj",
   "isCompatibility":false,
   "isDnD":false,

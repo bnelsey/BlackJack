@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"get_card_details",
   "isCompatibility":false,
   "isDnD":false,

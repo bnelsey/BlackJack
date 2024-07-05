@@ -28,7 +28,7 @@ function check_initial_hands_for_wins(){
 		if array_length(dealer_cards) == 2
 		{
 			var _hidden_dealer_value = dealer_value;
-			calculate_dealer_card()
+			calculate_dealer_card_all()
 			var _actual_dealer_value = dealer_value;
 			dealer_value = _hidden_dealer_value; // do not change currently displayed dealer value
 			

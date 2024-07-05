@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"check_initial_hands_for_wins",
   "isCompatibility":false,
   "isDnD":false,

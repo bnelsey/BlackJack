@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"deal_player_card",
   "isCompatibility":false,
   "isDnD":false,

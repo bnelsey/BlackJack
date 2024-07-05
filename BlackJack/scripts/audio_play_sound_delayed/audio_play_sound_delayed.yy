@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"audio_play_sound_delayed",
   "isCompatibility":false,
   "isDnD":false,

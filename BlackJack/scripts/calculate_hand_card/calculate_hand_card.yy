@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"calculate_hand_card",
   "isCompatibility":false,
   "isDnD":false,

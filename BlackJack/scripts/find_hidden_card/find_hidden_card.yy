@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"find_hidden_card",
   "isCompatibility":false,
   "isDnD":false,

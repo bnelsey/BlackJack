@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"repeat_bet",
   "isCompatibility":false,
   "isDnD":false,

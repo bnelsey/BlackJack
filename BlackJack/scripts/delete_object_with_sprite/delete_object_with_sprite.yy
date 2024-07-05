@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"delete_object_with_sprite",
   "isCompatibility":false,
   "isDnD":false,

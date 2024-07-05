@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"calculate_chip_stack",
   "isCompatibility":false,
   "isDnD":false,

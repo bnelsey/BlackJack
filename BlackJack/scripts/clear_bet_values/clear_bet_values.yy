@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"clear_bet_values",
   "isCompatibility":false,
   "isDnD":false,

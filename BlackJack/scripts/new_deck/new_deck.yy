@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"new_deck",
   "isCompatibility":false,
   "isDnD":false,
