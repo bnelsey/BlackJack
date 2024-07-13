@@ -4,6 +4,116 @@ if not visible
 	exit
 
 
+switch(button_section)
+{
+	case SETTINGS_SFX:
+		// activate one sound button
+		dbg("button clicked", button_id)
+		with(obj_button)
+		{
+			if button_section == SETTINGS_SFX
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1	
+		
+		global.volume = button_id
+		audio_master_gain(global.volume)	
+		
+		with(obj_button)
+		{
+			if sprite_index == btn_audio
+				image_index = global.volume			
+		}
+
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Volume", global.volume);
+		ini_close();
+	break;
+
+	case SETTINGS_MUSIC:
+		// activate one sound button
+		dbg("button clicked", button_id)
+		with(obj_button)
+		{
+			if button_section == SETTINGS_MUSIC
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1	
+		
+		global.musicvolume = button_id
+		audio_master_gain(global.musicvolume)	
+		
+
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "MusicVolume", global.musicvolume);
+		ini_close();
+	break;
+	
+	case SETTINGS_PLAYLIST:
+		dbg("button clicked", button_id)
+		// individual toggle buttons
+		if image_alpha
+		{
+			image_alpha = 0
+		}
+		else
+		{
+			image_alpha = 1
+		}
+	break;
+	case SETTINGS_BUY_IN:
+		dbg("button clicked", button_id)
+		with(obj_button)
+		{
+			if button_section == SETTINGS_BUY_IN
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1
+		
+		
+		global.buy_in = button_id
+		//audio_master_gain(global.musicvolume)		
+
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Buy-in", global.buy_in);
+		ini_close();
+	break;
+	
+	case SETTINGS_DECKS:
+	
+		if obj_action.alarm[1] > -1 or obj_action.alarm[2] > -1 or instance_exists(obj_tween) 
+			or obj_game.alarm[7] > -1 or obj_game.alarm[2] > -1
+			exit
+	
+	
+		// activate one deck # button
+		with(obj_button)
+		{
+			if button_section == SETTINGS_DECKS
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1
+		
+		global.decks = button_id
+		
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Decks", global.decks);
+		ini_close();	
+	
+		new_card_shoe() // run new card shoe code after decks button
+	
+	break;
+}
+
+
 switch(sprite_index)
 {
 	case btn_yes:		
@@ -164,7 +274,7 @@ switch(sprite_index)
 
 		with(obj_button)
 		{	
-			if sprite_index == btn_medium
+			if button_section == SETTINGS_SFX
 			{
 				image_alpha = 0		
 				if button_id == global.volume
@@ -178,31 +288,6 @@ switch(sprite_index)
 	break;
 	
 	
-	case btn_medium:
-		// activate one sound button
-		dbg("button clicked", button_id)
-		with(obj_button)
-		{
-			if sprite_index == btn_medium
-			{
-				image_alpha = 0
-			}
-		}
-		image_alpha = 1	
-		
-		global.volume = button_id
-		audio_master_gain(global.volume)	
-		
-		with(obj_button)
-		{
-			if sprite_index == btn_audio
-				image_index = global.volume			
-		}
-
-		ini_open("savegame.ini");
-		ini_write_real("Settings", "Volume", global.volume);
-		ini_close();
-	break;
 	
 	case btn_settings:
 		with(obj_game)
@@ -214,7 +299,7 @@ switch(sprite_index)
 				// refresh volume button in settings
 				with(obj_button)
 				{	
-					if sprite_index == btn_medium
+					if button_section == SETTINGS_SFX
 					{
 						image_alpha = 0		
 						if button_id == global.volume
@@ -227,7 +312,7 @@ switch(sprite_index)
 				settings_static.visible = false
 				with(obj_button)
 				{
-					if sprite_index == btn_medium or sprite_index == btn_small
+					if button_section > 0
 						instance_deactivate_object(id)
 				}
 			}
@@ -719,82 +804,7 @@ switch(sprite_index)
 	break;
 	
 
-	case btn_small:
-	
-		if obj_action.alarm[1] > -1 or obj_action.alarm[2] > -1 or instance_exists(obj_tween) 
-			or obj_game.alarm[7] > -1 or obj_game.alarm[2] > -1
-			exit
-	
-	
-		// activate one deck # button
-		with(obj_button)
-		{
-			if sprite_index = btn_small
-			{
-				drawsprite = false
-			}
-		}
-		drawsprite = true	
-		
-		global.decks = button_id
-		
-		ini_open("savegame.ini");
-		ini_write_real("Settings", "Decks", global.decks);
-		ini_close();	
-	
-	// no break because right after btn_small, the code for new card shoe should also run
 	case btn_new_card_shoe:
-	
-		if obj_action.alarm[1] > -1 or obj_action.alarm[2] > -1 or instance_exists(obj_tween) 
-			or obj_game.alarm[7] > -1 or obj_game.alarm[2] > -1
-			exit
-	
-		with(obj_coin)
-		{	
-			obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
-			obj_game.balance_value += change_player_bet
-			instance_destroy()	
-		}
-		
-		obj_game.balance_value += obj_game.player_hand_current.bet_value		
-		obj_game.balance_chips = calculate_chip_stack(obj_game.balance_value)
-		obj_game.player_hand_current.bet_value = 0
-		obj_game.alarm[1] = 1 // refresh strings
-		
-		
-		audio_play_sound(New_Card_Shoe_v1_wav,1,false)
-		with(obj_game)
-		{			
-			// move bets to hand if any			
-			for(i=0;i<=2;i+=1)
-			{
-				modify_hand = player_hand_list[i]
-				_bet_value = modify_hand.bet_value
-				modify_hand.playing = false
-				if _bet_value > 0
-				{
-					action_add(CHANGE_BET,0,0,[modify_hand,-_bet_value])
-					action_move(0,30,modify_hand.bet_obj,player_chips_x, player_chips_y, 30)
-					action_add(DESTROY_OBJECT,0,0,modify_hand.bet_obj)
-					action_add(CHANGE_BALANCE,0,0,_bet_value)
-				}
-			}
-			
-			dealer_value = 0
-			player_hand_current_id = 0 // 0 middle, 1 right, 2 left
-			player_splits = 0
-			ace_joker_split = false
-			
-			round_new()
-		}
-		
-		clear_hand_values()
-		new_deck()	
-		with(obj_card)
-		{
-			instance_destroy()	
-		}
-		
-		clear_buttons()
+		new_card_shoe()
 	break;
 }

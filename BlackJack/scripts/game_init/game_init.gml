@@ -3,14 +3,23 @@
 function game_init(){
 	global.volume = 1
 	global.decks = 5
+	global.musicvolume = 1
+	global.buy_in = 5000
 	
 	if file_exists("savegame.ini") {
 	    ini_open("savegame.ini");
 	    global.volume = ini_read_real("Settings", "Volume", 1);
 		global.volume = floor(global.volume)
+		
+	    global.musicvolume = ini_read_real("Settings", "MusicVolume", 1);
+		global.musicvolume = floor(global.musicvolume)
 				
-	    global.decks = ini_read_real("Settings", "Decks", 5);
+	    global.decks = ini_read_real("Settings", "Decks", 5);		
 		global.decks = floor(global.decks)		
+		
+	    global.buy_in = ini_read_real("Settings", "Buy-in", 5000);		
+		global.buy_in = floor(global.buy_in)		
+		
 	    ini_close();
 	}
 	randomize();

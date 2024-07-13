@@ -141,7 +141,7 @@ dbg("deck", deck)
 
 //alarm[1] = room_speed // update strings
 
-balance_value = 50000
+balance_value = global.buy_in
 balance_string = string(balance_value)
 balance_x = 407
 balance_y = 744

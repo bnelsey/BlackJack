@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"new_card_shoe",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"new_card_shoe",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
