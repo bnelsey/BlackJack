@@ -1,34 +1,36 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function setup_settings(){
-	settings_static = instance_create_depth(1030,190,-1001,obj_static)
+	
+	new_button = instance_create_depth(1781,285,-1002,obj_button)
+	new_button.sprite_index = btn_settings
+	
+	settings_static = instance_create_depth(1030,79,-1001,obj_static)
 	settings_static.sprite_index = settings_main
 
-	new_button = instance_create_depth(1781,292,-1002,obj_button)
-	new_button.sprite_index = btn_settings
 	
 	xoffset = 4
 	yoffset = 3
 
 	// sfx
-	new_button = instance_create_depth(1457-xoffset,299-yoffset,-1002,obj_button)
+	new_button = instance_create_depth(1457-xoffset,187-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_SFX
 	new_button.button_id = 1
 	new_button.image_alpha = 0
-	new_button = instance_create_depth(1633-xoffset,299-yoffset,-1002,obj_button)
+	new_button = instance_create_depth(1633-xoffset,187-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116	
 	new_button.button_section = SETTINGS_SFX
 	new_button.button_id = 0
 	new_button.image_alpha = 0
 
 	// music
-	new_button = instance_create_depth(1457-xoffset,299-yoffset + 103,-1002,obj_button)
+	new_button = instance_create_depth(1457-xoffset,290-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_MUSIC
 	new_button.button_id = 1
 	new_button.image_alpha = 1
-	new_button = instance_create_depth(1633-xoffset,299-yoffset + 103,-1002,obj_button)
+	new_button = instance_create_depth(1633-xoffset,290-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_MUSIC
 	new_button.button_id = 0

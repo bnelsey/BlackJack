@@ -805,6 +805,10 @@ switch(sprite_index)
 	
 
 	case btn_new_card_shoe:
-		new_card_shoe()
+	
+		if obj_game.settings_static.visible == false
+		{
+			new_card_shoe()
+		}
 	break;
 }
