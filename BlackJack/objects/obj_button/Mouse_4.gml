@@ -162,12 +162,27 @@ switch(button_section)
 
 
 // disable all non-settings buttons when settings is open
-if obj_game.settings_static.visible == true
+if obj_game.settings_static.visible == true and sprite_index != btn_settings
 	exit
 
 
 switch(sprite_index)
 {
+	/*
+	case btn_strategy:
+		with(obj_game)
+		{
+			if strategy_static.visible == false
+			{
+				strategy_static.visible = true	
+			}
+			else
+			{
+				strategy_static.visible = false	
+			}
+		}
+	break;
+	*/
 	case btn_yes:		
 		// player wins 1:1
 		with(obj_game)
@@ -214,8 +229,8 @@ switch(sprite_index)
 			{
 				alarm[0] = 3
 				//my_popup = instance_create_depth(1097, 158, -99999, obj_static)
-				my_popup = instance_create_depth(1097, 140, -99999, obj_static)
-				my_popup.sprite_index = spr_strategy
+				my_popup = instance_create_depth(993, 0, -99999, obj_static)
+				my_popup.sprite_index = spr_j21_strategy
 				my_popup_created_on = current_time
 			}
 		}

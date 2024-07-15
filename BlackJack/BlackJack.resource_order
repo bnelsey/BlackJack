@@ -120,6 +120,7 @@
     {"name":"spr_even_money","order":8,"path":"sprites/spr_even_money/spr_even_money.yy",},
     {"name":"spr_hearts","order":3,"path":"sprites/spr_hearts/spr_hearts.yy",},
     {"name":"spr_insurance_question","order":14,"path":"sprites/spr_insurance_question/spr_insurance_question.yy",},
+    {"name":"spr_j21_strategy","order":19,"path":"sprites/spr_j21_strategy/spr_j21_strategy.yy",},
     {"name":"spr_peeker","order":6,"path":"sprites/spr_peeker/spr_peeker.yy",},
     {"name":"spr_settings_old","order":9,"path":"sprites/spr_settings_old/spr_settings_old.yy",},
     {"name":"spr_spades","order":4,"path":"sprites/spr_spades/spr_spades.yy",},

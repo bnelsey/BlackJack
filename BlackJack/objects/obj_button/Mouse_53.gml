@@ -20,8 +20,27 @@ if sprite_index == btn_settings
 		}
 	}	
 }
+/*
+else if sprite_index == btn_strategy
+{
+	with(obj_game)
+	{
+		strategy_static.visible = false	
+	}
+}
+*/
 
+if alarm[0] > -1
+	exit
 
+if sprite_index == btn_strategy
+{
+	with(my_popup)
+	{
+		instance_destroy()	
+	}
+	my_popup = noone
+}
 
 /*
 if alarm[0] > -1

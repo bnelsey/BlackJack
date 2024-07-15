@@ -36,6 +36,10 @@ depth = -999
 setup_settings()
 
 
+strategy_static = instance_create_depth(993,0,-1003,obj_static)
+strategy_static.sprite_index = spr_j21_strategy
+strategy_static.visible = false
+
 first_click_done = false
 new_bet = instance_create_depth(34,16,0,obj_button)
 new_bet.sprite_index = btn_audio
