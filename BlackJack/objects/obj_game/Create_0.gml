@@ -1,9 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+
 layer_id = layer_get_id("Background")
 bg_id = layer_background_get_id(layer_id);
-layer_background_index(bg_id, irandom(2));
+layer_background_index(bg_id, global.table_color);
 
 draw_set_font(fnt_table)
 draw_set_halign(fa_center)

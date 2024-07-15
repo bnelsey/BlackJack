@@ -111,7 +111,59 @@ switch(button_section)
 		new_card_shoe() // run new card shoe code after decks button
 	
 	break;
+	
+	
+	case SETTINGS_TABLE:
+	
+		// activate one deck # button
+		with(obj_button)
+		{
+			if button_section == SETTINGS_TABLE
+			{
+				image_alpha = 0
+			}
+		}
+		image_alpha = 1
+		
+		global.table_color = button_id
+		
+		
+		layer_id = layer_get_id("Background")
+		bg_id = layer_background_get_id(layer_id);
+		layer_background_index(bg_id, button_id);
+		
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "Table-color", global.table_color);
+		ini_close();	
+	break;
+	
+	
+	case SETTINGS_ABOUT_ADS:
+		with(obj_game)
+		{
+			if settings_about_ads.visible == false
+			{
+				settings_about_ads.visible = true
+				settings_about_ads_arrow.visible = true
+			}
+			else
+			{
+				settings_about_ads.visible = false
+				settings_about_ads_arrow.visible = false
+			}
+		}
+	
+	break;
+	
+	case SETTINGS_ABOUT_J21PC:
+		url_open_ext("https://joker21.info/", "_blank")
+	break;
 }
+
+
+// disable all non-settings buttons when settings is open
+if obj_game.settings_static.visible == true
+	exit
 
 
 switch(sprite_index)
@@ -295,6 +347,11 @@ switch(sprite_index)
 			if settings_static.visible == false
 			{
 				settings_static.visible = true
+				
+				// reset about ads visibility
+				settings_about_ads.visible = false
+				settings_about_ads_arrow.visible = false
+				
 				instance_activate_all()				
 				// refresh volume button in settings
 				with(obj_button)
@@ -310,6 +367,9 @@ switch(sprite_index)
 			else
 			{
 				settings_static.visible = false
+				
+				settings_about_ads.visible = false
+				settings_about_ads_arrow.visible = false
 				with(obj_button)
 				{
 					if button_section > 0

@@ -17,6 +17,9 @@ text = ""
 #macro SETTINGS_PLAYLIST 3
 #macro SETTINGS_BUY_IN 4
 #macro SETTINGS_DECKS 5
+#macro SETTINGS_TABLE 6
+#macro SETTINGS_ABOUT_ADS 7
+#macro SETTINGS_ABOUT_J21PC 8
 
 /*
 d = date_compare_date(date_create_datetime(2024, 6, 30, 0, 0, 0), date_current_datetime());

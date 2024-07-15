@@ -10,6 +10,8 @@ if sprite_index == btn_settings
 		with(obj_game)
 		{
 			settings_static.visible = false
+			settings_about_ads.visible = false
+			settings_about_ads_arrow.visible = false
 			with(obj_button)
 			{
 				if button_section > 0
