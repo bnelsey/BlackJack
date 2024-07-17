@@ -14,7 +14,9 @@ function game_init(){
 	global.playlist_jazz = true
 	global.playlist_latin = true
 	global.playlist = []
-	global.current_music = snd_dance1
+	global.current_music = 0
+	
+	audio_group_load(group_bgm);
 	
 
 	if file_exists("savegame.ini") {

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"J21PC_Jazz_01",
+  "audioGroupId":{
+    "name":"group_bgm",
+    "path":"audiogroups/group_bgm",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":2,
+  "conversionMode":0,
+  "duration":256.0,
+  "name":"J21PC_Jazz_01",
+  "parent":{
+    "name":"music",
+    "path":"folders/Sounds/music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"J21PC_Jazz_01.wav",
+  "type":0,
+  "volume":1.0,
+}

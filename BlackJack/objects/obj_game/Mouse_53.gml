@@ -1,10 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
-first_click_done = true
-audio_master_gain(global.volume)
-
+if first_click_done == false
+{
+	first_click_done = true
+	audio_master_gain(global.volume)
+	alarm[11] = 1
+}
 
 with(my_popup)
 {

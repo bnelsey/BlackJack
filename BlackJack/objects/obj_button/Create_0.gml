@@ -22,9 +22,9 @@ text = ""
 #macro SETTINGS_ABOUT_J21PC 8
 
 
-#macro SETTINGS_PLAYLIST_DANCE 1
-#macro SETTINGS_PLAYLIST_ISLAND 2
-#macro SETTINGS_PLAYLIST_JAZZ 3
+#macro SETTINGS_PLAYLIST_JAZZ 1
+#macro SETTINGS_PLAYLIST_DANCE 2
+#macro SETTINGS_PLAYLIST_ISLAND 3
 #macro SETTINGS_PLAYLIST_LATIN 4
 /*
 d = date_compare_date(date_create_datetime(2024, 6, 30, 0, 0, 0), date_current_datetime());

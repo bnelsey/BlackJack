@@ -66,25 +66,25 @@ function setup_settings(){
 	list_island = []
 	list_jazz = []
 	list_latin = []
-	array_push(list_dance, snd_dance1, snd_dance2)
-	array_push(list_island, snd_island1, snd_island2)
-	array_push(list_jazz, snd_jazz1, snd_jazz2)
-	array_push(list_latin, snd_latin1, snd_latin2)
+	array_push(list_jazz, J21PC_Jazz_01, J21PC_Jazz_02, J21PC_Jazz_03)
+	//array_push(list_dance, snd_dance1, snd_dance2)
+	//array_push(list_island, snd_island1, snd_island2)
+	//array_push(list_latin, snd_latin1, snd_latin2)
 	
 	new_button = instance_create_depth(1333-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = SETTINGS_PLAYLIST_DANCE
+	new_button.button_id = SETTINGS_PLAYLIST_JAZZ
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1448-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button154
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = SETTINGS_PLAYLIST_ISLAND
+	new_button.button_id = SETTINGS_PLAYLIST_DANCE
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1605-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button154
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = SETTINGS_PLAYLIST_JAZZ
+	new_button.button_id = SETTINGS_PLAYLIST_ISLAND
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1773-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116

@@ -19,7 +19,9 @@ switch(button_section)
 		image_alpha = 1	
 		
 		global.volume = button_id
-		audio_master_gain(global.volume)	
+		
+		//audio_master_gain(global.volume)	
+		audio_group_set_gain(audiogroup_default, global.volume, 1)
 		
 		with(obj_button)
 		{
@@ -45,7 +47,9 @@ switch(button_section)
 		image_alpha = 1	
 		
 		global.musicvolume = button_id
-		audio_master_gain(global.musicvolume)	
+		//audio_master_gain(global.musicvolume)	
+		
+		audio_group_set_gain(group_bgm, global.musicvolume, 1)
 		
 
 		ini_open("savegame.ini");
@@ -88,7 +92,7 @@ switch(button_section)
 		ini_write_real("Settings", "PlaylistLatin", global.playlist_latin);
 		ini_close();
 		
-		obj_game.alarm[11] = room_speed
+		obj_game.alarm[11] = room_speed / 2
 		global.playlist = [] // reset playlist
 	break;
 	case SETTINGS_BUY_IN:
