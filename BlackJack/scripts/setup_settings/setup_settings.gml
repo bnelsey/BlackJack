@@ -2,6 +2,10 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function setup_settings(){
 	
+	
+	
+	
+	
 	xoffset = 4
 	yoffset = 3
 	
@@ -57,26 +61,35 @@ function setup_settings(){
 	new_button.button_id = 0
 	new_button.image_alpha = 1
 	
-	// playlist
+	// playlists
+	list_dance = []
+	list_island = []
+	list_jazz = []
+	list_latin = []
+	array_push(list_dance, snd_dance1, snd_dance2)
+	array_push(list_island, snd_island1, snd_island2)
+	array_push(list_jazz, snd_jazz1, snd_jazz2)
+	array_push(list_latin, snd_latin1, snd_latin2)
+	
 	new_button = instance_create_depth(1333-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = 0
+	new_button.button_id = SETTINGS_PLAYLIST_DANCE
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1448-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button154
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = 1
+	new_button.button_id = SETTINGS_PLAYLIST_ISLAND
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1605-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button154
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = 2
+	new_button.button_id = SETTINGS_PLAYLIST_JAZZ
 	new_button.image_alpha = 0
 	new_button = instance_create_depth(1773-xoffset,375-yoffset,-1002,obj_button)
 	new_button.sprite_index = button116
 	new_button.button_section = SETTINGS_PLAYLIST
-	new_button.button_id = 3
+	new_button.button_id = SETTINGS_PLAYLIST_LATIN
 	new_button.image_alpha = 0
 	
 	
@@ -146,7 +159,25 @@ function setup_settings(){
 		}
 		if button_section == SETTINGS_PLAYLIST
 		{
-			image_alpha = 1
+			switch(button_id)
+			{
+				case SETTINGS_PLAYLIST_DANCE:
+					if global.playlist_dance						
+						image_alpha = 1
+				break;
+				case SETTINGS_PLAYLIST_ISLAND:
+					if global.playlist_island						
+						image_alpha = 1
+				break;
+				case SETTINGS_PLAYLIST_JAZZ:
+					if global.playlist_jazz						
+						image_alpha = 1
+				break;
+				case SETTINGS_PLAYLIST_LATIN:
+					if global.playlist_latin						
+						image_alpha = 1
+				break;
+			}
 		}
 		if button_section == SETTINGS_BUY_IN
 		{

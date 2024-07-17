@@ -1,5 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+
+
 function game_init(){
 	global.volume = 1
 	global.decks = 5
@@ -7,6 +9,14 @@ function game_init(){
 	global.buy_in = 5000
 	global.table_color = 0
 	
+	global.playlist_dance = true
+	global.playlist_island = true
+	global.playlist_jazz = true
+	global.playlist_latin = true
+	global.playlist = []
+	global.current_music = snd_dance1
+	
+
 	if file_exists("savegame.ini") {
 	    ini_open("savegame.ini");
 	    global.volume = ini_read_real("Settings", "Volume", 1);
@@ -14,6 +24,15 @@ function game_init(){
 		
 	    global.musicvolume = ini_read_real("Settings", "MusicVolume", 1);
 		global.musicvolume = floor(global.musicvolume)
+		
+	    global.playlist_dance = ini_read_real("Settings", "PlaylistDance", 1);
+		global.playlist_dance = floor(global.playlist_dance)
+	    global.playlist_island = ini_read_real("Settings", "PlaylistIsland", 1);
+		global.playlist_island = floor(global.playlist_island)
+	    global.playlist_jazz = ini_read_real("Settings", "PlaylistJazz", 1);
+		global.playlist_jazz = floor(global.playlist_jazz)
+	    global.playlist_latin = ini_read_real("Settings", "PlaylistLatin", 1);
+		global.playlist_latin = floor(global.playlist_latin)
 				
 	    global.decks = ini_read_real("Settings", "Decks", 5);		
 		global.decks = floor(global.decks)		

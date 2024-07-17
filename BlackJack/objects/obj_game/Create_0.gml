@@ -13,6 +13,9 @@ draw_set_valign(fa_middle)
 instance_create_depth(0,0,0,obj_fullscreen)
 instance_create_depth(0,0,0,obj_action)
 
+
+setup_settings()
+
 even_money_obj = noone
 my_popup = noone
 my_popup_created_on = current_time
@@ -33,12 +36,7 @@ insurance_y2 = insurance_y + insurance_h * 0.5
 
 depth = -999
 
-setup_settings()
 
-
-strategy_static = instance_create_depth(993,0,-1003,obj_static)
-strategy_static.sprite_index = spr_j21_strategy
-strategy_static.visible = false
 
 first_click_done = false
 new_bet = instance_create_depth(34,16,0,obj_button)

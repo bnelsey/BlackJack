@@ -64,6 +64,32 @@ switch(button_section)
 		{
 			image_alpha = 1
 		}
+				
+		switch(button_id)
+		{
+			case SETTINGS_PLAYLIST_DANCE:
+				global.playlist_dance = bool(image_alpha)
+			break;
+			case SETTINGS_PLAYLIST_ISLAND:
+				global.playlist_island = bool(image_alpha)
+			break;
+			case SETTINGS_PLAYLIST_JAZZ:
+				global.playlist_jazz = bool(image_alpha)
+			break;
+			case SETTINGS_PLAYLIST_LATIN:
+				global.playlist_latin = bool(image_alpha)
+			break;
+		}
+		
+		ini_open("savegame.ini");
+		ini_write_real("Settings", "PlaylistDance", global.playlist_dance);
+		ini_write_real("Settings", "PlaylistIsland", global.playlist_island);
+		ini_write_real("Settings", "PlaylistJazz", global.playlist_jazz);
+		ini_write_real("Settings", "PlaylistLatin", global.playlist_latin);
+		ini_close();
+		
+		obj_game.alarm[11] = room_speed
+		global.playlist = [] // reset playlist
 	break;
 	case SETTINGS_BUY_IN:
 		dbg("button clicked", button_id)
