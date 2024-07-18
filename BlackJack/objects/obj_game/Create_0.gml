@@ -39,11 +39,17 @@ depth = -999
 
 
 first_click_done = false
-new_bet = instance_create_depth(34,16,0,obj_button)
-new_bet.sprite_index = btn_audio
-new_bet.image_index = global.volume
-new_bet.image_xscale = 0.5
-new_bet.image_yscale = 0.5
+new_btn = instance_create_depth(63,16,0,obj_button)
+new_btn.sprite_index = btn_audio
+new_btn.image_index = global.volume
+new_btn.image_xscale = 0.5
+new_btn.image_yscale = 0.5
+
+new_btn = instance_create_depth(3,16,0,obj_button)
+new_btn.sprite_index = btn_prev
+
+new_btn = instance_create_depth(124,16,0,obj_button)
+new_btn.sprite_index = btn_next
 
 
 

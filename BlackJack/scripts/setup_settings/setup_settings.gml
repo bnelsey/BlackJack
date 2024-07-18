@@ -148,7 +148,7 @@ function setup_settings(){
 		if button_section == SETTINGS_SFX
 		{
 			image_alpha = 0		
-			if button_id == global.volume
+			if button_id == global.sfx
 				image_alpha = 1
 		}
 		if button_section == SETTINGS_MUSIC

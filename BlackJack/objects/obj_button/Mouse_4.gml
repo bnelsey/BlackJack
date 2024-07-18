@@ -9,6 +9,10 @@ switch(button_section)
 	case SETTINGS_SFX:
 		// activate one sound button
 		dbg("button clicked", button_id)
+		
+		if global.volume == 0
+			exit
+		
 		with(obj_button)
 		{
 			if button_section == SETTINGS_SFX
@@ -18,25 +22,23 @@ switch(button_section)
 		}
 		image_alpha = 1	
 		
-		global.volume = button_id
+		global.sfx = button_id
 		
 		//audio_master_gain(global.volume)	
-		audio_group_set_gain(audiogroup_default, global.volume, 1)
-		
-		with(obj_button)
-		{
-			if sprite_index == btn_audio
-				image_index = global.volume			
-		}
+		audio_group_set_gain(audiogroup_default, global.sfx, 1)		
 
 		ini_open("savegame.ini");
-		ini_write_real("Settings", "Volume", global.volume);
+		ini_write_real("Settings", "Sfx", global.sfx);
 		ini_close();
 	break;
 
 	case SETTINGS_MUSIC:
 		// activate one sound button
 		dbg("button clicked", button_id)
+		
+		if global.volume == 0
+			exit
+			
 		with(obj_button)
 		{
 			if button_section == SETTINGS_MUSIC
@@ -59,6 +61,10 @@ switch(button_section)
 	
 	case SETTINGS_PLAYLIST:
 		dbg("button clicked", button_id)
+		
+		if global.volume == 0
+			exit
+			
 		// individual toggle buttons
 		if image_alpha
 		{
@@ -369,6 +375,7 @@ switch(sprite_index)
 		image_index = global.volume
 		audio_master_gain(global.volume)	
 
+		/*
 		with(obj_button)
 		{	
 			if button_section == SETTINGS_SFX
@@ -378,10 +385,43 @@ switch(sprite_index)
 					image_alpha = 1
 			}
 		}
+		*/
 		
 		ini_open("savegame.ini");
 		ini_write_real("Settings", "Volume", global.volume);
 		ini_close();
+	break;
+	case btn_prev:		
+		if array_length(global.playlist) < 1
+		{
+			dbg("no song in playlist, do nothing")
+			exit
+		}
+
+		audio_group_stop_all(group_bgm)
+		
+		global.current_music -= 1
+		if global.current_music < 0
+			global.current_music = array_length(global.playlist) - 1
+		
+		audio_play_sound(global.playlist[global.current_music], 1, false)
+		dbg("now playing", audio_get_name(global.playlist[global.current_music]))	
+	break;
+	case btn_next:
+		if array_length(global.playlist) < 1
+		{
+			dbg("no song in playlist, do nothing")
+			exit
+		}
+
+		audio_group_stop_all(group_bgm)
+		
+		global.current_music += 1
+		if global.current_music >= array_length(global.playlist)
+			global.current_music = 0
+		
+		audio_play_sound(global.playlist[global.current_music], 1, false)
+		dbg("now playing", audio_get_name(global.playlist[global.current_music]))	
 	break;
 	
 	
@@ -399,13 +439,43 @@ switch(sprite_index)
 				
 				instance_activate_all()				
 				// refresh volume button in settings
+				
+				
 				with(obj_button)
 				{	
 					if button_section == SETTINGS_SFX
 					{
 						image_alpha = 0		
-						if button_id == global.volume
-							image_alpha = 1
+						if button_id == global.sfx
+							image_alpha = (global.volume == 1 ? 1 : 0.5)
+					}
+					if button_section == SETTINGS_MUSIC
+					{
+						image_alpha = 0		
+						if button_id == global.musicvolume
+							image_alpha = (global.volume == 1 ? 1 : 0.5)
+					}
+					if button_section == SETTINGS_PLAYLIST
+					{
+						switch(button_id)
+						{
+							case SETTINGS_PLAYLIST_JAZZ:
+								if global.playlist_jazz
+									image_alpha = (global.volume == 1 ? 1 : 0.5)
+							break;
+							case SETTINGS_PLAYLIST_DANCE:
+								if global.playlist_dance
+									image_alpha = (global.volume == 1 ? 1 : 0.5)
+							break;
+							case SETTINGS_PLAYLIST_ISLAND:
+								if global.playlist_island
+									image_alpha = (global.volume == 1 ? 1 : 0.5)
+							break;
+							case SETTINGS_PLAYLIST_LATIN:
+								if global.playlist_latin
+									image_alpha = (global.volume == 1 ? 1 : 0.5)
+							break;
+						}
 					}
 				}
 			}

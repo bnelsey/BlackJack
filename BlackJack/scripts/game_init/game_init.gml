@@ -4,8 +4,9 @@
 
 function game_init(){
 	global.volume = 1
-	global.decks = 5
+	global.sfx = 1
 	global.musicvolume = 1
+	global.decks = 5
 	global.buy_in = 5000
 	global.table_color = 0
 	
@@ -23,6 +24,9 @@ function game_init(){
 	    ini_open("savegame.ini");
 	    global.volume = ini_read_real("Settings", "Volume", 1);
 		global.volume = floor(global.volume)
+		
+	    global.sfx = ini_read_real("Settings", "Sfx", 1);
+		global.sfx = floor(global.sfx)
 		
 	    global.musicvolume = ini_read_real("Settings", "MusicVolume", 1);
 		global.musicvolume = floor(global.musicvolume)
