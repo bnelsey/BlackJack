@@ -10,7 +10,10 @@ my_popup = noone
 drawtext = false
 drawsprite = false
 text = ""
-
+xoffset = 0
+yoffset = 0
+h_align = fa_center
+v_align = fa_center
 
 #macro SETTINGS_SFX 1
 #macro SETTINGS_MUSIC 2

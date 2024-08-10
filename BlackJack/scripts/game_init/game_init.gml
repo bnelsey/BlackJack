@@ -19,6 +19,8 @@ function game_init(){
 	
 	audio_group_load(group_bgm);
 	
+	
+	
 
 	if file_exists("savegame.ini") {
 	    ini_open("savegame.ini");

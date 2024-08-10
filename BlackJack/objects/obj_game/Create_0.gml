@@ -1,6 +1,41 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if os_type == os_android or os_type == os_windows
+{
+	first_click_done = true
+	audio_master_gain(global.volume)
+	alarm[11] = 1
+		
+	ads_spr = instance_create_depth(1473,379,10,obj_static)
+	ads_spr.sprite_index = ads_placement
+	ads_spr.image_alpha = 1
+	
+	
+	ads_spr_btn = instance_create_depth(1601,478,10,obj_static)
+	ads_spr_btn.sprite_index = ads_placement_button
+	ads_spr_btn.image_alpha = 1
+	
+	free_chips_spr = instance_create_depth(3,198,10,obj_button)
+	free_chips_spr.sprite_index = free_chips_box
+	free_chips_spr.image_alpha = 1
+	free_chips_spr.drawtext = true
+	free_chips_spr.drawsprite = true
+	free_chips_spr.text = "Free Chips Now: 999,000"
+	free_chips_spr.xoffset = 8
+	free_chips_spr.yoffset = 42
+	free_chips_spr.h_align = fa_left
+	free_chips_spr.v_align = fa_middle
+	
+	free_chips_coin = instance_create_depth(63,332,10,obj_static)
+	free_chips_coin.sprite_index = free_chips_spin
+	free_chips_coin.image_alpha = 1
+	free_chips_coin.image_angle = 250
+}
+
+
+
+	
 
 layer_id = layer_get_id("Background")
 bg_id = layer_background_get_id(layer_id);
@@ -12,6 +47,7 @@ draw_set_valign(fa_middle)
 
 instance_create_depth(0,0,0,obj_fullscreen)
 instance_create_depth(0,0,0,obj_action)
+
 
 
 setup_settings()
