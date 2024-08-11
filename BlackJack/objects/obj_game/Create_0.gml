@@ -5,14 +5,18 @@ if os_type == os_android or os_type == os_windows
 {
 	first_click_done = true
 	audio_master_gain(global.volume)
-	alarm[11] = 1
+	
+	if os_type == os_android
+	{
+		//ads_spr = instance_create_depth(1494,798,11,Obj_AdMob)
+		ads_spr = instance_create_depth(24,409,11,Obj_AdMob)
+	}
 		
-	ads_spr = instance_create_depth(1473,379,10,obj_static)
+	ads_spr = instance_create_depth(1473,379,11,obj_static)
 	ads_spr.sprite_index = ads_placement
 	ads_spr.image_alpha = 1
-	
-	
-	ads_spr_btn = instance_create_depth(1601,478,10,obj_static)
+		
+	ads_spr_btn = instance_create_depth(1601,478,10,obj_button)
 	ads_spr_btn.sprite_index = ads_placement_button
 	ads_spr_btn.image_alpha = 1
 	
@@ -21,16 +25,30 @@ if os_type == os_android or os_type == os_windows
 	free_chips_spr.image_alpha = 1
 	free_chips_spr.drawtext = true
 	free_chips_spr.drawsprite = true
-	free_chips_spr.text = "Free Chips Now: 999,000"
+	free_chips_spr.text = "Free Chips Now: " + string(global.free_chips)
 	free_chips_spr.xoffset = 8
 	free_chips_spr.yoffset = 42
 	free_chips_spr.h_align = fa_left
 	free_chips_spr.v_align = fa_middle
+	free_chips_spr.alarm[2] = 1 // free chips incremenet
 	
-	free_chips_coin = instance_create_depth(63,332,10,obj_static)
+	free_chips_coin = instance_create_depth(63,332,10,obj_button)
 	free_chips_coin.sprite_index = free_chips_spin
 	free_chips_coin.image_alpha = 1
-	free_chips_coin.image_angle = 250
+	free_chips_coin.spin_speed = 1.2
+	free_chips_coin.alarm[1] = 1
+	
+	
+	if not global.first_fadein
+	{
+		global.first_fadein = true	
+		instance_create_depth(0,0,-999999999, obj_fadein)
+		alarm[11] = floor(room_speed * 0.75)	// play music		
+	}
+	else
+	{	
+		alarm[11] = 1	// play music
+	}
 }
 
 

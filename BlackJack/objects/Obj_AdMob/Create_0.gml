@@ -94,7 +94,12 @@ function updateConsentStrings() {
 // Sets this device as a test device (should be called before AdMob_Initialize)
 // NOTE: This is for development only and should not be used when your game enters production.
 // ** On iOS devices to use test device you need to include the App Tracking Transparency extension. **
-AdMob_SetTestDeviceId();
+
+if global.use_test_ads == true
+{
+	dbg("using test ads!")
+	AdMob_SetTestDeviceId();
+}
 
 // On the new version of this extension you are also able to control the max rating of the
 // content displayed on the ads, bellow there is an example with all the possible options available.

@@ -3,6 +3,10 @@
 
 
 function game_init(){
+	global.use_test_ads = true
+	global.free_chips = 0
+	global.first_fadein = false
+	
 	global.volume = 1
 	global.sfx = 1
 	global.musicvolume = 1

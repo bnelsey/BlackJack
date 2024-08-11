@@ -204,6 +204,42 @@ if obj_game.settings_static.visible == true and sprite_index != btn_settings
 
 switch(sprite_index)
 {
+	case free_chips_spin:
+	case free_chips_box:
+		if global.free_chips > 0
+		{
+			with(obj_game)
+			{
+				free_chips = global.free_chips
+				half_chip_size = 57
+				var _new_chip = instance_create_depth(63-half_chip_size,332-half_chip_size,0,obj_coin);
+				_new_chip.chip_stack = calculate_chip_stack(free_chips)
+				action_move(0,60,_new_chip,player_chips_x, player_chips_y, 60)
+				action_add(DESTROY_OBJECT,0,0,_new_chip)
+				action_add(CHANGE_BALANCE,0,0,free_chips)		
+				action_add(SET_ALARM,0,0,[obj_game,1,1])	
+			}
+			// reset global free chips and text
+			global.free_chips = 0
+			var _reset_text_obj = find_object_with_sprite(obj_button,free_chips_box); // only the box has the text
+			_reset_text_obj.text = "Free Chips Now: " + string(global.free_chips)
+		}
+	break;
+	case ads_placement_button:	
+		if(AdMob_RewardedVideo_IsLoaded())
+		{
+			// Loaded: show rewarded video ad
+			AdMob_RewardedVideo_Show()
+		}
+		else
+		{
+			// Not Loaded: load rewarded video ad
+			//show_message_async("RewardedVideoAd Still loading, try again soon")
+			sysmsg(1690, 730, "The Rewarded Video Ad is still loading\ntry again in a few seconds")
+			AdMob_RewardedVideo_Load()
+		}
+		
+	break;
 	/*
 	case btn_strategy:
 		with(obj_game)
@@ -567,7 +603,7 @@ switch(sprite_index)
 		if obj_game.balance_value < 5 and obj_game.player_hand_current.bet_value < 1 and not instance_exists(obj_coin)
 		{
 			msg("no more player funds, game restarting"	)
-			game_restart()
+			room_restart()
 			exit
 		}
 			
@@ -702,6 +738,7 @@ switch(sprite_index)
 	case btn_deal:
 		clear_hand_values()
 		obj_game.alarm[6] = 1
+		click_time = current_time
 	break	
 	
 

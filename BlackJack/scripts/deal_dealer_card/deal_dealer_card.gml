@@ -5,7 +5,7 @@ function deal_dealer_card(_hidden, _startdelay){
 		if array_length(obj_game.deck) < 1
 		{
 			msg("no more cards left in deck! restarting game")
-			game_restart()
+			room_restart()
 			exit
 		}
 		

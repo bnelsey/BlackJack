@@ -188,7 +188,20 @@ switch(async_load[?"type"])
 	// AdMob_RewardedVideo triggered reward event
 	case "AdMob_RewardedVideo_OnReward":
 		// At this point you can reward the user.
-		show_message_async("User Earned Reward");
+		//show_message_async("1M chips rewarded!");
+		
+		sysmsg(1690, 730, "1M chips earned!")
+		with(obj_game)
+		{
+			free_chips = 1000000
+			half_chip_size = 57
+			var _new_chip = instance_create_depth(1693-half_chip_size,577-half_chip_size,0,obj_coin);
+			_new_chip.chip_stack = calculate_chip_stack(free_chips)
+			action_move(0,120,_new_chip,player_chips_x, player_chips_y, 120)
+			action_add(DESTROY_OBJECT,0,0,_new_chip)
+			action_add(CHANGE_BALANCE,0,0,free_chips)		
+			action_add(SET_ALARM,0,0,[obj_game,1,1])	
+		}
 		break;
 	
 	
@@ -226,7 +239,7 @@ switch(async_load[?"type"])
 	case "AdMob_RewardedInterstitial_OnReward":
 		// At this point you can reward the user.
 		show_message_async("User Earned Reward");
-		break;
+		
 		
 		
 	// ########### APP OPEN ###########

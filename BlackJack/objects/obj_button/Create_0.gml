@@ -14,6 +14,9 @@ xoffset = 0
 yoffset = 0
 h_align = fa_center
 v_align = fa_center
+spin_speed = 0
+click_time = 0
+
 
 #macro SETTINGS_SFX 1
 #macro SETTINGS_MUSIC 2

@@ -19,5 +19,6 @@
 #macro CHIP_STACK 11
 #macro ROUND_NEW 12
 #macro CALCULATE_DEALER_VALUE 13
+#macro GOTO_ROOM 14
 
 actions = []

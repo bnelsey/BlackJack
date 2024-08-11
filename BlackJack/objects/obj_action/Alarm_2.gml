@@ -104,6 +104,9 @@ switch(_action_type)
 	case CALCULATE_DEALER_VALUE:
 		calculate_dealer_card()
 	break;
+	case GOTO_ROOM:
+		room_goto(_data_array[0])	
+	break;
 }
 
 
