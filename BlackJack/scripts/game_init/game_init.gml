@@ -3,7 +3,7 @@
 
 
 function game_init(){
-	global.use_test_ads = true
+	global.use_test_ads = false
 	global.free_chips = 0
 	global.first_fadein = false
 	
@@ -20,6 +20,8 @@ function game_init(){
 	global.playlist_latin = true
 	global.playlist = []
 	global.current_music = 0
+	
+	global.no_more_cards_happened = false
 	
 	audio_group_load(group_bgm);
 	
@@ -63,5 +65,6 @@ function game_init(){
 		
 	randomize();
 	gpu_set_texfilter(true)
+	//room_goto(rm_intro)
 	room_goto(rm_game)
 }

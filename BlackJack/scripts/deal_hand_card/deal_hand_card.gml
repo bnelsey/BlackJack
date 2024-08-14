@@ -3,7 +3,9 @@
 function deal_hand_card(_startdelay){
 		if array_length(obj_game.deck) < 1
 		{
-			msg("no more cards left in deck! restarting game")
+			//msg("no more cards left in deck! restarting game")
+			//room_restart()
+			global.no_more_cards_happened = true
 			room_restart()
 			exit
 		}

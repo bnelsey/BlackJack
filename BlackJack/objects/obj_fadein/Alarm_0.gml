@@ -3,9 +3,9 @@
 
 alarm[0] = 1
 var _amount = steps_left / steps_total;
-image_alpha = tween(target_val, start_val, _amount, EASE_INOUT_QUAD)
+image_alpha = tween(target_val, start_val, _amount, EASE_IN_QUAD)
 	
-dbg("image_alpha",image_alpha)
+//dbg("image_alpha",image_alpha)
 	
 steps_left -= 1	
 if steps_left <= 0

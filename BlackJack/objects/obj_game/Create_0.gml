@@ -30,30 +30,41 @@ if os_type == os_android or os_type == os_windows
 	free_chips_spr.yoffset = 42
 	free_chips_spr.h_align = fa_left
 	free_chips_spr.v_align = fa_middle
-	free_chips_spr.alarm[2] = 1 // free chips incremenet
 	
 	free_chips_coin = instance_create_depth(63,332,10,obj_button)
 	free_chips_coin.sprite_index = free_chips_spin
 	free_chips_coin.image_alpha = 1
 	free_chips_coin.spin_speed = 1.2
-	free_chips_coin.alarm[1] = 1
 	
+	if os_type == os_windows
+	{
+		global.first_fadein = true
+	}
 	
 	if not global.first_fadein
 	{
 		global.first_fadein = true	
+		instance_create_depth(0,0,-9999999999, obj_intro)
 		instance_create_depth(0,0,-999999999, obj_fadein)
-		alarm[11] = floor(room_speed * 0.75)	// play music		
+		//alarm[11] = floor(room_speed * 0.75)	// play music		
 	}
 	else
 	{	
 		alarm[11] = 1	// play music
+		free_chips_coin.alarm[1] = 1			
+		obj_game.free_chips_coin.alarm[1] = 1	
+		obj_game.free_chips_spr.alarm[2] = 1 // free chips incremenet
 	}
 }
 
 
 
-	
+if global.no_more_cards_happened
+{
+	global.no_more_cards_happened = false	
+	var _newmsg = sysmsg_spr(840, 167, msg_reshuffle);
+	_newmsg.alarm[1] = 1	
+}
 
 layer_id = layer_get_id("Background")
 bg_id = layer_background_get_id(layer_id);

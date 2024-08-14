@@ -16,7 +16,8 @@ function setup_settings(){
 	settings_static = instance_create_depth(1030,79,-1001,obj_static)
 	settings_static.sprite_index = settings_main
 
-	settings_about_ads = instance_create_depth(6,226,-1001,obj_static)
+	//settings_about_ads = instance_create_depth(6,226,-1001,obj_static)
+	settings_about_ads = instance_create_depth(6,350,-1001,obj_static)
 	settings_about_ads.sprite_index = settings_ads
 	settings_about_ads.visible = false
 	

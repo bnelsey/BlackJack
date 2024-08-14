@@ -190,7 +190,10 @@ switch(async_load[?"type"])
 		// At this point you can reward the user.
 		//show_message_async("1M chips rewarded!");
 		
-		sysmsg(1690, 730, "1M chips earned!")
+		//sysmsg(1690, 730, "1M chips earned!")
+		var _newmsg = sysmsg_spr(819, 518, msg_ad_reward);
+		_newmsg.alarm[1] = 1	
+			
 		with(obj_game)
 		{
 			free_chips = 1000000

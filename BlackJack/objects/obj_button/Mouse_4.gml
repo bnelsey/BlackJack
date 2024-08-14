@@ -2,6 +2,9 @@
 // You can write your code in this editor
 if not visible
 	exit
+	
+if instance_exists(obj_intro)
+	exit
 
 
 switch(button_section)
@@ -223,19 +226,26 @@ switch(sprite_index)
 			global.free_chips = 0
 			var _reset_text_obj = find_object_with_sprite(obj_button,free_chips_box); // only the box has the text
 			_reset_text_obj.text = "Free Chips Now: " + string(global.free_chips)
+			
+			var _newmsg = sysmsg_spr(98, 483, msg_free_chips);
+			_newmsg.alarm[1] = 60
 		}
 	break;
 	case ads_placement_button:	
 		if(AdMob_RewardedVideo_IsLoaded())
 		{
 			// Loaded: show rewarded video ad
+			with(obj_system_message)
+			{
+				instance_destroy()
+			}
 			AdMob_RewardedVideo_Show()
 		}
 		else
 		{
 			// Not Loaded: load rewarded video ad
 			//show_message_async("RewardedVideoAd Still loading, try again soon")
-			sysmsg(1690, 730, "The Rewarded Video Ad is still loading\ntry again in a few seconds")
+			sysmsg(1690, 730, "Rewarded Video Ad still loading\ntry again in a few seconds")
 			AdMob_RewardedVideo_Load()
 		}
 		
@@ -600,10 +610,20 @@ switch(sprite_index)
 			exit
 			
 		
+		
 		if obj_game.balance_value < 5 and obj_game.player_hand_current.bet_value < 1 and not instance_exists(obj_coin)
 		{
-			msg("no more player funds, game restarting"	)
-			room_restart()
+			//msg("no more player funds, game restarting"	)
+			//room_restart()
+
+			var _newmsg = sysmsg_spr(98, 483, msg_auto_buyin);
+			_newmsg.alarm[1] = 1			
+			with(obj_game)
+			{
+				balance_value = global.buy_in
+				balance_chips = calculate_chip_stack(balance_value)
+				alarm[1] = 1
+			}
 			exit
 		}
 			
@@ -736,9 +756,17 @@ switch(sprite_index)
 		obj_game.alarm[6] = 32
 	break;
 	case btn_deal:
-		clear_hand_values()
-		obj_game.alarm[6] = 1
-		click_time = current_time
+		//if true == false // for debugging on windows
+		if os_type == os_android
+		{
+			clicked = true
+			click_time = current_time
+		}
+		else
+		{
+			clear_hand_values()
+			obj_game.alarm[6] = 1
+		}
 	break	
 	
 

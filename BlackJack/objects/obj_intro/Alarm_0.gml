@@ -135,8 +135,14 @@ initialize_step_check += 1
 // ---------------------------------------------------------------
 if initialize_step == initialize_step_check
 {
-	alarm[0] = -1 // stop running
-	room_goto(rm_init)
+	alarm[0] = -1 // stop running	
+	//room_goto(rm_game)
+	instance_create_depth(0,0,-999999999, obj_fadein)
+	obj_game.alarm[11] = floor(room_speed * 0.75)	// play music	
+	obj_game.free_chips_coin.alarm[1] = 1	
+	obj_game.free_chips_spr.alarm[2] = 1 // free chips incremenet
+	obj_fadein.alarm[0] = 1	
+	instance_destroy()
 	exit
 }
 initialize_step_check += 1
