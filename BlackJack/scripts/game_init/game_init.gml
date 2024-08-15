@@ -22,6 +22,7 @@ function game_init(){
 	global.current_music = 0
 	
 	global.no_more_cards_happened = false
+	global.player_balance_before_restart = 0
 	
 	audio_group_load(group_bgm);
 	

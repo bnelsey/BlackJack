@@ -39,7 +39,10 @@ switch(_action_type)
 		// only change chip stack if bet increases
 		if _data_array[1] > 0
 		{
-			_change_player_hand.bet_obj.chip_stack = calculate_chip_stack(_change_player_hand.bet_value)		
+			if instance_exists(_change_player_hand.bet_obj)
+			{
+				_change_player_hand.bet_obj.chip_stack = calculate_chip_stack(_change_player_hand.bet_value)		
+			}
 		}
 	break;
 	
@@ -60,7 +63,10 @@ switch(_action_type)
 	case CHIP_STACK:
 		dbg("change insurance")
 		var _coin_to_calculate_chip_stack = _data_array[0];
-		_coin_to_calculate_chip_stack.chip_stack = calculate_chip_stack(_data_array[1])
+		if instance_exists(_coin_to_calculate_chip_stack)
+		{
+			_coin_to_calculate_chip_stack.chip_stack = calculate_chip_stack(_data_array[1])
+		}
 	break;
 	
 	case SOUND_PLAY:

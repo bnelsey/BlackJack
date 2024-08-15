@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"all_bets_to_balance",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"all_bets_to_balance",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

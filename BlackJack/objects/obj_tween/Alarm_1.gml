@@ -8,8 +8,16 @@ else
 	instance_destroy()
 
 var _amount = steps_left / steps_total;
-targetobj.x = tween(targetx, startx, _amount, EASE_INOUT_QUAD)
-targetobj.y = tween(targety, starty, _amount, EASE_INOUT_QUAD)
+
+if not instance_exists(targetobj)
+{
+	instance_destroy()
+}
+else
+{
+	targetobj.x = tween(targetx, startx, _amount, EASE_INOUT_QUAD)
+	targetobj.y = tween(targety, starty, _amount, EASE_INOUT_QUAD)
+}
 
 //dbg("amount",_amount)
 //dbg(targetobj.x,targetobj.y)

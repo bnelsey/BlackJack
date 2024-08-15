@@ -36,7 +36,15 @@ if change_player_bet != 0
 {
 	dbg("new change_player_hand.bet_value", change_player_hand.bet_value)
 	var _bet_obj = change_player_hand.bet_obj;	
-	_bet_obj.chip_stack = calculate_chip_stack( change_player_hand.bet_value)
+	
+	if instance_exists(_bet_obj)
+	{
+		_bet_obj.chip_stack = calculate_chip_stack( change_player_hand.bet_value)
+	}
+	else
+	{
+		sysmsg(mouse_x,mouse_y,"error prevented!")	
+	}
 }
 
 change_player_balance = 0

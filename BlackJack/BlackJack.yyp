@@ -97,6 +97,7 @@
     {"id":{"name":"Room_AdMob","path":"rooms/Room_AdMob/Room_AdMob.yy",},},
     {"id":{"name":"action_add","path":"scripts/action_add/action_add.yy",},},
     {"id":{"name":"action_move","path":"scripts/action_move/action_move.yy",},},
+    {"id":{"name":"all_bets_to_balance","path":"scripts/all_bets_to_balance/all_bets_to_balance.yy",},},
     {"id":{"name":"array_count","path":"scripts/array_count/array_count.yy",},},
     {"id":{"name":"array_sum","path":"scripts/array_sum/array_sum.yy",},},
     {"id":{"name":"audio_play_sound_delayed","path":"scripts/audio_play_sound_delayed/audio_play_sound_delayed.yy",},},

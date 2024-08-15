@@ -4,8 +4,9 @@ function deal_hand_card(_startdelay){
 		if array_length(obj_game.deck) < 1
 		{
 			//msg("no more cards left in deck! restarting game")
-			//room_restart()
 			global.no_more_cards_happened = true
+			all_bets_to_balance()
+			global.player_balance_before_restart = obj_game.balance_value
 			room_restart()
 			exit
 		}

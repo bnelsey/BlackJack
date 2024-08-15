@@ -7,6 +7,9 @@ if instance_exists(obj_intro)
 	exit
 
 
+if instance_exists(obj_tween)
+	exit
+	
 switch(button_section)
 {
 	case SETTINGS_SFX:

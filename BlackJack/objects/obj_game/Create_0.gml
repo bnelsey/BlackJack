@@ -59,13 +59,6 @@ if os_type == os_android or os_type == os_windows
 
 
 
-if global.no_more_cards_happened
-{
-	global.no_more_cards_happened = false	
-	var _newmsg = sysmsg_spr(840, 167, msg_reshuffle);
-	_newmsg.alarm[1] = 1	
-}
-
 layer_id = layer_get_id("Background")
 bg_id = layer_background_get_id(layer_id);
 layer_background_index(bg_id, global.table_color);
@@ -184,6 +177,7 @@ soft_hand = false // if ace or jack's higher value is used, it is a soft hand
 deck = array_create(56);
 
 new_deck()
+
 
 // fixed starting cards for testing
 //array_push(deck, 7,7,0,0,1,1,13,13)
@@ -393,3 +387,22 @@ hand2.bet_x = 645
 hand2.bet_y = 786
 hand2.bet_string_x = 699
 hand2.bet_string_y = 901
+
+
+
+// when need really few cards for fast testing
+/*
+while(array_length(deck) > 10)
+{
+	array_pop(deck)	
+}
+alarm[1] = 1
+*/
+
+if global.no_more_cards_happened
+{
+	balance_value = global.player_balance_before_restart
+	global.no_more_cards_happened = false	
+	var _newmsg = sysmsg_spr(840, 167, msg_reshuffle);
+	_newmsg.alarm[1] = 1	
+}

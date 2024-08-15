@@ -69,6 +69,7 @@
     {"name":"rm_intro","order":2,"path":"rooms/rm_intro/rm_intro.yy",},
     {"name":"action_add","order":14,"path":"scripts/action_add/action_add.yy",},
     {"name":"action_move","order":26,"path":"scripts/action_move/action_move.yy",},
+    {"name":"all_bets_to_balance","order":39,"path":"scripts/all_bets_to_balance/all_bets_to_balance.yy",},
     {"name":"array_count","order":9,"path":"scripts/array_count/array_count.yy",},
     {"name":"array_sum","order":10,"path":"scripts/array_sum/array_sum.yy",},
     {"name":"audio_play_sound_delayed","order":30,"path":"scripts/audio_play_sound_delayed/audio_play_sound_delayed.yy",},

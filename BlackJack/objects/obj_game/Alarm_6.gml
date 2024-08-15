@@ -34,8 +34,11 @@ if dealer_value == 11 or dealer_value == 12
 if dealer_value == 9 or dealer_value == 10 //or dealer_value == 11 or dealer_value == 12 // peek, then skip playing
 {
 	var _hidden_card = find_hidden_card();		
-	action_add(MOVE_OBJECT,90,60,[_hidden_card,1331+56,21+79,30,0])
-	action_add(MOVE_OBJECT,1,30,[_hidden_card,_hidden_card.targetx,_hidden_card.targety, 30,0])
+	if instance_exists(_hidden_card)
+	{
+		action_add(MOVE_OBJECT,90,60,[_hidden_card,1331+56,21+79,30,0])
+		action_add(MOVE_OBJECT,1,30,[_hidden_card,_hidden_card.targetx,_hidden_card.targety, 30,0])
+	}
 }
 	
 	
