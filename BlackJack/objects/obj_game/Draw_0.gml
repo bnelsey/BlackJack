@@ -15,6 +15,8 @@ if balance_value > 0
 	}
 }
 
+
+
 // draw boxes
 draw_set_color(c_black)
 draw_set_alpha(0.5)
@@ -48,3 +50,12 @@ if dealer_value > 0
 if insurance_value > 0
 	draw_text(insurance_x,insurance_y,insurance_string)
 	
+	
+	
+if settings_static.visible
+{
+	draw_set_font(fnt_table_smaller)
+	draw_text(1250,60, game_version_text)
+	draw_set_font(fnt_table)
+}
+	 

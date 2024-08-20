@@ -16,5 +16,6 @@ else
 	draw_set_font(fnt_table_smaller)
 	draw_text(x,y,drawtext)
 	draw_set_font(_font_temp)
-	draw_set_alpha(1)
+	draw_set_alpha(1)	
+	draw_set_font(fnt_table)
 }

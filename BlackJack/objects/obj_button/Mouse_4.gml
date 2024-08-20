@@ -12,6 +12,10 @@ if instance_exists(obj_tween)
 	
 switch(button_section)
 {
+	case SETTINGS_HIDDEN:	
+			click_time = current_time	
+			clicked = true
+	break;
 	case SETTINGS_SFX:
 		// activate one sound button
 		dbg("button clicked", button_id)
@@ -763,7 +767,6 @@ switch(sprite_index)
 		if os_type == os_android
 		{
 			clicked = true
-			click_time = current_time
 		}
 		else
 		{

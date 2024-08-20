@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+game_version_text = "v"+GM_version
+
 if os_type == os_android or os_type == os_windows
 {
 	first_click_done = true
@@ -210,7 +212,18 @@ dbg("deck", deck)
 //alarm[1] = room_speed // update strings
 
 balance_value = global.buy_in
-balance_string = string(balance_value)
+
+if global.no_more_cards_happened
+{
+	dbg("no_more_cards_happened!")
+	balance_value = global.player_balance_before_restart
+	global.no_more_cards_happened = false	
+	var _newmsg = sysmsg_spr(840, 167, msg_reshuffle);
+	_newmsg.alarm[1] = 1	
+}
+
+balance_string = num_separator(balance_value, ",", 3)
+//balance_string = string(balance_value)
 balance_x = 407
 balance_y = 744
 balance_w = string_width(balance_string) + 10
@@ -398,11 +411,3 @@ while(array_length(deck) > 10)
 }
 alarm[1] = 1
 */
-
-if global.no_more_cards_happened
-{
-	balance_value = global.player_balance_before_restart
-	global.no_more_cards_happened = false	
-	var _newmsg = sysmsg_spr(840, 167, msg_reshuffle);
-	_newmsg.alarm[1] = 1	
-}

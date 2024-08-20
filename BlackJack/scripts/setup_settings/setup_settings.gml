@@ -5,9 +5,17 @@ function setup_settings(){
 	
 	
 	
-	
 	xoffset = 4
 	yoffset = 3
+	
+	
+	// hidden button
+	new_button = instance_create_depth(1090-xoffset,98-(yoffset*2),-1002,obj_button)
+	new_button.sprite_index = btn_hidden
+	new_button.button_section = SETTINGS_HIDDEN
+	new_button.button_id = 0
+	new_button.image_alpha = 1
+	
 	
 	
 	new_button = instance_create_depth(1781,285,-1002,obj_button)
