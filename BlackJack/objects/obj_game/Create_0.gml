@@ -52,7 +52,8 @@ if os_type == os_android or os_type == os_windows
 	}
 	else
 	{	
-		alarm[11] = 1	// play music
+		if os_browser == browser_not_a_browser
+			alarm[11] = 1	// play music
 		free_chips_coin.alarm[1] = 1			
 		obj_game.free_chips_coin.alarm[1] = 1	
 		obj_game.free_chips_spr.alarm[2] = 1 // free chips incremenet

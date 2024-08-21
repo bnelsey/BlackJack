@@ -7,7 +7,7 @@ if button_section == SETTINGS_HIDDEN and clicked
 	var _hold_time = current_time - click_time;
 	//msg("_hold_time",_hold_time)
 	clicked = false
-	if _hold_time > 3000
+	if _hold_time > 1000
 	{
 		alarm[3] = 1
 	}

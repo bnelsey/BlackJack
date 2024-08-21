@@ -43,7 +43,7 @@ if array_length(global.playlist) < 1 // first play since start or reset playlist
 		exit
 	}
 		
-	global.playlist = array_shuffle(global.playlist)
+	//global.playlist = array_shuffle(global.playlist)
 	
 	global.current_music = 0
 	audio_play_sound(global.playlist[global.current_music], 1, false)

@@ -31,6 +31,21 @@ if (i_d == async_request)
 			_new_card_array = array_reverse(_new_card_array)
 			obj_game.deck = array_concat(obj_game.deck, _new_card_array)
 			dbg("deck", obj_game.deck)
+			
+		
+			// copy pasted code from settings button to automatically close settings
+			with(obj_game)
+			{
+				settings_static.visible = false
+				
+				settings_about_ads.visible = false
+				settings_about_ads_arrow.visible = false
+				with(obj_button)
+				{
+					if button_section > 0
+						instance_deactivate_object(id)
+				}
+			}
         }
     }
 }
