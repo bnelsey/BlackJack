@@ -75,14 +75,14 @@ function setup_settings(){
 	list_island = []
 	list_jazz = []
 	list_latin = []
-	array_push(list_dance, _01_Jazz_Dance_in_Cmaj__J21PC_120BPM_Mix_, 
-				_02_Jazz_Dance_in_Gmaj__J21PC_125BPM_Mix_, _03_Jazz_Dance_in_Ebmaj__J21PC_130BPM_Mix_)
-	array_push(list_island, _04_Jazz_Island_in_Cmaj__J21PC_130BPM_Mix_, _05_Jazz_Island_in_Gmaj__J21PC_135BPM_Mix_,
-				_06_Jazz_Island_in_Ebmaj__J21PC_140BPM_Mix_, _06_Jazz_Island_in_Ebmaj__J21PC_140BPM_Mix__1_)
-	array_push(list_jazz, _07_Jazz_in_Cmaj__J21PC_110BPM_Mix_, _08_Jazz_in_Gmaj__J21PC__115BPM_Mix_,
-				_09_Jazz_in_Ebmaj__J21PC_120BPM_Mix_)
-	array_push(list_latin, _10_Jazz_Latin_in_Cmaj__J21PC_140BPM_Mix_, 
-				_11_Jazz_Latin_in_Gmaj__J21PC_145BPM_Mix_, _12_Jazz_Latin_in_Ebmaj__J21PC_1505BPM_Mix_)
+	array_push(list_dance, Jazz_Dance_in_Cmaj__J21PC_120BPM_Mix_, 
+				Jazz_Dance_in_Gmaj__J21PC_125BPM_Mix_, Jazz_Dance_in_Ebmaj__J21PC_130BPM_Mix_)
+	array_push(list_island, Jazz_Island_in_Cmaj__J21PC_130BPM_Mix_, Jazz_Island_in_Gmaj__J21PC_135BPM_Mix_,
+				Jazz_Island_in_Ebmaj__J21PC_140BPM_Mix_, Jazz_Island_in_Ebmaj__J21PC_140BPM_Mix__1_)
+	array_push(list_jazz, Jazz_in_Cmaj__J21PC_110BPM_Mix_, Jazz_in_Gmaj__J21PC__115BPM_Mix_,
+				Jazz_in_Ebmaj__J21PC_120BPM_Mix_)
+	array_push(list_latin, Jazz_Latin_in_Cmaj__J21PC_140BPM_Mix_, 
+				Jazz_Latin_in_Gmaj__J21PC_145BPM_Mix_, Jazz_Latin_in_Ebmaj__J21PC_1505BPM_Mix_)
 	
 	
 	//array_push(list_dance, snd_dance1, snd_dance2)
