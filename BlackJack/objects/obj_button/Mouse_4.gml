@@ -457,8 +457,8 @@ switch(sprite_index)
 		if global.current_music < 0
 			global.current_music = array_length(global.playlist) - 1
 		
-		audio_play_sound(global.playlist[global.current_music], 1, false)
 		dbg("now playing", audio_get_name(global.playlist[global.current_music]))	
+		audio_play_sound(global.playlist[global.current_music], 1, false)
 	break;
 	case btn_next:
 		if array_length(global.playlist) < 1
@@ -473,8 +473,8 @@ switch(sprite_index)
 		if global.current_music >= array_length(global.playlist)
 			global.current_music = 0
 		
-		audio_play_sound(global.playlist[global.current_music], 1, false)
 		dbg("now playing", audio_get_name(global.playlist[global.current_music]))	
+		audio_play_sound(global.playlist[global.current_music], 1, false)
 	break;
 	
 	

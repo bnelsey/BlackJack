@@ -46,8 +46,8 @@ if array_length(global.playlist) < 1 // first play since start or reset playlist
 	//global.playlist = array_shuffle(global.playlist)
 	
 	global.current_music = 0
-	audio_play_sound(global.playlist[global.current_music], 1, false)
 	dbg("now playing", audio_get_name(global.playlist[global.current_music]))
+	audio_play_sound(global.playlist[global.current_music], 1, false)
 }
 else // check if time to play next track
 {
@@ -57,7 +57,7 @@ else // check if time to play next track
 		if global.current_music >= array_length(global.playlist)
 			global.current_music = 0
 		
-		audio_play_sound(global.playlist[global.current_music], 1, false)
 		dbg("now playing", audio_get_name(global.playlist[global.current_music]))
+		audio_play_sound(global.playlist[global.current_music], 1, false)
 	}
 }
