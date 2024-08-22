@@ -1,5 +1,7 @@
 /// @description split test
 
+exit
+
 if sprite_index == btn_deal
 {
 	obj_game.alarm[6] = 1
