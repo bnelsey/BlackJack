@@ -6,6 +6,7 @@ function game_init(){
 	global.use_test_ads = false
 	global.free_chips = 0
 	global.first_fadein = false
+	global.async_processed = 0
 	
 	global.volume = 1
 	global.sfx = 1
