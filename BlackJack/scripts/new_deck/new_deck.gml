@@ -14,7 +14,7 @@ function new_deck(){
 		deck = []
 		var _temp_deck = []
 
-		// Initialize the array with numbers 1 to 56
+		// Initialize the array with numbers 0 to 55
 		for (i = 0; i < 56; i++) {
 		    _temp_deck[i] = i;
 		}

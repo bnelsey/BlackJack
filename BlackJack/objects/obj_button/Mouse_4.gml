@@ -763,16 +763,8 @@ switch(sprite_index)
 		obj_game.alarm[6] = 32
 	break;
 	case btn_deal:
-		//if true == false // for debugging on windows
-		if os_type == os_android
-		{
-			clicked = true
-		}
-		else
-		{
-			clear_hand_values()
-			obj_game.alarm[6] = 1
-		}
+		clear_hand_values()
+		obj_game.alarm[6] = 1
 	break	
 	
 
